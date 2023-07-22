@@ -1,0 +1,35 @@
+Db	debby/common.html#Db	common: Db	
+DbError	debby/common.html#DbError	common: DbError	
+Row	debby/common.html#Row	common: Row	
+Bytes	debby/common.html#Bytes	common: Bytes	
+ReservedNames	debby/common.html#ReservedNames	common: ReservedNames	
+toSnakeCase	debby/common.html#toSnakeCase,string	common: toSnakeCase(s: string): string	
+tableName	debby/common.html#tableName,typedesc[T]	common: tableName[T](t: typedesc[T]): string	
+dbError	debby/common.html#dbError,string	common: dbError(msg: string)	
+validateObj	debby/common.html#validateObj,typedesc[T]	common: validateObj[T: ref object](t: typedesc[T])	
+sqlDumpHook	debby/common.html#sqlDumpHook,T	common: sqlDumpHook[T: SomeFloat | SomeInteger](v: T): string	
+sqlDumpHook	debby/common.html#sqlDumpHook,T_2	common: sqlDumpHook[T: string](v: T): string	
+sqlDumpHook	debby/common.html#sqlDumpHook,T_3	common: sqlDumpHook[T: distinct](v: T): string	
+sqlDump	debby/common.html#sqlDump,T	common: sqlDump[T](v: T): string	
+sqlParseHook	debby/common.html#sqlParseHook,string,T	common: sqlParseHook[T: string](data: string; v: var T)	
+sqlParseHook	debby/common.html#sqlParseHook,string,T_2	common: sqlParseHook[T: SomeFloat](data: string; v: var T)	
+sqlParseHook	debby/common.html#sqlParseHook,string,T_3	common: sqlParseHook[T: SomeUnsignedInt](data: string; v: var T)	
+sqlParseHook	debby/common.html#sqlParseHook,string,T_4	common: sqlParseHook[T: SomeSignedInt](data: string; v: var T)	
+sqlParseHook	debby/common.html#sqlParseHook,string,T_5	common: sqlParseHook[T: bool](data: string; v: var T)	
+sqlParseHook	debby/common.html#sqlParseHook,string,T_6	common: sqlParseHook[T: enum](data: string; v: var T)	
+sqlParseHook	debby/common.html#sqlParseHook,string,T_7	common: sqlParseHook[T: distinct](data: string; v: var T)	
+sqlParse	debby/common.html#sqlParse,string,T	common: sqlParse[T](data: string; v: var T)	
+get	debby/common.html#get,Db,typedesc[T],V	common: get[T, V](db: Db; t: typedesc[T]; id: V): T	
+update	debby/common.html#update,Db,T	common: update[T: ref object](db: Db; obj: T)	
+delete	debby/common.html#delete,Db,T	common: delete[T: ref object](db: Db; obj: T)	
+insertInner	debby/common.html#insertInner,Db,T,string	common: insertInner[T: ref object](db: Db; obj: T; extra = &quot;&quot;): seq[Row]	
+insert	debby/common.html#insert.t,Db,seq[T]	common: insert[T: ref object](db: Db; objs: seq[T])	
+delete	debby/common.html#delete.t,Db,seq[T]	common: delete[T: ref object](db: Db; objs: seq[T])	
+update	debby/common.html#update.t,Db,seq[T]	common: update[T: ref object](db: Db; objs: seq[T])	
+upsert	debby/common.html#upsert.t,Db,T	common: upsert[T: ref object](db: Db; obj: T)	
+upsert	debby/common.html#upsert.t,Db,seq[T]	common: upsert[T: ref object](db: Db; objs: seq[T])	
+createIndex	debby/common.html#createIndex.t,Db,typedesc[T],varargs[string]	common: createIndex[T: ref object](db: Db; t: typedesc[T]; params: varargs[string])	
+createIndexIfNotExists	debby/common.html#createIndexIfNotExists.t,Db,typedesc[T],varargs[string]	common: createIndexIfNotExists[T: ref object](db: Db; t: typedesc[T];\n                                      params: varargs[string])	
+innerSelect	debby/common.html#innerSelect,Db,T,string,varargs[string,]	common: innerSelect[T: ref object](db: Db; it: T; where: string;\n                           args: varargs[string, `$`]): seq[T]	
+filter	debby/common.html#filter.t,Db,typedesc[T],untyped	common: filter[T: ref object](db: Db; t: typedesc[T]; expression: untyped): untyped	
+filter	debby/common.html#filter,Db,typedesc[T]	common: filter[T](db: Db; t: typedesc[T]): seq[T]	

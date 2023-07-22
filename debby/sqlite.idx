@@ -1,0 +1,29 @@
+SQLITE_OK	debby/sqlite.html#SQLITE_OK	sqlite: SQLITE_OK	
+SQLITE_ROW	debby/sqlite.html#SQLITE_ROW	sqlite: SQLITE_ROW	
+Statement	debby/sqlite.html#Statement	sqlite: Statement	
+sqlite3_errmsg	debby/sqlite.html#sqlite3_errmsg,Db	sqlite: sqlite3_errmsg(db: Db): cstring	
+sqlite3_open	debby/sqlite.html#sqlite3_open,cstring,Db	sqlite: sqlite3_open(filename: cstring; db: var Db): int32	
+sqlite3_close	debby/sqlite.html#sqlite3_close,Db	sqlite: sqlite3_close(db: Db): int32	
+sqlite3_prepare_v2	debby/sqlite.html#sqlite3_prepare_v2,Db,cstring,int32,Statement,ptr.cstring	sqlite: sqlite3_prepare_v2(db: Db; zSql: cstring; nByte: int32;\n                   pStatement: var Statement; pzTail: ptr cstring): int32	
+sqlite3_bind_text	debby/sqlite.html#sqlite3_bind_text,Statement,int32,cstring,int32,pointer	sqlite: sqlite3_bind_text(stmt: Statement; index: int32; text: cstring; size: int32;\n                  destructor: pointer): int32	
+sqlite3_column_bytes	debby/sqlite.html#sqlite3_column_bytes,Statement,int32	sqlite: sqlite3_column_bytes(stmt: Statement; iCol: int32): int32	
+sqlite3_column_blob	debby/sqlite.html#sqlite3_column_blob,Statement,int32	sqlite: sqlite3_column_blob(stmt: Statement; iCol: int32): pointer	
+sqlite3_column_count	debby/sqlite.html#sqlite3_column_count,Statement	sqlite: sqlite3_column_count(stmt: Statement): int32	
+sqlite3_step	debby/sqlite.html#sqlite3_step,Statement	sqlite: sqlite3_step(stmt: Statement): int32	
+sqlite3_finalize	debby/sqlite.html#sqlite3_finalize,Statement	sqlite: sqlite3_finalize(stmt: Statement): int32	
+sqlite3_column_name	debby/sqlite.html#sqlite3_column_name,Statement,int32	sqlite: sqlite3_column_name(stmt: Statement; iCol: int32): cstring	
+sqlite3_last_insert_rowid	debby/sqlite.html#sqlite3_last_insert_rowid,Db	sqlite: sqlite3_last_insert_rowid(db: Db): int64	
+dbError	debby/sqlite.html#dbError,Db	sqlite: dbError(db: Db)	
+openDatabase	debby/sqlite.html#openDatabase,string	sqlite: openDatabase(path: string): Db	
+close	debby/sqlite.html#close,Db	sqlite: close(db: Db)	
+query	debby/sqlite.html#query,Db,string,varargs[string,]	sqlite: query(db: Db; query: string; args: varargs[string, `$`]): seq[Row]	
+tableExists	debby/sqlite.html#tableExists,Db,typedesc[T]	sqlite: tableExists[T](db: Db; t: typedesc[T]): bool	
+dropTable	debby/sqlite.html#dropTable,Db,typedesc[T]	sqlite: dropTable[T](db: Db; t: typedesc[T])	
+dropTableIfExists	debby/sqlite.html#dropTableIfExists,Db,typedesc[T]	sqlite: dropTableIfExists[T](db: Db; t: typedesc[T])	
+createTableStatement	debby/sqlite.html#createTableStatement,Db,typedesc[T]	sqlite: createTableStatement[T: ref object](db: Db; t: typedesc[T]): string	
+createTable	debby/sqlite.html#createTable,Db,typedesc[T]	sqlite: createTable[T: ref object](db: Db; t: typedesc[T])	
+checkTable	debby/sqlite.html#checkTable,Db,typedesc[T]	sqlite: checkTable[T: ref object](db: Db; t: typedesc[T])	
+createIndexStatement	debby/sqlite.html#createIndexStatement,Db,typedesc[T],bool,varargs[string]	sqlite: createIndexStatement[T: ref object](db: Db; t: typedesc[T]; ifNotExists: bool;\n                                    params: varargs[string]): string	
+query	debby/sqlite.html#query,Db,typedesc[T],string,varargs[string,]	sqlite: query[T](db: Db; t: typedesc[T]; query: string; args: varargs[string, `$`]): seq[\n    T]	
+insert	debby/sqlite.html#insert,Db,T	sqlite: insert[T: ref object](db: Db; obj: T)	
+withTransaction	debby/sqlite.html#withTransaction.t,Db,	sqlite: withTransaction(db: Db; body)	
