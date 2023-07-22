@@ -1,0 +1,3 @@
+--path:"../src"
+--d:debbyYOLO
+--d:debbyShowSql
