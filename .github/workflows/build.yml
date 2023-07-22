@@ -1,0 +1,67 @@
+name: Github Actions
+on: [push, pull_request]
+jobs:
+  build:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest]
+
+    runs-on: ${{ matrix.os }}
+
+    services:
+      postgres:
+        image: postgres:13
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+        ports:
+          - 5432:5432
+
+      mysql:
+        image: mysql:8.0
+        env:
+          MYSQL_ROOT_PASSWORD: hunter2
+          MYSQL_DATABASE: test_db
+        options: >-
+          --health-cmd="mysqladmin ping"
+          --health-interval=10s
+          --health-timeout=5s
+          --health-retries=3
+        ports:
+          - 3306:3306
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Install PostgreSQL client
+      run: sudo apt-get -yqq install libpq-dev
+
+    - name: Set up PostgreSQL database
+      run: |
+        pg_isready -h localhost -p 5432 -U postgres
+        psql -h localhost -U postgres -c 'CREATE USER testuser WITH PASSWORD '\''test'\'';'
+        psql -h localhost -U postgres -c 'CREATE DATABASE test OWNER testuser;'
+      env:
+        PGPASSWORD: postgres
+
+    - name: Install MySQL client
+      run: sudo apt-get -yqq install default-mysql-client
+
+    - name: Verify MySQL Connection
+      run: |
+        mysql --host 127.0.0.1 --port 3306 -uroot -phunter2 -e "SHOW DATABASES;"
+
+    - uses: jiro4989/setup-nim-action@v1
+      with:
+        repo-token: ${{ secrets.GITHUB_TOKEN }}
+
+    - name: Run nimble tests
+      run: |
+        nimble test -y
+        nimble test --gc:orc -y
