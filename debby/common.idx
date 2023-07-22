@@ -33,3 +33,7 @@ createIndexIfNotExists	debby/common.html#createIndexIfNotExists.t,Db,typedesc[T]
 innerSelect	debby/common.html#innerSelect,Db,T,string,varargs[string,]	common: innerSelect[T: ref object](db: Db; it: T; where: string;\n                           args: varargs[string, `$`]): seq[T]	
 filter	debby/common.html#filter.t,Db,typedesc[T],untyped	common: filter[T: ref object](db: Db; t: typedesc[T]; expression: untyped): untyped	
 filter	debby/common.html#filter,Db,typedesc[T]	common: filter[T](db: Db; t: typedesc[T]): seq[T]	
+hexNibble	debby/common.html#hexNibble,char	common: hexNibble(ch: char): int	
+dropTable	debby/common.html#dropTable,Db,typedesc[T]	common: dropTable[T](db: Db; t: typedesc[T])	
+dropTableIfExists	debby/common.html#dropTableIfExists,Db,typedesc[T]	common: dropTableIfExists[T](db: Db; t: typedesc[T])	
+createTable	debby/common.html#createTable,Db,typedesc[T]	common: createTable[T: ref object](db: Db; t: typedesc[T])	

@@ -1,0 +1,28 @@
+FIELD	debby/mysql.html#FIELD	mysql: FIELD	
+PFIELD	debby/mysql.html#PFIELD	mysql: PFIELD	
+mysql_init	debby/mysql.html#mysql_init,Db	mysql: mysql_init(MySQL: Db): Db	
+mysql_error	debby/mysql.html#mysql_error,Db	mysql: mysql_error(MySQL: Db): cstring	
+mysql_real_connect	debby/mysql.html#mysql_real_connect,Db,cstring,cstring,cstring,cstring,cuint,cstring,int	mysql: mysql_real_connect(MySQL: Db; host: cstring; user: cstring; passwd: cstring;\n                   db: cstring; port: cuint; unix_socket: cstring;\n                   clientflag: int): Db	
+mysql_close	debby/mysql.html#mysql_close,Db	mysql: mysql_close(sock: Db)	
+mysql_query	debby/mysql.html#mysql_query,Db,cstring	mysql: mysql_query(MySQL: Db; q: cstring): cint	
+mysql_store_result	debby/mysql.html#mysql_store_result,Db	mysql: mysql_store_result(MySQL: Db): PRES	
+mysql_num_rows	debby/mysql.html#mysql_num_rows,PRES	mysql: mysql_num_rows(res: PRES): uint64	
+mysql_num_fields	debby/mysql.html#mysql_num_fields,PRES	mysql: mysql_num_fields(res: PRES): cuint	
+mysql_fetch_row	debby/mysql.html#mysql_fetch_row,PRES	mysql: mysql_fetch_row(result: PRES): cstringArray	
+mysql_free_result	debby/mysql.html#mysql_free_result,PRES	mysql: mysql_free_result(result: PRES)	
+mysql_real_escape_string	debby/mysql.html#mysql_real_escape_string,Db,cstring,cstring,int	mysql: mysql_real_escape_string(MySQL: Db; fto: cstring; from: cstring; len: int): int	
+mysql_insert_id	debby/mysql.html#mysql_insert_id,Db	mysql: mysql_insert_id(MySQL: Db): uint64	
+mysql_fetch_field_direct	debby/mysql.html#mysql_fetch_field_direct,PRES,cuint	mysql: mysql_fetch_field_direct(res: PRES; fieldnr: cuint): PFIELD	
+dbError	debby/mysql.html#dbError,Db	mysql: dbError(db: Db)	
+query	debby/mysql.html#query,Db,string,varargs[string,]	mysql: query(db: Db; query: string; args: varargs[string, `$`]): seq[Row]	
+openDatabase	debby/mysql.html#openDatabase,string,string,int,string,string	mysql: openDatabase(database: string; host = &quot;localhost&quot;; port = 3306; user = &quot;root&quot;;\n             password = &quot;&quot;): Db	
+close	debby/mysql.html#close,Db	mysql: close(db: Db)	
+tableExists	debby/mysql.html#tableExists,Db,typedesc[T]	mysql: tableExists[T](db: Db; t: typedesc[T]): bool	
+createIndexStatement	debby/mysql.html#createIndexStatement,Db,typedesc[T],bool,varargs[string]	mysql: createIndexStatement[T: ref object](db: Db; t: typedesc[T]; ifNotExists: bool;\n                                    params: varargs[string]): string	
+createTableStatement	debby/mysql.html#createTableStatement,Db,typedesc[T]	mysql: createTableStatement[T: ref object](db: Db; t: typedesc[T]): string	
+checkTable	debby/mysql.html#checkTable,Db,typedesc[T]	mysql: checkTable[T: ref object](db: Db; t: typedesc[T])	
+insert	debby/mysql.html#insert,Db,T	mysql: insert[T: ref object](db: Db; obj: T)	
+query	debby/mysql.html#query,Db,typedesc[T],string,varargs[string,]	mysql: query[T](db: Db; t: typedesc[T]; query: string; args: varargs[string, `$`]): seq[\n    T]	
+withTransaction	debby/mysql.html#withTransaction.t,Db,	mysql: withTransaction(db: Db; body)	
+sqlDumpHook	debby/mysql.html#sqlDumpHook,Bytes	mysql: sqlDumpHook(data: Bytes): string	
+sqlParseHook	debby/mysql.html#sqlParseHook,string,Bytes	mysql: sqlParseHook(data: string; v: var Bytes)	

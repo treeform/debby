@@ -14,16 +14,13 @@ sqlite3_finalize	debby/sqlite.html#sqlite3_finalize,Statement	sqlite: sqlite3_fi
 sqlite3_column_name	debby/sqlite.html#sqlite3_column_name,Statement,int32	sqlite: sqlite3_column_name(stmt: Statement; iCol: int32): cstring	
 sqlite3_last_insert_rowid	debby/sqlite.html#sqlite3_last_insert_rowid,Db	sqlite: sqlite3_last_insert_rowid(db: Db): int64	
 dbError	debby/sqlite.html#dbError,Db	sqlite: dbError(db: Db)	
+query	debby/sqlite.html#query,Db,string,varargs[string,]	sqlite: query(db: Db; query: string; args: varargs[string, `$`]): seq[Row]	
 openDatabase	debby/sqlite.html#openDatabase,string	sqlite: openDatabase(path: string): Db	
 close	debby/sqlite.html#close,Db	sqlite: close(db: Db)	
-query	debby/sqlite.html#query,Db,string,varargs[string,]	sqlite: query(db: Db; query: string; args: varargs[string, `$`]): seq[Row]	
 tableExists	debby/sqlite.html#tableExists,Db,typedesc[T]	sqlite: tableExists[T](db: Db; t: typedesc[T]): bool	
-dropTable	debby/sqlite.html#dropTable,Db,typedesc[T]	sqlite: dropTable[T](db: Db; t: typedesc[T])	
-dropTableIfExists	debby/sqlite.html#dropTableIfExists,Db,typedesc[T]	sqlite: dropTableIfExists[T](db: Db; t: typedesc[T])	
-createTableStatement	debby/sqlite.html#createTableStatement,Db,typedesc[T]	sqlite: createTableStatement[T: ref object](db: Db; t: typedesc[T]): string	
-createTable	debby/sqlite.html#createTable,Db,typedesc[T]	sqlite: createTable[T: ref object](db: Db; t: typedesc[T])	
-checkTable	debby/sqlite.html#checkTable,Db,typedesc[T]	sqlite: checkTable[T: ref object](db: Db; t: typedesc[T])	
 createIndexStatement	debby/sqlite.html#createIndexStatement,Db,typedesc[T],bool,varargs[string]	sqlite: createIndexStatement[T: ref object](db: Db; t: typedesc[T]; ifNotExists: bool;\n                                    params: varargs[string]): string	
-query	debby/sqlite.html#query,Db,typedesc[T],string,varargs[string,]	sqlite: query[T](db: Db; t: typedesc[T]; query: string; args: varargs[string, `$`]): seq[\n    T]	
+createTableStatement	debby/sqlite.html#createTableStatement,Db,typedesc[T]	sqlite: createTableStatement[T: ref object](db: Db; t: typedesc[T]): string	
+checkTable	debby/sqlite.html#checkTable,Db,typedesc[T]	sqlite: checkTable[T: ref object](db: Db; t: typedesc[T])	
 insert	debby/sqlite.html#insert,Db,T	sqlite: insert[T: ref object](db: Db; obj: T)	
+query	debby/sqlite.html#query,Db,typedesc[T],string,varargs[string,]	sqlite: query[T](db: Db; t: typedesc[T]; query: string; args: varargs[string, `$`]): seq[\n    T]	
 withTransaction	debby/sqlite.html#withTransaction.t,Db,	sqlite: withTransaction(db: Db; body)	

@@ -116,59 +116,29 @@ window.addEventListener('DOMContentLoaded', main);
   <a class="reference reference-toplevel" href="#10" id="60">Consts</a>
   <ul class="simple simple-toc-section">
       <li><a class="reference" href="#ReservedNames"
-    title="ReservedNames = (data: [(2875918208, &quot;outer&quot;), (773313536, &quot;between&quot;),
-                        (1759958015, &quot;double&quot;), (0, &quot;&quot;), (0, &quot;&quot;),
-                        (552085893, &quot;inner&quot;), (324964102, &quot;drop&quot;),
-                        (3725263623, &quot;asc&quot;), (939215365, &quot;end&quot;), (0, &quot;&quot;),
-                        (0, &quot;&quot;), (192819851, &quot;all&quot;), (1463705611, &quot;desc&quot;),
-                        (3071630859, &quot;char&quot;), (2509520141, &quot;user&quot;), (0, &quot;&quot;),
-                        (0, &quot;&quot;), (131900689, &quot;in&quot;), (1727035794, &quot;null&quot;),
-                        (0, &quot;&quot;), (2755325844, &quot;from&quot;), (2768410132, &quot;order&quot;),
-                        (0, &quot;&quot;), (0, &quot;&quot;), (2840212248, &quot;left&quot;),
-                        (3292111128, &quot;exists&quot;), (638361624, &quot;smallint&quot;),
-                        (599296923, &quot;union&quot;), (753371676, &quot;as&quot;),
-                        (718402331, &quot;date&quot;), (0, &quot;&quot;), (1120495519, &quot;default&quot;),
-                        (1830646559, &quot;check&quot;), (0, &quot;&quot;), (520409122, &quot;limit&quot;),
-                        (1044851619, &quot;unique&quot;), (3324292644, &quot;text&quot;), (0, &quot;&quot;),
-                        (1021187622, &quot;group&quot;), (3766283814, &quot;decimal&quot;),
-                        (0, &quot;&quot;), (3928038441, &quot;like&quot;), (0, &quot;&quot;),
-                        (523529899, &quot;by&quot;), (0, &quot;&quot;), (2236453805, &quot;time&quot;),
-                        (1849135534, &quot;boolean&quot;), (0, &quot;&quot;), (0, &quot;&quot;), (0, &quot;&quot;),
-                        (0, &quot;&quot;), (0, &quot;&quot;), (0, &quot;&quot;), (0, &quot;&quot;),
-                        (1042626614, &quot;select&quot;), (3750662711, &quot;update&quot;),
-                        (0, &quot;&quot;), (0, &quot;&quot;), (0, &quot;&quot;), (0, &quot;&quot;), (0, &quot;&quot;), (0, &quot;&quot;),
-                        (3586802366, &quot;real&quot;), (572313023, &quot;varchar&quot;),
-                        (2074315840, &quot;when&quot;), (0, &quot;&quot;), (0, &quot;&quot;), (0, &quot;&quot;),
-                        (3801901636, &quot;key&quot;), (0, &quot;&quot;), (2166739910, &quot;any&quot;),
-                        (73733190, &quot;timestamp&quot;), (0, &quot;&quot;), (4112202185, &quot;on&quot;),
-                        (0, &quot;&quot;), (0, &quot;&quot;), (650894796, &quot;some&quot;), (0, &quot;&quot;),
-                        (580887246, &quot;case&quot;), (0, &quot;&quot;), (0, &quot;&quot;),
-                        (3367832401, &quot;having&quot;), (0, &quot;&quot;), (2779594451, &quot;and&quot;),
-                        (1673929811, &quot;then&quot;), (0, &quot;&quot;), (0, &quot;&quot;), (0, &quot;&quot;),
-                        (0, &quot;&quot;), (0, &quot;&quot;), (4018598106, &quot;join&quot;),
-                        (23337051, &quot;bigint&quot;), (0, &quot;&quot;), (0, &quot;&quot;), (0, &quot;&quot;),
-                        (803408863, &quot;create&quot;), (699539807, &quot;column&quot;),
-                        (212648289, &quot;table&quot;), (3464699359, &quot;int&quot;), (0, &quot;&quot;),
-                        (0, &quot;&quot;), (0, &quot;&quot;), (1909934694, &quot;insert&quot;),
-                        (2842715111, &quot;offset&quot;), (1590456296, &quot;set&quot;),
-                        (117848935, &quot;or&quot;), (1883059434, &quot;where&quot;),
-                        (2641553256, &quot;with&quot;), (653735532, &quot;delete&quot;),
-                        (236893549, &quot;distinct&quot;), (2021799277, &quot;is&quot;),
-                        (3641261934, &quot;value&quot;), (3940659824, &quot;alter&quot;),
-                        (125777136, &quot;index&quot;), (2835976434, &quot;foreign&quot;),
-                        (3589195505, &quot;constraint&quot;), (572399988, &quot;not&quot;),
-                        (1671401192, &quot;references&quot;), (3344485479, &quot;integer&quot;),
-                        (750636533, &quot;numeric&quot;), (2516295656, &quot;float&quot;),
-                        (4025523449, &quot;else&quot;), (580751866, &quot;primary&quot;), (0, &quot;&quot;),
-                        (0, &quot;&quot;), (0, &quot;&quot;), (0, &quot;&quot;), (1786548735, &quot;right&quot;)],
-                 counter: 74)">ReservedNames</a></li>
+    title="ReservedNames = [&quot;select&quot;, &quot;insert&quot;, &quot;update&quot;, &quot;delete&quot;, &quot;from&quot;, &quot;where&quot;,
+                 &quot;join&quot;, &quot;inner&quot;, &quot;outer&quot;, &quot;left&quot;, &quot;right&quot;, &quot;on&quot;, &quot;group&quot;, &quot;by&quot;,
+                 &quot;order&quot;, &quot;having&quot;, &quot;limit&quot;, &quot;offset&quot;, &quot;union&quot;, &quot;create&quot;,
+                 &quot;alter&quot;, &quot;drop&quot;, &quot;set&quot;, &quot;null&quot;, &quot;not&quot;, &quot;distinct&quot;, &quot;as&quot;, &quot;is&quot;,
+                 &quot;like&quot;, &quot;and&quot;, &quot;or&quot;, &quot;in&quot;, &quot;exists&quot;, &quot;any&quot;, &quot;all&quot;, &quot;between&quot;,
+                 &quot;asc&quot;, &quot;desc&quot;, &quot;case&quot;, &quot;when&quot;, &quot;then&quot;, &quot;else&quot;, &quot;end&quot;, &quot;some&quot;,
+                 &quot;with&quot;, &quot;table&quot;, &quot;column&quot;, &quot;value&quot;, &quot;index&quot;, &quot;primary&quot;,
+                 &quot;foreign&quot;, &quot;key&quot;, &quot;default&quot;, &quot;check&quot;, &quot;unique&quot;, &quot;constraint&quot;,
+                 &quot;references&quot;, &quot;varchar&quot;, &quot;char&quot;, &quot;text&quot;, &quot;integer&quot;, &quot;int&quot;,
+                 &quot;smallint&quot;, &quot;bigint&quot;, &quot;decimal&quot;, &quot;numeric&quot;, &quot;float&quot;, &quot;double&quot;,
+                 &quot;real&quot;, &quot;boolean&quot;, &quot;date&quot;, &quot;time&quot;, &quot;timestamp&quot;, &quot;user&quot;]">ReservedNames</a></li>
 
   </ul>
 </li>
 <li>
   <a class="reference reference-toplevel" href="#12" id="62">Procs</a>
   <ul class="simple simple-toc-section">
-      <ul class="simple nested-toc-section">dbError
+      <ul class="simple nested-toc-section">createTable
+      <li><a class="reference" href="#createTable%2CDb%2Ctypedesc%5BT%5D"
+    title="createTable[T: ref object](db: Db; t: typedesc[T])">createTable[T: ref object](db: Db; t: typedesc[T])</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">dbError
       <li><a class="reference" href="#dbError%2Cstring"
     title="dbError(msg: string)">dbError(msg: string)</a></li>
 
@@ -176,6 +146,16 @@ window.addEventListener('DOMContentLoaded', main);
   <ul class="simple nested-toc-section">delete
       <li><a class="reference" href="#delete%2CDb%2CT"
     title="delete[T: ref object](db: Db; obj: T)">delete[T: ref object](db: Db; obj: T)</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">dropTable
+      <li><a class="reference" href="#dropTable%2CDb%2Ctypedesc%5BT%5D"
+    title="dropTable[T](db: Db; t: typedesc[T])">dropTable[T](db: Db; t: typedesc[T])</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">dropTableIfExists
+      <li><a class="reference" href="#dropTableIfExists%2CDb%2Ctypedesc%5BT%5D"
+    title="dropTableIfExists[T](db: Db; t: typedesc[T])">dropTableIfExists[T](db: Db; t: typedesc[T])</a></li>
 
   </ul>
   <ul class="simple nested-toc-section">filter
@@ -186,6 +166,11 @@ window.addEventListener('DOMContentLoaded', main);
   <ul class="simple nested-toc-section">get
       <li><a class="reference" href="#get%2CDb%2Ctypedesc%5BT%5D%2CV"
     title="get[T, V](db: Db; t: typedesc[T]; id: V): T">get[T, V](db: Db; t: typedesc[T]; id: V): T</a></li>
+
+  </ul>
+  <ul class="simple nested-toc-section">hexNibble
+      <li><a class="reference" href="#hexNibble%2Cchar"
+    title="hexNibble(ch: char): int">hexNibble(ch: char): int</a></li>
 
   </ul>
   <ul class="simple nested-toc-section">innerSelect
@@ -324,7 +309,7 @@ class="link-seesrc" target="_blank">Source</a>
 <dt><pre><a href="common.html#Bytes"><span class="Identifier">Bytes</span></a> <span class="Other">=</span> <span class="Keyword">distinct</span> <span class="Identifier">string</span></pre></dt>
 <dd>
 
-
+Debby's binary datatype. Use this if your data contains nulls or non-utf8 bytes.
 &nbsp;&nbsp;<a
 href="https://github.com/treeform/debby/tree/master/src/debby/common.nim#L7"
 class="link-seesrc" target="_blank">Source</a>
@@ -336,7 +321,7 @@ class="link-seesrc" target="_blank">Source</a>
 <dt><pre><a href="common.html#Db"><span class="Identifier">Db</span></a> <span class="Other">=</span> <span class="Identifier">pointer</span></pre></dt>
 <dd>
 
-
+Generic database pointer.
 &nbsp;&nbsp;<a
 href="https://github.com/treeform/debby/tree/master/src/debby/common.nim#L4"
 class="link-seesrc" target="_blank">Source</a>
@@ -348,7 +333,7 @@ class="link-seesrc" target="_blank">Source</a>
 <dt><pre><a href="common.html#DbError"><span class="Identifier">DbError</span></a> <span class="Other">=</span> <span class="Keyword">object</span> <span class="Keyword">of</span> <span class="Identifier">IOError</span></pre></dt>
 <dd>
 
-
+Debby error.
 &nbsp;&nbsp;<a
 href="https://github.com/treeform/debby/tree/master/src/debby/common.nim#L5"
 class="link-seesrc" target="_blank">Source</a>
@@ -360,7 +345,7 @@ class="link-seesrc" target="_blank">Source</a>
 <dt><pre><a href="common.html#Row"><span class="Identifier">Row</span></a> <span class="Other">=</span> <span class="Identifier">seq</span><span class="Other">[</span><span class="Identifier">string</span><span class="Other">]</span></pre></dt>
 <dd>
 
-
+Debby Row type .. just a seq of strings.
 &nbsp;&nbsp;<a
 href="https://github.com/treeform/debby/tree/master/src/debby/common.nim#L6"
 class="link-seesrc" target="_blank">Source</a>
@@ -374,55 +359,20 @@ class="link-seesrc" target="_blank">Source</a>
 <h1><a class="toc-backref" href="#10">Consts</a></h1>
 <dl class="item">
 <div id="ReservedNames">
-<dt><pre><a href="common.html#ReservedNames"><span class="Identifier">ReservedNames</span></a> <span class="Other">=</span> <span class="Other">(</span><span class="Identifier">data</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">(</span><span class="DecNumber">2875918208</span><span class="Other">,</span> <span class="StringLit">&quot;outer&quot;</span><span class="Other">)</span><span class="Other">,</span> <span class="Other">(</span><span class="DecNumber">773313536</span><span class="Other">,</span> <span class="StringLit">&quot;between&quot;</span><span class="Other">)</span><span class="Other">,</span>
-                        <span class="Other">(</span><span class="DecNumber">1759958015</span><span class="Other">,</span> <span class="StringLit">&quot;double&quot;</span><span class="Other">)</span><span class="Other">,</span> <span class="Other">(</span><span class="DecNumber">0</span><span class="Other">,</span> <span class="StringLit">&quot;&quot;</span><span class="Other">)</span><span class="Other">,</span> <span class="Other">(</span><span class="DecNumber">0</span><span class="Other">,</span> <span class="StringLit">&quot;&quot;</span><span class="Other">)</span><span class="Other">,</span>
-                        <span class="Other">(</span><span class="DecNumber">552085893</span><span class="Other">,</span> <span class="StringLit">&quot;inner&quot;</span><span class="Other">)</span><span class="Other">,</span> <span class="Other">(</span><span class="DecNumber">324964102</span><span class="Other">,</span> <span class="StringLit">&quot;drop&quot;</span><span class="Other">)</span><span class="Other">,</span>
-                        <span class="Other">(</span><span class="DecNumber">3725263623</span><span class="Other">,</span> <span class="StringLit">&quot;asc&quot;</span><span class="Other">)</span><span class="Other">,</span> <span class="Other">(</span><span class="DecNumber">939215365</span><span class="Other">,</span> <span class="StringLit">&quot;end&quot;</span><span class="Other">)</span><span class="Other">,</span> <span class="Other">(</span><span class="DecNumber">0</span><span class="Other">,</span> <span class="StringLit">&quot;&quot;</span><span class="Other">)</span><span class="Other">,</span>
-                        <span class="Other">(</span><span class="DecNumber">0</span><span class="Other">,</span> <span class="StringLit">&quot;&quot;</span><span class="Other">)</span><span class="Other">,</span> <span class="Other">(</span><span class="DecNumber">192819851</span><span class="Other">,</span> <span class="StringLit">&quot;all&quot;</span><span class="Other">)</span><span class="Other">,</span> <span class="Other">(</span><span class="DecNumber">1463705611</span><span class="Other">,</span> <span class="StringLit">&quot;desc&quot;</span><span class="Other">)</span><span class="Other">,</span>
-                        <span class="Other">(</span><span class="DecNumber">3071630859</span><span class="Other">,</span> <span class="StringLit">&quot;char&quot;</span><span class="Other">)</span><span class="Other">,</span> <span class="Other">(</span><span class="DecNumber">2509520141</span><span class="Other">,</span> <span class="StringLit">&quot;user&quot;</span><span class="Other">)</span><span class="Other">,</span> <span class="Other">(</span><span class="DecNumber">0</span><span class="Other">,</span> <span class="StringLit">&quot;&quot;</span><span class="Other">)</span><span class="Other">,</span>
-                        <span class="Other">(</span><span class="DecNumber">0</span><span class="Other">,</span> <span class="StringLit">&quot;&quot;</span><span class="Other">)</span><span class="Other">,</span> <span class="Other">(</span><span class="DecNumber">131900689</span><span class="Other">,</span> <span class="StringLit">&quot;in&quot;</span><span class="Other">)</span><span class="Other">,</span> <span class="Other">(</span><span class="DecNumber">1727035794</span><span class="Other">,</span> <span class="StringLit">&quot;null&quot;</span><span class="Other">)</span><span class="Other">,</span>
-                        <span class="Other">(</span><span class="DecNumber">0</span><span class="Other">,</span> <span class="StringLit">&quot;&quot;</span><span class="Other">)</span><span class="Other">,</span> <span class="Other">(</span><span class="DecNumber">2755325844</span><span class="Other">,</span> <span class="StringLit">&quot;from&quot;</span><span class="Other">)</span><span class="Other">,</span> <span class="Other">(</span><span class="DecNumber">2768410132</span><span class="Other">,</span> <span class="StringLit">&quot;order&quot;</span><span class="Other">)</span><span class="Other">,</span>
-                        <span class="Other">(</span><span class="DecNumber">0</span><span class="Other">,</span> <span class="StringLit">&quot;&quot;</span><span class="Other">)</span><span class="Other">,</span> <span class="Other">(</span><span class="DecNumber">0</span><span class="Other">,</span> <span class="StringLit">&quot;&quot;</span><span class="Other">)</span><span class="Other">,</span> <span class="Other">(</span><span class="DecNumber">2840212248</span><span class="Other">,</span> <span class="StringLit">&quot;left&quot;</span><span class="Other">)</span><span class="Other">,</span>
-                        <span class="Other">(</span><span class="DecNumber">3292111128</span><span class="Other">,</span> <span class="StringLit">&quot;exists&quot;</span><span class="Other">)</span><span class="Other">,</span> <span class="Other">(</span><span class="DecNumber">638361624</span><span class="Other">,</span> <span class="StringLit">&quot;smallint&quot;</span><span class="Other">)</span><span class="Other">,</span>
-                        <span class="Other">(</span><span class="DecNumber">599296923</span><span class="Other">,</span> <span class="StringLit">&quot;union&quot;</span><span class="Other">)</span><span class="Other">,</span> <span class="Other">(</span><span class="DecNumber">753371676</span><span class="Other">,</span> <span class="StringLit">&quot;as&quot;</span><span class="Other">)</span><span class="Other">,</span>
-                        <span class="Other">(</span><span class="DecNumber">718402331</span><span class="Other">,</span> <span class="StringLit">&quot;date&quot;</span><span class="Other">)</span><span class="Other">,</span> <span class="Other">(</span><span class="DecNumber">0</span><span class="Other">,</span> <span class="StringLit">&quot;&quot;</span><span class="Other">)</span><span class="Other">,</span> <span class="Other">(</span><span class="DecNumber">1120495519</span><span class="Other">,</span> <span class="StringLit">&quot;default&quot;</span><span class="Other">)</span><span class="Other">,</span>
-                        <span class="Other">(</span><span class="DecNumber">1830646559</span><span class="Other">,</span> <span class="StringLit">&quot;check&quot;</span><span class="Other">)</span><span class="Other">,</span> <span class="Other">(</span><span class="DecNumber">0</span><span class="Other">,</span> <span class="StringLit">&quot;&quot;</span><span class="Other">)</span><span class="Other">,</span> <span class="Other">(</span><span class="DecNumber">520409122</span><span class="Other">,</span> <span class="StringLit">&quot;limit&quot;</span><span class="Other">)</span><span class="Other">,</span>
-                        <span class="Other">(</span><span class="DecNumber">1044851619</span><span class="Other">,</span> <span class="StringLit">&quot;unique&quot;</span><span class="Other">)</span><span class="Other">,</span> <span class="Other">(</span><span class="DecNumber">3324292644</span><span class="Other">,</span> <span class="StringLit">&quot;text&quot;</span><span class="Other">)</span><span class="Other">,</span> <span class="Other">(</span><span class="DecNumber">0</span><span class="Other">,</span> <span class="StringLit">&quot;&quot;</span><span class="Other">)</span><span class="Other">,</span>
-                        <span class="Other">(</span><span class="DecNumber">1021187622</span><span class="Other">,</span> <span class="StringLit">&quot;group&quot;</span><span class="Other">)</span><span class="Other">,</span> <span class="Other">(</span><span class="DecNumber">3766283814</span><span class="Other">,</span> <span class="StringLit">&quot;decimal&quot;</span><span class="Other">)</span><span class="Other">,</span>
-                        <span class="Other">(</span><span class="DecNumber">0</span><span class="Other">,</span> <span class="StringLit">&quot;&quot;</span><span class="Other">)</span><span class="Other">,</span> <span class="Other">(</span><span class="DecNumber">3928038441</span><span class="Other">,</span> <span class="StringLit">&quot;like&quot;</span><span class="Other">)</span><span class="Other">,</span> <span class="Other">(</span><span class="DecNumber">0</span><span class="Other">,</span> <span class="StringLit">&quot;&quot;</span><span class="Other">)</span><span class="Other">,</span>
-                        <span class="Other">(</span><span class="DecNumber">523529899</span><span class="Other">,</span> <span class="StringLit">&quot;by&quot;</span><span class="Other">)</span><span class="Other">,</span> <span class="Other">(</span><span class="DecNumber">0</span><span class="Other">,</span> <span class="StringLit">&quot;&quot;</span><span class="Other">)</span><span class="Other">,</span> <span class="Other">(</span><span class="DecNumber">2236453805</span><span class="Other">,</span> <span class="StringLit">&quot;time&quot;</span><span class="Other">)</span><span class="Other">,</span>
-                        <span class="Other">(</span><span class="DecNumber">1849135534</span><span class="Other">,</span> <span class="StringLit">&quot;boolean&quot;</span><span class="Other">)</span><span class="Other">,</span> <span class="Other">(</span><span class="DecNumber">0</span><span class="Other">,</span> <span class="StringLit">&quot;&quot;</span><span class="Other">)</span><span class="Other">,</span> <span class="Other">(</span><span class="DecNumber">0</span><span class="Other">,</span> <span class="StringLit">&quot;&quot;</span><span class="Other">)</span><span class="Other">,</span> <span class="Other">(</span><span class="DecNumber">0</span><span class="Other">,</span> <span class="StringLit">&quot;&quot;</span><span class="Other">)</span><span class="Other">,</span>
-                        <span class="Other">(</span><span class="DecNumber">0</span><span class="Other">,</span> <span class="StringLit">&quot;&quot;</span><span class="Other">)</span><span class="Other">,</span> <span class="Other">(</span><span class="DecNumber">0</span><span class="Other">,</span> <span class="StringLit">&quot;&quot;</span><span class="Other">)</span><span class="Other">,</span> <span class="Other">(</span><span class="DecNumber">0</span><span class="Other">,</span> <span class="StringLit">&quot;&quot;</span><span class="Other">)</span><span class="Other">,</span> <span class="Other">(</span><span class="DecNumber">0</span><span class="Other">,</span> <span class="StringLit">&quot;&quot;</span><span class="Other">)</span><span class="Other">,</span>
-                        <span class="Other">(</span><span class="DecNumber">1042626614</span><span class="Other">,</span> <span class="StringLit">&quot;select&quot;</span><span class="Other">)</span><span class="Other">,</span> <span class="Other">(</span><span class="DecNumber">3750662711</span><span class="Other">,</span> <span class="StringLit">&quot;update&quot;</span><span class="Other">)</span><span class="Other">,</span>
-                        <span class="Other">(</span><span class="DecNumber">0</span><span class="Other">,</span> <span class="StringLit">&quot;&quot;</span><span class="Other">)</span><span class="Other">,</span> <span class="Other">(</span><span class="DecNumber">0</span><span class="Other">,</span> <span class="StringLit">&quot;&quot;</span><span class="Other">)</span><span class="Other">,</span> <span class="Other">(</span><span class="DecNumber">0</span><span class="Other">,</span> <span class="StringLit">&quot;&quot;</span><span class="Other">)</span><span class="Other">,</span> <span class="Other">(</span><span class="DecNumber">0</span><span class="Other">,</span> <span class="StringLit">&quot;&quot;</span><span class="Other">)</span><span class="Other">,</span> <span class="Other">(</span><span class="DecNumber">0</span><span class="Other">,</span> <span class="StringLit">&quot;&quot;</span><span class="Other">)</span><span class="Other">,</span> <span class="Other">(</span><span class="DecNumber">0</span><span class="Other">,</span> <span class="StringLit">&quot;&quot;</span><span class="Other">)</span><span class="Other">,</span>
-                        <span class="Other">(</span><span class="DecNumber">3586802366</span><span class="Other">,</span> <span class="StringLit">&quot;real&quot;</span><span class="Other">)</span><span class="Other">,</span> <span class="Other">(</span><span class="DecNumber">572313023</span><span class="Other">,</span> <span class="StringLit">&quot;varchar&quot;</span><span class="Other">)</span><span class="Other">,</span>
-                        <span class="Other">(</span><span class="DecNumber">2074315840</span><span class="Other">,</span> <span class="StringLit">&quot;when&quot;</span><span class="Other">)</span><span class="Other">,</span> <span class="Other">(</span><span class="DecNumber">0</span><span class="Other">,</span> <span class="StringLit">&quot;&quot;</span><span class="Other">)</span><span class="Other">,</span> <span class="Other">(</span><span class="DecNumber">0</span><span class="Other">,</span> <span class="StringLit">&quot;&quot;</span><span class="Other">)</span><span class="Other">,</span> <span class="Other">(</span><span class="DecNumber">0</span><span class="Other">,</span> <span class="StringLit">&quot;&quot;</span><span class="Other">)</span><span class="Other">,</span>
-                        <span class="Other">(</span><span class="DecNumber">3801901636</span><span class="Other">,</span> <span class="StringLit">&quot;key&quot;</span><span class="Other">)</span><span class="Other">,</span> <span class="Other">(</span><span class="DecNumber">0</span><span class="Other">,</span> <span class="StringLit">&quot;&quot;</span><span class="Other">)</span><span class="Other">,</span> <span class="Other">(</span><span class="DecNumber">2166739910</span><span class="Other">,</span> <span class="StringLit">&quot;any&quot;</span><span class="Other">)</span><span class="Other">,</span>
-                        <span class="Other">(</span><span class="DecNumber">73733190</span><span class="Other">,</span> <span class="StringLit">&quot;timestamp&quot;</span><span class="Other">)</span><span class="Other">,</span> <span class="Other">(</span><span class="DecNumber">0</span><span class="Other">,</span> <span class="StringLit">&quot;&quot;</span><span class="Other">)</span><span class="Other">,</span> <span class="Other">(</span><span class="DecNumber">4112202185</span><span class="Other">,</span> <span class="StringLit">&quot;on&quot;</span><span class="Other">)</span><span class="Other">,</span>
-                        <span class="Other">(</span><span class="DecNumber">0</span><span class="Other">,</span> <span class="StringLit">&quot;&quot;</span><span class="Other">)</span><span class="Other">,</span> <span class="Other">(</span><span class="DecNumber">0</span><span class="Other">,</span> <span class="StringLit">&quot;&quot;</span><span class="Other">)</span><span class="Other">,</span> <span class="Other">(</span><span class="DecNumber">650894796</span><span class="Other">,</span> <span class="StringLit">&quot;some&quot;</span><span class="Other">)</span><span class="Other">,</span> <span class="Other">(</span><span class="DecNumber">0</span><span class="Other">,</span> <span class="StringLit">&quot;&quot;</span><span class="Other">)</span><span class="Other">,</span>
-                        <span class="Other">(</span><span class="DecNumber">580887246</span><span class="Other">,</span> <span class="StringLit">&quot;case&quot;</span><span class="Other">)</span><span class="Other">,</span> <span class="Other">(</span><span class="DecNumber">0</span><span class="Other">,</span> <span class="StringLit">&quot;&quot;</span><span class="Other">)</span><span class="Other">,</span> <span class="Other">(</span><span class="DecNumber">0</span><span class="Other">,</span> <span class="StringLit">&quot;&quot;</span><span class="Other">)</span><span class="Other">,</span>
-                        <span class="Other">(</span><span class="DecNumber">3367832401</span><span class="Other">,</span> <span class="StringLit">&quot;having&quot;</span><span class="Other">)</span><span class="Other">,</span> <span class="Other">(</span><span class="DecNumber">0</span><span class="Other">,</span> <span class="StringLit">&quot;&quot;</span><span class="Other">)</span><span class="Other">,</span> <span class="Other">(</span><span class="DecNumber">2779594451</span><span class="Other">,</span> <span class="StringLit">&quot;and&quot;</span><span class="Other">)</span><span class="Other">,</span>
-                        <span class="Other">(</span><span class="DecNumber">1673929811</span><span class="Other">,</span> <span class="StringLit">&quot;then&quot;</span><span class="Other">)</span><span class="Other">,</span> <span class="Other">(</span><span class="DecNumber">0</span><span class="Other">,</span> <span class="StringLit">&quot;&quot;</span><span class="Other">)</span><span class="Other">,</span> <span class="Other">(</span><span class="DecNumber">0</span><span class="Other">,</span> <span class="StringLit">&quot;&quot;</span><span class="Other">)</span><span class="Other">,</span> <span class="Other">(</span><span class="DecNumber">0</span><span class="Other">,</span> <span class="StringLit">&quot;&quot;</span><span class="Other">)</span><span class="Other">,</span>
-                        <span class="Other">(</span><span class="DecNumber">0</span><span class="Other">,</span> <span class="StringLit">&quot;&quot;</span><span class="Other">)</span><span class="Other">,</span> <span class="Other">(</span><span class="DecNumber">0</span><span class="Other">,</span> <span class="StringLit">&quot;&quot;</span><span class="Other">)</span><span class="Other">,</span> <span class="Other">(</span><span class="DecNumber">4018598106</span><span class="Other">,</span> <span class="StringLit">&quot;join&quot;</span><span class="Other">)</span><span class="Other">,</span>
-                        <span class="Other">(</span><span class="DecNumber">23337051</span><span class="Other">,</span> <span class="StringLit">&quot;bigint&quot;</span><span class="Other">)</span><span class="Other">,</span> <span class="Other">(</span><span class="DecNumber">0</span><span class="Other">,</span> <span class="StringLit">&quot;&quot;</span><span class="Other">)</span><span class="Other">,</span> <span class="Other">(</span><span class="DecNumber">0</span><span class="Other">,</span> <span class="StringLit">&quot;&quot;</span><span class="Other">)</span><span class="Other">,</span> <span class="Other">(</span><span class="DecNumber">0</span><span class="Other">,</span> <span class="StringLit">&quot;&quot;</span><span class="Other">)</span><span class="Other">,</span>
-                        <span class="Other">(</span><span class="DecNumber">803408863</span><span class="Other">,</span> <span class="StringLit">&quot;create&quot;</span><span class="Other">)</span><span class="Other">,</span> <span class="Other">(</span><span class="DecNumber">699539807</span><span class="Other">,</span> <span class="StringLit">&quot;column&quot;</span><span class="Other">)</span><span class="Other">,</span>
-                        <span class="Other">(</span><span class="DecNumber">212648289</span><span class="Other">,</span> <span class="StringLit">&quot;table&quot;</span><span class="Other">)</span><span class="Other">,</span> <span class="Other">(</span><span class="DecNumber">3464699359</span><span class="Other">,</span> <span class="StringLit">&quot;int&quot;</span><span class="Other">)</span><span class="Other">,</span> <span class="Other">(</span><span class="DecNumber">0</span><span class="Other">,</span> <span class="StringLit">&quot;&quot;</span><span class="Other">)</span><span class="Other">,</span>
-                        <span class="Other">(</span><span class="DecNumber">0</span><span class="Other">,</span> <span class="StringLit">&quot;&quot;</span><span class="Other">)</span><span class="Other">,</span> <span class="Other">(</span><span class="DecNumber">0</span><span class="Other">,</span> <span class="StringLit">&quot;&quot;</span><span class="Other">)</span><span class="Other">,</span> <span class="Other">(</span><span class="DecNumber">1909934694</span><span class="Other">,</span> <span class="StringLit">&quot;insert&quot;</span><span class="Other">)</span><span class="Other">,</span>
-                        <span class="Other">(</span><span class="DecNumber">2842715111</span><span class="Other">,</span> <span class="StringLit">&quot;offset&quot;</span><span class="Other">)</span><span class="Other">,</span> <span class="Other">(</span><span class="DecNumber">1590456296</span><span class="Other">,</span> <span class="StringLit">&quot;set&quot;</span><span class="Other">)</span><span class="Other">,</span>
-                        <span class="Other">(</span><span class="DecNumber">117848935</span><span class="Other">,</span> <span class="StringLit">&quot;or&quot;</span><span class="Other">)</span><span class="Other">,</span> <span class="Other">(</span><span class="DecNumber">1883059434</span><span class="Other">,</span> <span class="StringLit">&quot;where&quot;</span><span class="Other">)</span><span class="Other">,</span>
-                        <span class="Other">(</span><span class="DecNumber">2641553256</span><span class="Other">,</span> <span class="StringLit">&quot;with&quot;</span><span class="Other">)</span><span class="Other">,</span> <span class="Other">(</span><span class="DecNumber">653735532</span><span class="Other">,</span> <span class="StringLit">&quot;delete&quot;</span><span class="Other">)</span><span class="Other">,</span>
-                        <span class="Other">(</span><span class="DecNumber">236893549</span><span class="Other">,</span> <span class="StringLit">&quot;distinct&quot;</span><span class="Other">)</span><span class="Other">,</span> <span class="Other">(</span><span class="DecNumber">2021799277</span><span class="Other">,</span> <span class="StringLit">&quot;is&quot;</span><span class="Other">)</span><span class="Other">,</span>
-                        <span class="Other">(</span><span class="DecNumber">3641261934</span><span class="Other">,</span> <span class="StringLit">&quot;value&quot;</span><span class="Other">)</span><span class="Other">,</span> <span class="Other">(</span><span class="DecNumber">3940659824</span><span class="Other">,</span> <span class="StringLit">&quot;alter&quot;</span><span class="Other">)</span><span class="Other">,</span>
-                        <span class="Other">(</span><span class="DecNumber">125777136</span><span class="Other">,</span> <span class="StringLit">&quot;index&quot;</span><span class="Other">)</span><span class="Other">,</span> <span class="Other">(</span><span class="DecNumber">2835976434</span><span class="Other">,</span> <span class="StringLit">&quot;foreign&quot;</span><span class="Other">)</span><span class="Other">,</span>
-                        <span class="Other">(</span><span class="DecNumber">3589195505</span><span class="Other">,</span> <span class="StringLit">&quot;constraint&quot;</span><span class="Other">)</span><span class="Other">,</span> <span class="Other">(</span><span class="DecNumber">572399988</span><span class="Other">,</span> <span class="StringLit">&quot;not&quot;</span><span class="Other">)</span><span class="Other">,</span>
-                        <span class="Other">(</span><span class="DecNumber">1671401192</span><span class="Other">,</span> <span class="StringLit">&quot;references&quot;</span><span class="Other">)</span><span class="Other">,</span> <span class="Other">(</span><span class="DecNumber">3344485479</span><span class="Other">,</span> <span class="StringLit">&quot;integer&quot;</span><span class="Other">)</span><span class="Other">,</span>
-                        <span class="Other">(</span><span class="DecNumber">750636533</span><span class="Other">,</span> <span class="StringLit">&quot;numeric&quot;</span><span class="Other">)</span><span class="Other">,</span> <span class="Other">(</span><span class="DecNumber">2516295656</span><span class="Other">,</span> <span class="StringLit">&quot;float&quot;</span><span class="Other">)</span><span class="Other">,</span>
-                        <span class="Other">(</span><span class="DecNumber">4025523449</span><span class="Other">,</span> <span class="StringLit">&quot;else&quot;</span><span class="Other">)</span><span class="Other">,</span> <span class="Other">(</span><span class="DecNumber">580751866</span><span class="Other">,</span> <span class="StringLit">&quot;primary&quot;</span><span class="Other">)</span><span class="Other">,</span> <span class="Other">(</span><span class="DecNumber">0</span><span class="Other">,</span> <span class="StringLit">&quot;&quot;</span><span class="Other">)</span><span class="Other">,</span>
-                        <span class="Other">(</span><span class="DecNumber">0</span><span class="Other">,</span> <span class="StringLit">&quot;&quot;</span><span class="Other">)</span><span class="Other">,</span> <span class="Other">(</span><span class="DecNumber">0</span><span class="Other">,</span> <span class="StringLit">&quot;&quot;</span><span class="Other">)</span><span class="Other">,</span> <span class="Other">(</span><span class="DecNumber">0</span><span class="Other">,</span> <span class="StringLit">&quot;&quot;</span><span class="Other">)</span><span class="Other">,</span> <span class="Other">(</span><span class="DecNumber">1786548735</span><span class="Other">,</span> <span class="StringLit">&quot;right&quot;</span><span class="Other">)</span><span class="Other">]</span><span class="Other">,</span>
-                 <span class="Identifier">counter</span><span class="Other">:</span> <span class="DecNumber">74</span><span class="Other">)</span></pre></dt>
+<dt><pre><a href="common.html#ReservedNames"><span class="Identifier">ReservedNames</span></a> <span class="Other">=</span> <span class="Other">[</span><span class="StringLit">&quot;select&quot;</span><span class="Other">,</span> <span class="StringLit">&quot;insert&quot;</span><span class="Other">,</span> <span class="StringLit">&quot;update&quot;</span><span class="Other">,</span> <span class="StringLit">&quot;delete&quot;</span><span class="Other">,</span> <span class="StringLit">&quot;from&quot;</span><span class="Other">,</span> <span class="StringLit">&quot;where&quot;</span><span class="Other">,</span>
+                 <span class="StringLit">&quot;join&quot;</span><span class="Other">,</span> <span class="StringLit">&quot;inner&quot;</span><span class="Other">,</span> <span class="StringLit">&quot;outer&quot;</span><span class="Other">,</span> <span class="StringLit">&quot;left&quot;</span><span class="Other">,</span> <span class="StringLit">&quot;right&quot;</span><span class="Other">,</span> <span class="StringLit">&quot;on&quot;</span><span class="Other">,</span> <span class="StringLit">&quot;group&quot;</span><span class="Other">,</span> <span class="StringLit">&quot;by&quot;</span><span class="Other">,</span>
+                 <span class="StringLit">&quot;order&quot;</span><span class="Other">,</span> <span class="StringLit">&quot;having&quot;</span><span class="Other">,</span> <span class="StringLit">&quot;limit&quot;</span><span class="Other">,</span> <span class="StringLit">&quot;offset&quot;</span><span class="Other">,</span> <span class="StringLit">&quot;union&quot;</span><span class="Other">,</span> <span class="StringLit">&quot;create&quot;</span><span class="Other">,</span>
+                 <span class="StringLit">&quot;alter&quot;</span><span class="Other">,</span> <span class="StringLit">&quot;drop&quot;</span><span class="Other">,</span> <span class="StringLit">&quot;set&quot;</span><span class="Other">,</span> <span class="StringLit">&quot;null&quot;</span><span class="Other">,</span> <span class="StringLit">&quot;not&quot;</span><span class="Other">,</span> <span class="StringLit">&quot;distinct&quot;</span><span class="Other">,</span> <span class="StringLit">&quot;as&quot;</span><span class="Other">,</span> <span class="StringLit">&quot;is&quot;</span><span class="Other">,</span>
+                 <span class="StringLit">&quot;like&quot;</span><span class="Other">,</span> <span class="StringLit">&quot;and&quot;</span><span class="Other">,</span> <span class="StringLit">&quot;or&quot;</span><span class="Other">,</span> <span class="StringLit">&quot;in&quot;</span><span class="Other">,</span> <span class="StringLit">&quot;exists&quot;</span><span class="Other">,</span> <span class="StringLit">&quot;any&quot;</span><span class="Other">,</span> <span class="StringLit">&quot;all&quot;</span><span class="Other">,</span> <span class="StringLit">&quot;between&quot;</span><span class="Other">,</span>
+                 <span class="StringLit">&quot;asc&quot;</span><span class="Other">,</span> <span class="StringLit">&quot;desc&quot;</span><span class="Other">,</span> <span class="StringLit">&quot;case&quot;</span><span class="Other">,</span> <span class="StringLit">&quot;when&quot;</span><span class="Other">,</span> <span class="StringLit">&quot;then&quot;</span><span class="Other">,</span> <span class="StringLit">&quot;else&quot;</span><span class="Other">,</span> <span class="StringLit">&quot;end&quot;</span><span class="Other">,</span> <span class="StringLit">&quot;some&quot;</span><span class="Other">,</span>
+                 <span class="StringLit">&quot;with&quot;</span><span class="Other">,</span> <span class="StringLit">&quot;table&quot;</span><span class="Other">,</span> <span class="StringLit">&quot;column&quot;</span><span class="Other">,</span> <span class="StringLit">&quot;value&quot;</span><span class="Other">,</span> <span class="StringLit">&quot;index&quot;</span><span class="Other">,</span> <span class="StringLit">&quot;primary&quot;</span><span class="Other">,</span>
+                 <span class="StringLit">&quot;foreign&quot;</span><span class="Other">,</span> <span class="StringLit">&quot;key&quot;</span><span class="Other">,</span> <span class="StringLit">&quot;default&quot;</span><span class="Other">,</span> <span class="StringLit">&quot;check&quot;</span><span class="Other">,</span> <span class="StringLit">&quot;unique&quot;</span><span class="Other">,</span> <span class="StringLit">&quot;constraint&quot;</span><span class="Other">,</span>
+                 <span class="StringLit">&quot;references&quot;</span><span class="Other">,</span> <span class="StringLit">&quot;varchar&quot;</span><span class="Other">,</span> <span class="StringLit">&quot;char&quot;</span><span class="Other">,</span> <span class="StringLit">&quot;text&quot;</span><span class="Other">,</span> <span class="StringLit">&quot;integer&quot;</span><span class="Other">,</span> <span class="StringLit">&quot;int&quot;</span><span class="Other">,</span>
+                 <span class="StringLit">&quot;smallint&quot;</span><span class="Other">,</span> <span class="StringLit">&quot;bigint&quot;</span><span class="Other">,</span> <span class="StringLit">&quot;decimal&quot;</span><span class="Other">,</span> <span class="StringLit">&quot;numeric&quot;</span><span class="Other">,</span> <span class="StringLit">&quot;float&quot;</span><span class="Other">,</span> <span class="StringLit">&quot;double&quot;</span><span class="Other">,</span>
+                 <span class="StringLit">&quot;real&quot;</span><span class="Other">,</span> <span class="StringLit">&quot;boolean&quot;</span><span class="Other">,</span> <span class="StringLit">&quot;date&quot;</span><span class="Other">,</span> <span class="StringLit">&quot;time&quot;</span><span class="Other">,</span> <span class="StringLit">&quot;timestamp&quot;</span><span class="Other">,</span> <span class="StringLit">&quot;user&quot;</span><span class="Other">]</span></pre></dt>
 <dd>
 
-
+Do not use these strings in your tables or column names.
 &nbsp;&nbsp;<a
 href="https://github.com/treeform/debby/tree/master/src/debby/common.nim#L9"
 class="link-seesrc" target="_blank">Source</a>
@@ -435,15 +385,27 @@ class="link-seesrc" target="_blank">Source</a>
 <div class="section" id="12">
 <h1><a class="toc-backref" href="#12">Procs</a></h1>
 <dl class="item">
+<div id="createTable,Db,typedesc[T]">
+<dt><pre><span class="Keyword">proc</span> <a href="#createTable%2CDb%2Ctypedesc%5BT%5D"><span class="Identifier">createTable</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">:</span> <span class="Keyword">ref</span> <span class="Keyword">object</span><span class="Other">]</span><span class="Other">(</span><span class="Identifier">db</span><span class="Other">:</span> <a href="common.html#Db"><span class="Identifier">Db</span></a><span class="Other">;</span> <span class="Identifier">t</span><span class="Other">:</span> <span class="Identifier">typedesc</span><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">)</span></pre></dt>
+<dd>
+
+Creates a table, errors out if it already exists.
+&nbsp;&nbsp;<a
+href="https://github.com/treeform/debby/tree/master/src/debby/common.nim#L355"
+class="link-seesrc" target="_blank">Source</a>
+&nbsp;&nbsp;<a href="https://github.com/treeform/debby/edit/devel/src/debby/common.nim#L355" class="link-seesrc" target="_blank" >Edit</a>
+
+</dd>
+</div>
 <div id="dbError,string">
 <dt><pre><span class="Keyword">proc</span> <a href="#dbError%2Cstring"><span class="Identifier">dbError</span></a><span class="Other">(</span><span class="Identifier">msg</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">)</span> {.<span class="Identifier">noreturn</span><span class="Other">,</span> <span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">DbError</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
 <dd>
 
-
+Raises a DbError with just a message. Does not query the database for error.
 &nbsp;&nbsp;<a
-href="https://github.com/treeform/debby/tree/master/src/debby/common.nim#L34"
+href="https://github.com/treeform/debby/tree/master/src/debby/common.nim#L36"
 class="link-seesrc" target="_blank">Source</a>
-&nbsp;&nbsp;<a href="https://github.com/treeform/debby/edit/devel/src/debby/common.nim#L34" class="link-seesrc" target="_blank" >Edit</a>
+&nbsp;&nbsp;<a href="https://github.com/treeform/debby/edit/devel/src/debby/common.nim#L36" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 </div>
@@ -453,9 +415,33 @@ class="link-seesrc" target="_blank">Source</a>
 
 Deletes the row that corresponds to the object from the data base. Makes sure the obj.id is set.
 &nbsp;&nbsp;<a
-href="https://github.com/treeform/debby/tree/master/src/debby/common.nim#L154"
+href="https://github.com/treeform/debby/tree/master/src/debby/common.nim#L158"
 class="link-seesrc" target="_blank">Source</a>
-&nbsp;&nbsp;<a href="https://github.com/treeform/debby/edit/devel/src/debby/common.nim#L154" class="link-seesrc" target="_blank" >Edit</a>
+&nbsp;&nbsp;<a href="https://github.com/treeform/debby/edit/devel/src/debby/common.nim#L158" class="link-seesrc" target="_blank" >Edit</a>
+
+</dd>
+</div>
+<div id="dropTable,Db,typedesc[T]">
+<dt><pre><span class="Keyword">proc</span> <a href="#dropTable%2CDb%2Ctypedesc%5BT%5D"><span class="Identifier">dropTable</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">(</span><span class="Identifier">db</span><span class="Other">:</span> <a href="common.html#Db"><span class="Identifier">Db</span></a><span class="Other">;</span> <span class="Identifier">t</span><span class="Other">:</span> <span class="Identifier">typedesc</span><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">)</span></pre></dt>
+<dd>
+
+Removes tables, errors out if it does not exist.
+&nbsp;&nbsp;<a
+href="https://github.com/treeform/debby/tree/master/src/debby/common.nim#L347"
+class="link-seesrc" target="_blank">Source</a>
+&nbsp;&nbsp;<a href="https://github.com/treeform/debby/edit/devel/src/debby/common.nim#L347" class="link-seesrc" target="_blank" >Edit</a>
+
+</dd>
+</div>
+<div id="dropTableIfExists,Db,typedesc[T]">
+<dt><pre><span class="Keyword">proc</span> <a href="#dropTableIfExists%2CDb%2Ctypedesc%5BT%5D"><span class="Identifier">dropTableIfExists</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">(</span><span class="Identifier">db</span><span class="Other">:</span> <a href="common.html#Db"><span class="Identifier">Db</span></a><span class="Other">;</span> <span class="Identifier">t</span><span class="Other">:</span> <span class="Identifier">typedesc</span><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">)</span></pre></dt>
+<dd>
+
+Removes tables if it exists.
+&nbsp;&nbsp;<a
+href="https://github.com/treeform/debby/tree/master/src/debby/common.nim#L351"
+class="link-seesrc" target="_blank">Source</a>
+&nbsp;&nbsp;<a href="https://github.com/treeform/debby/edit/devel/src/debby/common.nim#L351" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 </div>
@@ -463,11 +449,11 @@ class="link-seesrc" target="_blank">Source</a>
 <dt><pre><span class="Keyword">proc</span> <a href="#filter%2CDb%2Ctypedesc%5BT%5D"><span class="Identifier">filter</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">(</span><span class="Identifier">db</span><span class="Other">:</span> <a href="common.html#Db"><span class="Identifier">Db</span></a><span class="Other">;</span> <span class="Identifier">t</span><span class="Other">:</span> <span class="Identifier">typedesc</span><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">seq</span><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span></pre></dt>
 <dd>
 
-
+Filter without a filter clause just returns everything.
 &nbsp;&nbsp;<a
-href="https://github.com/treeform/debby/tree/master/src/debby/common.nim#L317"
+href="https://github.com/treeform/debby/tree/master/src/debby/common.nim#L328"
 class="link-seesrc" target="_blank">Source</a>
-&nbsp;&nbsp;<a href="https://github.com/treeform/debby/edit/devel/src/debby/common.nim#L317" class="link-seesrc" target="_blank" >Edit</a>
+&nbsp;&nbsp;<a href="https://github.com/treeform/debby/edit/devel/src/debby/common.nim#L328" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 </div>
@@ -477,9 +463,21 @@ class="link-seesrc" target="_blank">Source</a>
 
 Gets the object by id.
 &nbsp;&nbsp;<a
-href="https://github.com/treeform/debby/tree/master/src/debby/common.nim#L127"
+href="https://github.com/treeform/debby/tree/master/src/debby/common.nim#L131"
 class="link-seesrc" target="_blank">Source</a>
-&nbsp;&nbsp;<a href="https://github.com/treeform/debby/edit/devel/src/debby/common.nim#L127" class="link-seesrc" target="_blank" >Edit</a>
+&nbsp;&nbsp;<a href="https://github.com/treeform/debby/edit/devel/src/debby/common.nim#L131" class="link-seesrc" target="_blank" >Edit</a>
+
+</dd>
+</div>
+<div id="hexNibble,char">
+<dt><pre><span class="Keyword">proc</span> <a href="#hexNibble%2Cchar"><span class="Identifier">hexNibble</span></a><span class="Other">(</span><span class="Identifier">ch</span><span class="Other">:</span> <span class="Identifier">char</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">int</span> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">DbError</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
+<dd>
+
+Encodes a hex char.
+&nbsp;&nbsp;<a
+href="https://github.com/treeform/debby/tree/master/src/debby/common.nim#L335"
+class="link-seesrc" target="_blank">Source</a>
+&nbsp;&nbsp;<a href="https://github.com/treeform/debby/edit/devel/src/debby/common.nim#L335" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 </div>
@@ -490,9 +488,9 @@ class="link-seesrc" target="_blank">Source</a>
 
 Used by innerFilter to make the db.select call.
 &nbsp;&nbsp;<a
-href="https://github.com/treeform/debby/tree/master/src/debby/common.nim#L278"
+href="https://github.com/treeform/debby/tree/master/src/debby/common.nim#L289"
 class="link-seesrc" target="_blank">Source</a>
-&nbsp;&nbsp;<a href="https://github.com/treeform/debby/edit/devel/src/debby/common.nim#L278" class="link-seesrc" target="_blank" >Edit</a>
+&nbsp;&nbsp;<a href="https://github.com/treeform/debby/edit/devel/src/debby/common.nim#L289" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 </div>
@@ -502,9 +500,9 @@ class="link-seesrc" target="_blank">Source</a>
 
 Inserts the object into the database.
 &nbsp;&nbsp;<a
-href="https://github.com/treeform/debby/tree/master/src/debby/common.nim#L159"
+href="https://github.com/treeform/debby/tree/master/src/debby/common.nim#L163"
 class="link-seesrc" target="_blank">Source</a>
-&nbsp;&nbsp;<a href="https://github.com/treeform/debby/edit/devel/src/debby/common.nim#L159" class="link-seesrc" target="_blank" >Edit</a>
+&nbsp;&nbsp;<a href="https://github.com/treeform/debby/edit/devel/src/debby/common.nim#L163" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 </div>
@@ -514,14 +512,38 @@ class="link-seesrc" target="_blank">Source</a>
 
 SQL dump into string.
 &nbsp;&nbsp;<a
+href="https://github.com/treeform/debby/tree/master/src/debby/common.nim#L77"
+class="link-seesrc" target="_blank">Source</a>
+&nbsp;&nbsp;<a href="https://github.com/treeform/debby/edit/devel/src/debby/common.nim#L77" class="link-seesrc" target="_blank" >Edit</a>
+
+</dd>
+</div>
+<div id="sqlDumpHook,T_3">
+<dt><pre><span class="Keyword">proc</span> <a href="#sqlDumpHook%2CT_3"><span class="Identifier">sqlDumpHook</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">:</span> <span class="Keyword">distinct</span><span class="Other">]</span><span class="Other">(</span><span class="Identifier">v</span><span class="Other">:</span> <span class="Identifier">T</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">string</span></pre></dt>
+<dd>
+
+SQL dump hook for strings.
+&nbsp;&nbsp;<a
 href="https://github.com/treeform/debby/tree/master/src/debby/common.nim#L73"
 class="link-seesrc" target="_blank">Source</a>
 &nbsp;&nbsp;<a href="https://github.com/treeform/debby/edit/devel/src/debby/common.nim#L73" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 </div>
-<div id="sqlDumpHook,T_3">
-<dt><pre><span class="Keyword">proc</span> <a href="#sqlDumpHook%2CT_3"><span class="Identifier">sqlDumpHook</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">:</span> <span class="Keyword">distinct</span><span class="Other">]</span><span class="Other">(</span><span class="Identifier">v</span><span class="Other">:</span> <span class="Identifier">T</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">string</span></pre></dt>
+<div id="sqlDumpHook,T">
+<dt><pre><span class="Keyword">proc</span> <a href="#sqlDumpHook%2CT"><span class="Identifier">sqlDumpHook</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">:</span> <span class="Identifier">SomeFloat</span> <span class="Operator">|</span> <span class="Identifier">SomeInteger</span><span class="Other">]</span><span class="Other">(</span><span class="Identifier">v</span><span class="Other">:</span> <span class="Identifier">T</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">string</span></pre></dt>
+<dd>
+
+SQL dump hook for numbers.
+&nbsp;&nbsp;<a
+href="https://github.com/treeform/debby/tree/master/src/debby/common.nim#L65"
+class="link-seesrc" target="_blank">Source</a>
+&nbsp;&nbsp;<a href="https://github.com/treeform/debby/edit/devel/src/debby/common.nim#L65" class="link-seesrc" target="_blank" >Edit</a>
+
+</dd>
+</div>
+<div id="sqlDumpHook,T_2">
+<dt><pre><span class="Keyword">proc</span> <a href="#sqlDumpHook%2CT_2"><span class="Identifier">sqlDumpHook</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">]</span><span class="Other">(</span><span class="Identifier">v</span><span class="Other">:</span> <span class="Identifier">T</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">string</span></pre></dt>
 <dd>
 
 SQL dump hook for strings.
@@ -532,32 +554,32 @@ class="link-seesrc" target="_blank">Source</a>
 
 </dd>
 </div>
-<div id="sqlDumpHook,T">
-<dt><pre><span class="Keyword">proc</span> <a href="#sqlDumpHook%2CT"><span class="Identifier">sqlDumpHook</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">:</span> <span class="Identifier">SomeFloat</span> <span class="Operator">|</span> <span class="Identifier">SomeInteger</span><span class="Other">]</span><span class="Other">(</span><span class="Identifier">v</span><span class="Other">:</span> <span class="Identifier">T</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">string</span></pre></dt>
-<dd>
-
-SQL dump hook for numbers.
-&nbsp;&nbsp;<a
-href="https://github.com/treeform/debby/tree/master/src/debby/common.nim#L61"
-class="link-seesrc" target="_blank">Source</a>
-&nbsp;&nbsp;<a href="https://github.com/treeform/debby/edit/devel/src/debby/common.nim#L61" class="link-seesrc" target="_blank" >Edit</a>
-
-</dd>
-</div>
-<div id="sqlDumpHook,T_2">
-<dt><pre><span class="Keyword">proc</span> <a href="#sqlDumpHook%2CT_2"><span class="Identifier">sqlDumpHook</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">]</span><span class="Other">(</span><span class="Identifier">v</span><span class="Other">:</span> <span class="Identifier">T</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">string</span></pre></dt>
-<dd>
-
-SQL dump hook for strings.
-&nbsp;&nbsp;<a
-href="https://github.com/treeform/debby/tree/master/src/debby/common.nim#L65"
-class="link-seesrc" target="_blank">Source</a>
-&nbsp;&nbsp;<a href="https://github.com/treeform/debby/edit/devel/src/debby/common.nim#L65" class="link-seesrc" target="_blank" >Edit</a>
-
-</dd>
-</div>
 <div id="sqlParse,string,T">
 <dt><pre><span class="Keyword">proc</span> <a href="#sqlParse%2Cstring%2CT"><span class="Identifier">sqlParse</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">(</span><span class="Identifier">data</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">;</span> <span class="Identifier">v</span><span class="Other">:</span> <span class="Keyword">var</span> <span class="Identifier">T</span><span class="Other">)</span></pre></dt>
+<dd>
+
+SQL parse distinct.
+&nbsp;&nbsp;<a
+href="https://github.com/treeform/debby/tree/master/src/debby/common.nim#L124"
+class="link-seesrc" target="_blank">Source</a>
+&nbsp;&nbsp;<a href="https://github.com/treeform/debby/edit/devel/src/debby/common.nim#L124" class="link-seesrc" target="_blank" >Edit</a>
+
+</dd>
+</div>
+<div id="sqlParseHook,string,T_5">
+<dt><pre><span class="Keyword">proc</span> <a href="#sqlParseHook%2Cstring%2CT_5"><span class="Identifier">sqlParseHook</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">:</span> <span class="Identifier">bool</span><span class="Other">]</span><span class="Other">(</span><span class="Identifier">data</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">;</span> <span class="Identifier">v</span><span class="Other">:</span> <span class="Keyword">var</span> <span class="Identifier">T</span><span class="Other">)</span></pre></dt>
+<dd>
+
+SQL parse hook to convert to bool.
+&nbsp;&nbsp;<a
+href="https://github.com/treeform/debby/tree/master/src/debby/common.nim#L109"
+class="link-seesrc" target="_blank">Source</a>
+&nbsp;&nbsp;<a href="https://github.com/treeform/debby/edit/devel/src/debby/common.nim#L109" class="link-seesrc" target="_blank" >Edit</a>
+
+</dd>
+</div>
+<div id="sqlParseHook,string,T_7">
+<dt><pre><span class="Keyword">proc</span> <a href="#sqlParseHook%2Cstring%2CT_7"><span class="Identifier">sqlParseHook</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">:</span> <span class="Keyword">distinct</span><span class="Other">]</span><span class="Other">(</span><span class="Identifier">data</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">;</span> <span class="Identifier">v</span><span class="Other">:</span> <span class="Keyword">var</span> <span class="Identifier">T</span><span class="Other">)</span></pre></dt>
 <dd>
 
 SQL parse distinct.
@@ -568,39 +590,15 @@ class="link-seesrc" target="_blank">Source</a>
 
 </dd>
 </div>
-<div id="sqlParseHook,string,T_5">
-<dt><pre><span class="Keyword">proc</span> <a href="#sqlParseHook%2Cstring%2CT_5"><span class="Identifier">sqlParseHook</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">:</span> <span class="Identifier">bool</span><span class="Other">]</span><span class="Other">(</span><span class="Identifier">data</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">;</span> <span class="Identifier">v</span><span class="Other">:</span> <span class="Keyword">var</span> <span class="Identifier">T</span><span class="Other">)</span></pre></dt>
-<dd>
-
-SQL parse hook to convert to bool.
-&nbsp;&nbsp;<a
-href="https://github.com/treeform/debby/tree/master/src/debby/common.nim#L105"
-class="link-seesrc" target="_blank">Source</a>
-&nbsp;&nbsp;<a href="https://github.com/treeform/debby/edit/devel/src/debby/common.nim#L105" class="link-seesrc" target="_blank" >Edit</a>
-
-</dd>
-</div>
-<div id="sqlParseHook,string,T_7">
-<dt><pre><span class="Keyword">proc</span> <a href="#sqlParseHook%2Cstring%2CT_7"><span class="Identifier">sqlParseHook</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">:</span> <span class="Keyword">distinct</span><span class="Other">]</span><span class="Other">(</span><span class="Identifier">data</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">;</span> <span class="Identifier">v</span><span class="Other">:</span> <span class="Keyword">var</span> <span class="Identifier">T</span><span class="Other">)</span></pre></dt>
-<dd>
-
-SQL parse distinct.
-&nbsp;&nbsp;<a
-href="https://github.com/treeform/debby/tree/master/src/debby/common.nim#L116"
-class="link-seesrc" target="_blank">Source</a>
-&nbsp;&nbsp;<a href="https://github.com/treeform/debby/edit/devel/src/debby/common.nim#L116" class="link-seesrc" target="_blank" >Edit</a>
-
-</dd>
-</div>
 <div id="sqlParseHook,string,T_6">
 <dt><pre><span class="Keyword">proc</span> <a href="#sqlParseHook%2Cstring%2CT_6"><span class="Identifier">sqlParseHook</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">:</span> <span class="Keyword">enum</span><span class="Other">]</span><span class="Other">(</span><span class="Identifier">data</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">;</span> <span class="Identifier">v</span><span class="Other">:</span> <span class="Keyword">var</span> <span class="Identifier">T</span><span class="Other">)</span></pre></dt>
 <dd>
 
 SQL parse hook to convert to any enum.
 &nbsp;&nbsp;<a
-href="https://github.com/treeform/debby/tree/master/src/debby/common.nim#L109"
+href="https://github.com/treeform/debby/tree/master/src/debby/common.nim#L113"
 class="link-seesrc" target="_blank">Source</a>
-&nbsp;&nbsp;<a href="https://github.com/treeform/debby/edit/devel/src/debby/common.nim#L109" class="link-seesrc" target="_blank" >Edit</a>
+&nbsp;&nbsp;<a href="https://github.com/treeform/debby/edit/devel/src/debby/common.nim#L113" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 </div>
@@ -610,9 +608,9 @@ class="link-seesrc" target="_blank">Source</a>
 
 SQL parse hook to convert to any float.
 &nbsp;&nbsp;<a
-href="https://github.com/treeform/debby/tree/master/src/debby/common.nim#L84"
+href="https://github.com/treeform/debby/tree/master/src/debby/common.nim#L88"
 class="link-seesrc" target="_blank">Source</a>
-&nbsp;&nbsp;<a href="https://github.com/treeform/debby/edit/devel/src/debby/common.nim#L84" class="link-seesrc" target="_blank" >Edit</a>
+&nbsp;&nbsp;<a href="https://github.com/treeform/debby/edit/devel/src/debby/common.nim#L88" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 </div>
@@ -622,9 +620,9 @@ class="link-seesrc" target="_blank">Source</a>
 
 SQL parse hook to convert to any integer.
 &nbsp;&nbsp;<a
-href="https://github.com/treeform/debby/tree/master/src/debby/common.nim#L98"
+href="https://github.com/treeform/debby/tree/master/src/debby/common.nim#L102"
 class="link-seesrc" target="_blank">Source</a>
-&nbsp;&nbsp;<a href="https://github.com/treeform/debby/edit/devel/src/debby/common.nim#L98" class="link-seesrc" target="_blank" >Edit</a>
+&nbsp;&nbsp;<a href="https://github.com/treeform/debby/edit/devel/src/debby/common.nim#L102" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 </div>
@@ -634,9 +632,9 @@ class="link-seesrc" target="_blank">Source</a>
 
 SQL parse hook to convert to any integer.
 &nbsp;&nbsp;<a
-href="https://github.com/treeform/debby/tree/master/src/debby/common.nim#L91"
+href="https://github.com/treeform/debby/tree/master/src/debby/common.nim#L95"
 class="link-seesrc" target="_blank">Source</a>
-&nbsp;&nbsp;<a href="https://github.com/treeform/debby/edit/devel/src/debby/common.nim#L91" class="link-seesrc" target="_blank" >Edit</a>
+&nbsp;&nbsp;<a href="https://github.com/treeform/debby/edit/devel/src/debby/common.nim#L95" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 </div>
@@ -646,9 +644,9 @@ class="link-seesrc" target="_blank">Source</a>
 
 SQL parse hook to convert to a string.
 &nbsp;&nbsp;<a
-href="https://github.com/treeform/debby/tree/master/src/debby/common.nim#L80"
+href="https://github.com/treeform/debby/tree/master/src/debby/common.nim#L84"
 class="link-seesrc" target="_blank">Source</a>
-&nbsp;&nbsp;<a href="https://github.com/treeform/debby/edit/devel/src/debby/common.nim#L80" class="link-seesrc" target="_blank" >Edit</a>
+&nbsp;&nbsp;<a href="https://github.com/treeform/debby/edit/devel/src/debby/common.nim#L84" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 </div>
@@ -658,9 +656,9 @@ class="link-seesrc" target="_blank">Source</a>
 
 Converts object type name to table name.
 &nbsp;&nbsp;<a
-href="https://github.com/treeform/debby/tree/master/src/debby/common.nim#L30"
+href="https://github.com/treeform/debby/tree/master/src/debby/common.nim#L32"
 class="link-seesrc" target="_blank">Source</a>
-&nbsp;&nbsp;<a href="https://github.com/treeform/debby/edit/devel/src/debby/common.nim#L30" class="link-seesrc" target="_blank" >Edit</a>
+&nbsp;&nbsp;<a href="https://github.com/treeform/debby/edit/devel/src/debby/common.nim#L32" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 </div>
@@ -670,9 +668,9 @@ class="link-seesrc" target="_blank">Source</a>
 
 
 &nbsp;&nbsp;<a
-href="https://github.com/treeform/debby/tree/master/src/debby/common.nim#L21"
+href="https://github.com/treeform/debby/tree/master/src/debby/common.nim#L23"
 class="link-seesrc" target="_blank">Source</a>
-&nbsp;&nbsp;<a href="https://github.com/treeform/debby/edit/devel/src/debby/common.nim#L21" class="link-seesrc" target="_blank" >Edit</a>
+&nbsp;&nbsp;<a href="https://github.com/treeform/debby/edit/devel/src/debby/common.nim#L23" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 </div>
@@ -682,9 +680,9 @@ class="link-seesrc" target="_blank">Source</a>
 
 Updates the row that corresponds to the object in the database. Makes sure the obj.id is set.
 &nbsp;&nbsp;<a
-href="https://github.com/treeform/debby/tree/master/src/debby/common.nim#L138"
+href="https://github.com/treeform/debby/tree/master/src/debby/common.nim#L142"
 class="link-seesrc" target="_blank">Source</a>
-&nbsp;&nbsp;<a href="https://github.com/treeform/debby/edit/devel/src/debby/common.nim#L138" class="link-seesrc" target="_blank" >Edit</a>
+&nbsp;&nbsp;<a href="https://github.com/treeform/debby/edit/devel/src/debby/common.nim#L142" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 </div>
@@ -694,9 +692,9 @@ class="link-seesrc" target="_blank">Source</a>
 
 
 &nbsp;&nbsp;<a
-href="https://github.com/treeform/debby/tree/master/src/debby/common.nim#L37"
+href="https://github.com/treeform/debby/tree/master/src/debby/common.nim#L41"
 class="link-seesrc" target="_blank">Source</a>
-&nbsp;&nbsp;<a href="https://github.com/treeform/debby/edit/devel/src/debby/common.nim#L37" class="link-seesrc" target="_blank" >Edit</a>
+&nbsp;&nbsp;<a href="https://github.com/treeform/debby/edit/devel/src/debby/common.nim#L41" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 </div>
@@ -712,9 +710,9 @@ class="link-seesrc" target="_blank">Source</a>
 
 Creates a table, errors out if it already exists.
 &nbsp;&nbsp;<a
-href="https://github.com/treeform/debby/tree/master/src/debby/common.nim#L210"
+href="https://github.com/treeform/debby/tree/master/src/debby/common.nim#L221"
 class="link-seesrc" target="_blank">Source</a>
-&nbsp;&nbsp;<a href="https://github.com/treeform/debby/edit/devel/src/debby/common.nim#L210" class="link-seesrc" target="_blank" >Edit</a>
+&nbsp;&nbsp;<a href="https://github.com/treeform/debby/edit/devel/src/debby/common.nim#L221" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 </div>
@@ -725,9 +723,9 @@ class="link-seesrc" target="_blank">Source</a>
 
 Creates a index if it does not already exists.
 &nbsp;&nbsp;<a
-href="https://github.com/treeform/debby/tree/master/src/debby/common.nim#L218"
+href="https://github.com/treeform/debby/tree/master/src/debby/common.nim#L229"
 class="link-seesrc" target="_blank">Source</a>
-&nbsp;&nbsp;<a href="https://github.com/treeform/debby/edit/devel/src/debby/common.nim#L218" class="link-seesrc" target="_blank" >Edit</a>
+&nbsp;&nbsp;<a href="https://github.com/treeform/debby/edit/devel/src/debby/common.nim#L229" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 </div>
@@ -735,11 +733,11 @@ class="link-seesrc" target="_blank">Source</a>
 <dt><pre><span class="Keyword">template</span> <a href="#delete.t%2CDb%2Cseq%5BT%5D"><span class="Identifier">delete</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">:</span> <span class="Keyword">ref</span> <span class="Keyword">object</span><span class="Other">]</span><span class="Other">(</span><span class="Identifier">db</span><span class="Other">:</span> <a href="common.html#Db"><span class="Identifier">Db</span></a><span class="Other">;</span> <span class="Identifier">objs</span><span class="Other">:</span> <span class="Identifier">seq</span><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">)</span></pre></dt>
 <dd>
 
-
+Deletes a seq of objects from the database.
 &nbsp;&nbsp;<a
-href="https://github.com/treeform/debby/tree/master/src/debby/common.nim#L192"
+href="https://github.com/treeform/debby/tree/master/src/debby/common.nim#L197"
 class="link-seesrc" target="_blank">Source</a>
-&nbsp;&nbsp;<a href="https://github.com/treeform/debby/edit/devel/src/debby/common.nim#L192" class="link-seesrc" target="_blank" >Edit</a>
+&nbsp;&nbsp;<a href="https://github.com/treeform/debby/edit/devel/src/debby/common.nim#L197" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 </div>
@@ -749,9 +747,9 @@ class="link-seesrc" target="_blank">Source</a>
 
 Filters type's table with a Nim like filter expression. db.filter(Auto, it.year &gt; 1990) db.filter(Auto, it.make == &quot;Ferrari&quot; or it.make == &quot;Lamborghini&quot;) db.filter(Auto, it.year &gt;= startYear and it.year &lt; endYear)
 &nbsp;&nbsp;<a
-href="https://github.com/treeform/debby/tree/master/src/debby/common.nim#L306"
+href="https://github.com/treeform/debby/tree/master/src/debby/common.nim#L317"
 class="link-seesrc" target="_blank">Source</a>
-&nbsp;&nbsp;<a href="https://github.com/treeform/debby/edit/devel/src/debby/common.nim#L306" class="link-seesrc" target="_blank" >Edit</a>
+&nbsp;&nbsp;<a href="https://github.com/treeform/debby/edit/devel/src/debby/common.nim#L317" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 </div>
@@ -759,11 +757,11 @@ class="link-seesrc" target="_blank">Source</a>
 <dt><pre><span class="Keyword">template</span> <a href="#insert.t%2CDb%2Cseq%5BT%5D"><span class="Identifier">insert</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">:</span> <span class="Keyword">ref</span> <span class="Keyword">object</span><span class="Other">]</span><span class="Other">(</span><span class="Identifier">db</span><span class="Other">:</span> <a href="common.html#Db"><span class="Identifier">Db</span></a><span class="Other">;</span> <span class="Identifier">objs</span><span class="Other">:</span> <span class="Identifier">seq</span><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">)</span></pre></dt>
 <dd>
 
-
+Inserts a seq of objects into the database.
 &nbsp;&nbsp;<a
-href="https://github.com/treeform/debby/tree/master/src/debby/common.nim#L188"
+href="https://github.com/treeform/debby/tree/master/src/debby/common.nim#L192"
 class="link-seesrc" target="_blank">Source</a>
-&nbsp;&nbsp;<a href="https://github.com/treeform/debby/edit/devel/src/debby/common.nim#L188" class="link-seesrc" target="_blank" >Edit</a>
+&nbsp;&nbsp;<a href="https://github.com/treeform/debby/edit/devel/src/debby/common.nim#L192" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 </div>
@@ -771,11 +769,11 @@ class="link-seesrc" target="_blank">Source</a>
 <dt><pre><span class="Keyword">template</span> <a href="#update.t%2CDb%2Cseq%5BT%5D"><span class="Identifier">update</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">:</span> <span class="Keyword">ref</span> <span class="Keyword">object</span><span class="Other">]</span><span class="Other">(</span><span class="Identifier">db</span><span class="Other">:</span> <a href="common.html#Db"><span class="Identifier">Db</span></a><span class="Other">;</span> <span class="Identifier">objs</span><span class="Other">:</span> <span class="Identifier">seq</span><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">)</span></pre></dt>
 <dd>
 
-
+Updates a seq of objects into the database.
 &nbsp;&nbsp;<a
-href="https://github.com/treeform/debby/tree/master/src/debby/common.nim#L196"
+href="https://github.com/treeform/debby/tree/master/src/debby/common.nim#L202"
 class="link-seesrc" target="_blank">Source</a>
-&nbsp;&nbsp;<a href="https://github.com/treeform/debby/edit/devel/src/debby/common.nim#L196" class="link-seesrc" target="_blank" >Edit</a>
+&nbsp;&nbsp;<a href="https://github.com/treeform/debby/edit/devel/src/debby/common.nim#L202" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 </div>
@@ -783,11 +781,11 @@ class="link-seesrc" target="_blank">Source</a>
 <dt><pre><span class="Keyword">template</span> <a href="#upsert.t%2CDb%2CT"><span class="Identifier">upsert</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">:</span> <span class="Keyword">ref</span> <span class="Keyword">object</span><span class="Other">]</span><span class="Other">(</span><span class="Identifier">db</span><span class="Other">:</span> <a href="common.html#Db"><span class="Identifier">Db</span></a><span class="Other">;</span> <span class="Identifier">obj</span><span class="Other">:</span> <span class="Identifier">T</span><span class="Other">)</span></pre></dt>
 <dd>
 
-
+Either updates or inserts a ref object into the database. Will read the inserted id back.
 &nbsp;&nbsp;<a
-href="https://github.com/treeform/debby/tree/master/src/debby/common.nim#L200"
+href="https://github.com/treeform/debby/tree/master/src/debby/common.nim#L207"
 class="link-seesrc" target="_blank">Source</a>
-&nbsp;&nbsp;<a href="https://github.com/treeform/debby/edit/devel/src/debby/common.nim#L200" class="link-seesrc" target="_blank" >Edit</a>
+&nbsp;&nbsp;<a href="https://github.com/treeform/debby/edit/devel/src/debby/common.nim#L207" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 </div>
@@ -795,11 +793,11 @@ class="link-seesrc" target="_blank">Source</a>
 <dt><pre><span class="Keyword">template</span> <a href="#upsert.t%2CDb%2Cseq%5BT%5D"><span class="Identifier">upsert</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">:</span> <span class="Keyword">ref</span> <span class="Keyword">object</span><span class="Other">]</span><span class="Other">(</span><span class="Identifier">db</span><span class="Other">:</span> <a href="common.html#Db"><span class="Identifier">Db</span></a><span class="Other">;</span> <span class="Identifier">objs</span><span class="Other">:</span> <span class="Identifier">seq</span><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">)</span></pre></dt>
 <dd>
 
-
+Either updates or inserts a seq of object into the database. Will read the inserted id back for each object.
 &nbsp;&nbsp;<a
-href="https://github.com/treeform/debby/tree/master/src/debby/common.nim#L206"
+href="https://github.com/treeform/debby/tree/master/src/debby/common.nim#L215"
 class="link-seesrc" target="_blank">Source</a>
-&nbsp;&nbsp;<a href="https://github.com/treeform/debby/edit/devel/src/debby/common.nim#L206" class="link-seesrc" target="_blank" >Edit</a>
+&nbsp;&nbsp;<a href="https://github.com/treeform/debby/edit/devel/src/debby/common.nim#L215" class="link-seesrc" target="_blank" >Edit</a>
 
 </dd>
 </div>
@@ -813,7 +811,7 @@ class="link-seesrc" target="_blank">Source</a>
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2023-07-22 14:24:09 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2023-07-22 14:59:14 UTC</small>
       </div>
     </div>
   </div>

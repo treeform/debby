@@ -70,18 +70,82 @@ window.addEventListener('DOMContentLoaded', main);
 <div class="document" id="documentId">
   <div class="container">
     <h1 class="title">Index</h1>
-    Modules: <a href="debby/common.html">debby/common</a>, <a href="debby/sqlite.html">debby/sqlite</a>.<br/><p /><h2>API symbols</h2>
+    Modules: <a href="debby/common.html">debby/common</a>, <a href="debby/mysql.html">debby/mysql</a>, <a href="debby/postgres.html">debby/postgres</a>, <a href="debby/sqlite.html">debby/sqlite</a>.<br/><p /><h2>API symbols</h2>
 <dl><dt><a name="Bytes" href="#Bytes"><span>Bytes:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
           data-doc-search-tag="common: Bytes" href="debby/common.html#Bytes">common: Bytes</a></li>
           </ul></dd>
 <dt><a name="checkTable" href="#checkTable"><span>checkTable:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
+          data-doc-search-tag="mysql: checkTable[T: ref object](db: Db; t: typedesc[T])" href="debby/mysql.html#checkTable%2CDb%2Ctypedesc%5BT%5D">mysql: checkTable[T: ref object](db: Db; t: typedesc[T])</a></li>
+          <li><a class="reference external"
+          data-doc-search-tag="postgres: checkTable[T: ref object](db: Db; t: typedesc[T])" href="debby/postgres.html#checkTable%2CDb%2Ctypedesc%5BT%5D">postgres: checkTable[T: ref object](db: Db; t: typedesc[T])</a></li>
+          <li><a class="reference external"
           data-doc-search-tag="sqlite: checkTable[T: ref object](db: Db; t: typedesc[T])" href="debby/sqlite.html#checkTable%2CDb%2Ctypedesc%5BT%5D">sqlite: checkTable[T: ref object](db: Db; t: typedesc[T])</a></li>
           </ul></dd>
 <dt><a name="close" href="#close"><span>close:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
+          data-doc-search-tag="mysql: close(db: Db)" href="debby/mysql.html#close%2CDb">mysql: close(db: Db)</a></li>
+          <li><a class="reference external"
+          data-doc-search-tag="postgres: close(db: Db)" href="debby/postgres.html#close%2CDb">postgres: close(db: Db)</a></li>
+          <li><a class="reference external"
           data-doc-search-tag="sqlite: close(db: Db)" href="debby/sqlite.html#close%2CDb">sqlite: close(db: Db)</a></li>
+          </ul></dd>
+<dt><a name="CONNECTION_AUTH_OK" href="#CONNECTION_AUTH_OK"><span>CONNECTION_AUTH_OK:</span></a></dt><dd><ul class="simple">
+<li><a class="reference external"
+          data-doc-search-tag="ConnStatusType.CONNECTION_AUTH_OK" href="debby/postgres.html#CONNECTION_AUTH_OK">ConnStatusType.CONNECTION_AUTH_OK</a></li>
+          </ul></dd>
+<dt><a name="CONNECTION_AWAITING_RESPONSE" href="#CONNECTION_AWAITING_RESPONSE"><span>CONNECTION_AWAITING_RESPONSE:</span></a></dt><dd><ul class="simple">
+<li><a class="reference external"
+          data-doc-search-tag="ConnStatusType.CONNECTION_AWAITING_RESPONSE" href="debby/postgres.html#CONNECTION_AWAITING_RESPONSE">ConnStatusType.CONNECTION_AWAITING_RESPONSE</a></li>
+          </ul></dd>
+<dt><a name="CONNECTION_BAD" href="#CONNECTION_BAD"><span>CONNECTION_BAD:</span></a></dt><dd><ul class="simple">
+<li><a class="reference external"
+          data-doc-search-tag="ConnStatusType.CONNECTION_BAD" href="debby/postgres.html#CONNECTION_BAD">ConnStatusType.CONNECTION_BAD</a></li>
+          </ul></dd>
+<dt><a name="CONNECTION_CHECK_TARGET" href="#CONNECTION_CHECK_TARGET"><span>CONNECTION_CHECK_TARGET:</span></a></dt><dd><ul class="simple">
+<li><a class="reference external"
+          data-doc-search-tag="ConnStatusType.CONNECTION_CHECK_TARGET" href="debby/postgres.html#CONNECTION_CHECK_TARGET">ConnStatusType.CONNECTION_CHECK_TARGET</a></li>
+          </ul></dd>
+<dt><a name="CONNECTION_CHECK_WRITABLE" href="#CONNECTION_CHECK_WRITABLE"><span>CONNECTION_CHECK_WRITABLE:</span></a></dt><dd><ul class="simple">
+<li><a class="reference external"
+          data-doc-search-tag="ConnStatusType.CONNECTION_CHECK_WRITABLE" href="debby/postgres.html#CONNECTION_CHECK_WRITABLE">ConnStatusType.CONNECTION_CHECK_WRITABLE</a></li>
+          </ul></dd>
+<dt><a name="CONNECTION_CONSUME" href="#CONNECTION_CONSUME"><span>CONNECTION_CONSUME:</span></a></dt><dd><ul class="simple">
+<li><a class="reference external"
+          data-doc-search-tag="ConnStatusType.CONNECTION_CONSUME" href="debby/postgres.html#CONNECTION_CONSUME">ConnStatusType.CONNECTION_CONSUME</a></li>
+          </ul></dd>
+<dt><a name="CONNECTION_GSS_STARTUP" href="#CONNECTION_GSS_STARTUP"><span>CONNECTION_GSS_STARTUP:</span></a></dt><dd><ul class="simple">
+<li><a class="reference external"
+          data-doc-search-tag="ConnStatusType.CONNECTION_GSS_STARTUP" href="debby/postgres.html#CONNECTION_GSS_STARTUP">ConnStatusType.CONNECTION_GSS_STARTUP</a></li>
+          </ul></dd>
+<dt><a name="CONNECTION_MADE" href="#CONNECTION_MADE"><span>CONNECTION_MADE:</span></a></dt><dd><ul class="simple">
+<li><a class="reference external"
+          data-doc-search-tag="ConnStatusType.CONNECTION_MADE" href="debby/postgres.html#CONNECTION_MADE">ConnStatusType.CONNECTION_MADE</a></li>
+          </ul></dd>
+<dt><a name="CONNECTION_NEEDED" href="#CONNECTION_NEEDED"><span>CONNECTION_NEEDED:</span></a></dt><dd><ul class="simple">
+<li><a class="reference external"
+          data-doc-search-tag="ConnStatusType.CONNECTION_NEEDED" href="debby/postgres.html#CONNECTION_NEEDED">ConnStatusType.CONNECTION_NEEDED</a></li>
+          </ul></dd>
+<dt><a name="CONNECTION_OK" href="#CONNECTION_OK"><span>CONNECTION_OK:</span></a></dt><dd><ul class="simple">
+<li><a class="reference external"
+          data-doc-search-tag="ConnStatusType.CONNECTION_OK" href="debby/postgres.html#CONNECTION_OK">ConnStatusType.CONNECTION_OK</a></li>
+          </ul></dd>
+<dt><a name="CONNECTION_SETENV" href="#CONNECTION_SETENV"><span>CONNECTION_SETENV:</span></a></dt><dd><ul class="simple">
+<li><a class="reference external"
+          data-doc-search-tag="ConnStatusType.CONNECTION_SETENV" href="debby/postgres.html#CONNECTION_SETENV">ConnStatusType.CONNECTION_SETENV</a></li>
+          </ul></dd>
+<dt><a name="CONNECTION_SSL_STARTUP" href="#CONNECTION_SSL_STARTUP"><span>CONNECTION_SSL_STARTUP:</span></a></dt><dd><ul class="simple">
+<li><a class="reference external"
+          data-doc-search-tag="ConnStatusType.CONNECTION_SSL_STARTUP" href="debby/postgres.html#CONNECTION_SSL_STARTUP">ConnStatusType.CONNECTION_SSL_STARTUP</a></li>
+          </ul></dd>
+<dt><a name="CONNECTION_STARTED" href="#CONNECTION_STARTED"><span>CONNECTION_STARTED:</span></a></dt><dd><ul class="simple">
+<li><a class="reference external"
+          data-doc-search-tag="ConnStatusType.CONNECTION_STARTED" href="debby/postgres.html#CONNECTION_STARTED">ConnStatusType.CONNECTION_STARTED</a></li>
+          </ul></dd>
+<dt><a name="ConnStatusType" href="#ConnStatusType"><span>ConnStatusType:</span></a></dt><dd><ul class="simple">
+<li><a class="reference external"
+          data-doc-search-tag="postgres: ConnStatusType" href="debby/postgres.html#ConnStatusType">postgres: ConnStatusType</a></li>
           </ul></dd>
 <dt><a name="createIndex" href="#createIndex"><span>createIndex:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
@@ -95,16 +159,28 @@ window.addEventListener('DOMContentLoaded', main);
           </ul></dd>
 <dt><a name="createIndexStatement" href="#createIndexStatement"><span>createIndexStatement:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
+          data-doc-search-tag="mysql: createIndexStatement[T: ref object](db: Db; t: typedesc[T]; ifNotExists: bool;
+                                    params: varargs[string]): string" href="debby/mysql.html#createIndexStatement%2CDb%2Ctypedesc%5BT%5D%2Cbool%2Cvarargs%5Bstring%5D">mysql: createIndexStatement[T: ref object](db: Db; t: typedesc[T]; ifNotExists: bool;
+                                    params: varargs[string]): string</a></li>
+          <li><a class="reference external"
+          data-doc-search-tag="postgres: createIndexStatement[T: ref object](db: Db; t: typedesc[T]; ifNotExists: bool;
+                                    params: varargs[string]): string" href="debby/postgres.html#createIndexStatement%2CDb%2Ctypedesc%5BT%5D%2Cbool%2Cvarargs%5Bstring%5D">postgres: createIndexStatement[T: ref object](db: Db; t: typedesc[T]; ifNotExists: bool;
+                                    params: varargs[string]): string</a></li>
+          <li><a class="reference external"
           data-doc-search-tag="sqlite: createIndexStatement[T: ref object](db: Db; t: typedesc[T]; ifNotExists: bool;
                                     params: varargs[string]): string" href="debby/sqlite.html#createIndexStatement%2CDb%2Ctypedesc%5BT%5D%2Cbool%2Cvarargs%5Bstring%5D">sqlite: createIndexStatement[T: ref object](db: Db; t: typedesc[T]; ifNotExists: bool;
                                     params: varargs[string]): string</a></li>
           </ul></dd>
 <dt><a name="createTable" href="#createTable"><span>createTable:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
-          data-doc-search-tag="sqlite: createTable[T: ref object](db: Db; t: typedesc[T])" href="debby/sqlite.html#createTable%2CDb%2Ctypedesc%5BT%5D">sqlite: createTable[T: ref object](db: Db; t: typedesc[T])</a></li>
+          data-doc-search-tag="common: createTable[T: ref object](db: Db; t: typedesc[T])" href="debby/common.html#createTable%2CDb%2Ctypedesc%5BT%5D">common: createTable[T: ref object](db: Db; t: typedesc[T])</a></li>
           </ul></dd>
 <dt><a name="createTableStatement" href="#createTableStatement"><span>createTableStatement:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
+          data-doc-search-tag="mysql: createTableStatement[T: ref object](db: Db; t: typedesc[T]): string" href="debby/mysql.html#createTableStatement%2CDb%2Ctypedesc%5BT%5D">mysql: createTableStatement[T: ref object](db: Db; t: typedesc[T]): string</a></li>
+          <li><a class="reference external"
+          data-doc-search-tag="postgres: createTableStatement[T: ref object](db: Db; t: typedesc[T]): string" href="debby/postgres.html#createTableStatement%2CDb%2Ctypedesc%5BT%5D">postgres: createTableStatement[T: ref object](db: Db; t: typedesc[T]): string</a></li>
+          <li><a class="reference external"
           data-doc-search-tag="sqlite: createTableStatement[T: ref object](db: Db; t: typedesc[T]): string" href="debby/sqlite.html#createTableStatement%2CDb%2Ctypedesc%5BT%5D">sqlite: createTableStatement[T: ref object](db: Db; t: typedesc[T]): string</a></li>
           </ul></dd>
 <dt><a name="Db" href="#Db"><span>Db:</span></a></dt><dd><ul class="simple">
@@ -119,6 +195,10 @@ window.addEventListener('DOMContentLoaded', main);
 <li><a class="reference external"
           data-doc-search-tag="common: dbError(msg: string)" href="debby/common.html#dbError%2Cstring">common: dbError(msg: string)</a></li>
           <li><a class="reference external"
+          data-doc-search-tag="mysql: dbError(db: Db)" href="debby/mysql.html#dbError%2CDb">mysql: dbError(db: Db)</a></li>
+          <li><a class="reference external"
+          data-doc-search-tag="postgres: dbError(db: Db)" href="debby/postgres.html#dbError%2CDb">postgres: dbError(db: Db)</a></li>
+          <li><a class="reference external"
           data-doc-search-tag="sqlite: dbError(db: Db)" href="debby/sqlite.html#dbError%2CDb">sqlite: dbError(db: Db)</a></li>
           </ul></dd>
 <dt><a name="delete" href="#delete"><span>delete:</span></a></dt><dd><ul class="simple">
@@ -129,11 +209,19 @@ window.addEventListener('DOMContentLoaded', main);
           </ul></dd>
 <dt><a name="dropTable" href="#dropTable"><span>dropTable:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
-          data-doc-search-tag="sqlite: dropTable[T](db: Db; t: typedesc[T])" href="debby/sqlite.html#dropTable%2CDb%2Ctypedesc%5BT%5D">sqlite: dropTable[T](db: Db; t: typedesc[T])</a></li>
+          data-doc-search-tag="common: dropTable[T](db: Db; t: typedesc[T])" href="debby/common.html#dropTable%2CDb%2Ctypedesc%5BT%5D">common: dropTable[T](db: Db; t: typedesc[T])</a></li>
           </ul></dd>
 <dt><a name="dropTableIfExists" href="#dropTableIfExists"><span>dropTableIfExists:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
-          data-doc-search-tag="sqlite: dropTableIfExists[T](db: Db; t: typedesc[T])" href="debby/sqlite.html#dropTableIfExists%2CDb%2Ctypedesc%5BT%5D">sqlite: dropTableIfExists[T](db: Db; t: typedesc[T])</a></li>
+          data-doc-search-tag="common: dropTableIfExists[T](db: Db; t: typedesc[T])" href="debby/common.html#dropTableIfExists%2CDb%2Ctypedesc%5BT%5D">common: dropTableIfExists[T](db: Db; t: typedesc[T])</a></li>
+          </ul></dd>
+<dt><a name="ExecStatusType" href="#ExecStatusType"><span>ExecStatusType:</span></a></dt><dd><ul class="simple">
+<li><a class="reference external"
+          data-doc-search-tag="postgres: ExecStatusType" href="debby/postgres.html#ExecStatusType">postgres: ExecStatusType</a></li>
+          </ul></dd>
+<dt><a name="FIELD" href="#FIELD"><span>FIELD:</span></a></dt><dd><ul class="simple">
+<li><a class="reference external"
+          data-doc-search-tag="mysql: FIELD" href="debby/mysql.html#FIELD">mysql: FIELD</a></li>
           </ul></dd>
 <dt><a name="filter" href="#filter"><span>filter:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
@@ -145,6 +233,10 @@ window.addEventListener('DOMContentLoaded', main);
 <li><a class="reference external"
           data-doc-search-tag="common: get[T, V](db: Db; t: typedesc[T]; id: V): T" href="debby/common.html#get%2CDb%2Ctypedesc%5BT%5D%2CV">common: get[T, V](db: Db; t: typedesc[T]; id: V): T</a></li>
           </ul></dd>
+<dt><a name="hexNibble" href="#hexNibble"><span>hexNibble:</span></a></dt><dd><ul class="simple">
+<li><a class="reference external"
+          data-doc-search-tag="common: hexNibble(ch: char): int" href="debby/common.html#hexNibble%2Cchar">common: hexNibble(ch: char): int</a></li>
+          </ul></dd>
 <dt><a name="innerSelect" href="#innerSelect"><span>innerSelect:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
           data-doc-search-tag="common: innerSelect[T: ref object](db: Db; it: T; where: string;
@@ -155,18 +247,194 @@ window.addEventListener('DOMContentLoaded', main);
 <li><a class="reference external"
           data-doc-search-tag="common: insert[T: ref object](db: Db; objs: seq[T])" href="debby/common.html#insert.t%2CDb%2Cseq%5BT%5D">common: insert[T: ref object](db: Db; objs: seq[T])</a></li>
           <li><a class="reference external"
+          data-doc-search-tag="mysql: insert[T: ref object](db: Db; obj: T)" href="debby/mysql.html#insert%2CDb%2CT">mysql: insert[T: ref object](db: Db; obj: T)</a></li>
+          <li><a class="reference external"
+          data-doc-search-tag="postgres: insert[T: ref object](db: Db; obj: T)" href="debby/postgres.html#insert%2CDb%2CT">postgres: insert[T: ref object](db: Db; obj: T)</a></li>
+          <li><a class="reference external"
           data-doc-search-tag="sqlite: insert[T: ref object](db: Db; obj: T)" href="debby/sqlite.html#insert%2CDb%2CT">sqlite: insert[T: ref object](db: Db; obj: T)</a></li>
           </ul></dd>
 <dt><a name="insertInner" href="#insertInner"><span>insertInner:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
           data-doc-search-tag="common: insertInner[T: ref object](db: Db; obj: T; extra = &quot;&quot;): seq[Row]" href="debby/common.html#insertInner%2CDb%2CT%2Cstring">common: insertInner[T: ref object](db: Db; obj: T; extra = &quot;&quot;): seq[Row]</a></li>
           </ul></dd>
+<dt><a name="mysql_close" href="#mysql_close"><span>mysql_close:</span></a></dt><dd><ul class="simple">
+<li><a class="reference external"
+          data-doc-search-tag="mysql: mysql_close(sock: Db)" href="debby/mysql.html#mysql_close%2CDb">mysql: mysql_close(sock: Db)</a></li>
+          </ul></dd>
+<dt><a name="mysql_error" href="#mysql_error"><span>mysql_error:</span></a></dt><dd><ul class="simple">
+<li><a class="reference external"
+          data-doc-search-tag="mysql: mysql_error(MySQL: Db): cstring" href="debby/mysql.html#mysql_error%2CDb">mysql: mysql_error(MySQL: Db): cstring</a></li>
+          </ul></dd>
+<dt><a name="mysql_fetch_field_direct" href="#mysql_fetch_field_direct"><span>mysql_fetch_field_direct:</span></a></dt><dd><ul class="simple">
+<li><a class="reference external"
+          data-doc-search-tag="mysql: mysql_fetch_field_direct(res: PRES; fieldnr: cuint): PFIELD" href="debby/mysql.html#mysql_fetch_field_direct%2CPRES%2Ccuint">mysql: mysql_fetch_field_direct(res: PRES; fieldnr: cuint): PFIELD</a></li>
+          </ul></dd>
+<dt><a name="mysql_fetch_row" href="#mysql_fetch_row"><span>mysql_fetch_row:</span></a></dt><dd><ul class="simple">
+<li><a class="reference external"
+          data-doc-search-tag="mysql: mysql_fetch_row(result: PRES): cstringArray" href="debby/mysql.html#mysql_fetch_row%2CPRES">mysql: mysql_fetch_row(result: PRES): cstringArray</a></li>
+          </ul></dd>
+<dt><a name="mysql_free_result" href="#mysql_free_result"><span>mysql_free_result:</span></a></dt><dd><ul class="simple">
+<li><a class="reference external"
+          data-doc-search-tag="mysql: mysql_free_result(result: PRES)" href="debby/mysql.html#mysql_free_result%2CPRES">mysql: mysql_free_result(result: PRES)</a></li>
+          </ul></dd>
+<dt><a name="mysql_init" href="#mysql_init"><span>mysql_init:</span></a></dt><dd><ul class="simple">
+<li><a class="reference external"
+          data-doc-search-tag="mysql: mysql_init(MySQL: Db): Db" href="debby/mysql.html#mysql_init%2CDb">mysql: mysql_init(MySQL: Db): Db</a></li>
+          </ul></dd>
+<dt><a name="mysql_insert_id" href="#mysql_insert_id"><span>mysql_insert_id:</span></a></dt><dd><ul class="simple">
+<li><a class="reference external"
+          data-doc-search-tag="mysql: mysql_insert_id(MySQL: Db): uint64" href="debby/mysql.html#mysql_insert_id%2CDb">mysql: mysql_insert_id(MySQL: Db): uint64</a></li>
+          </ul></dd>
+<dt><a name="mysql_num_fields" href="#mysql_num_fields"><span>mysql_num_fields:</span></a></dt><dd><ul class="simple">
+<li><a class="reference external"
+          data-doc-search-tag="mysql: mysql_num_fields(res: PRES): cuint" href="debby/mysql.html#mysql_num_fields%2CPRES">mysql: mysql_num_fields(res: PRES): cuint</a></li>
+          </ul></dd>
+<dt><a name="mysql_num_rows" href="#mysql_num_rows"><span>mysql_num_rows:</span></a></dt><dd><ul class="simple">
+<li><a class="reference external"
+          data-doc-search-tag="mysql: mysql_num_rows(res: PRES): uint64" href="debby/mysql.html#mysql_num_rows%2CPRES">mysql: mysql_num_rows(res: PRES): uint64</a></li>
+          </ul></dd>
+<dt><a name="mysql_query" href="#mysql_query"><span>mysql_query:</span></a></dt><dd><ul class="simple">
+<li><a class="reference external"
+          data-doc-search-tag="mysql: mysql_query(MySQL: Db; q: cstring): cint" href="debby/mysql.html#mysql_query%2CDb%2Ccstring">mysql: mysql_query(MySQL: Db; q: cstring): cint</a></li>
+          </ul></dd>
+<dt><a name="mysql_real_connect" href="#mysql_real_connect"><span>mysql_real_connect:</span></a></dt><dd><ul class="simple">
+<li><a class="reference external"
+          data-doc-search-tag="mysql: mysql_real_connect(MySQL: Db; host: cstring; user: cstring; passwd: cstring;
+                   db: cstring; port: cuint; unix_socket: cstring;
+                   clientflag: int): Db" href="debby/mysql.html#mysql_real_connect%2CDb%2Ccstring%2Ccstring%2Ccstring%2Ccstring%2Ccuint%2Ccstring%2Cint">mysql: mysql_real_connect(MySQL: Db; host: cstring; user: cstring; passwd: cstring;
+                   db: cstring; port: cuint; unix_socket: cstring;
+                   clientflag: int): Db</a></li>
+          </ul></dd>
+<dt><a name="mysql_real_escape_string" href="#mysql_real_escape_string"><span>mysql_real_escape_string:</span></a></dt><dd><ul class="simple">
+<li><a class="reference external"
+          data-doc-search-tag="mysql: mysql_real_escape_string(MySQL: Db; fto: cstring; from: cstring; len: int): int" href="debby/mysql.html#mysql_real_escape_string%2CDb%2Ccstring%2Ccstring%2Cint">mysql: mysql_real_escape_string(MySQL: Db; fto: cstring; from: cstring; len: int): int</a></li>
+          </ul></dd>
+<dt><a name="mysql_store_result" href="#mysql_store_result"><span>mysql_store_result:</span></a></dt><dd><ul class="simple">
+<li><a class="reference external"
+          data-doc-search-tag="mysql: mysql_store_result(MySQL: Db): PRES" href="debby/mysql.html#mysql_store_result%2CDb">mysql: mysql_store_result(MySQL: Db): PRES</a></li>
+          </ul></dd>
 <dt><a name="openDatabase" href="#openDatabase"><span>openDatabase:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
+          data-doc-search-tag="mysql: openDatabase(database: string; host = &quot;localhost&quot;; port = 3306; user = &quot;root&quot;;
+             password = &quot;&quot;): Db" href="debby/mysql.html#openDatabase%2Cstring%2Cstring%2Cint%2Cstring%2Cstring">mysql: openDatabase(database: string; host = &quot;localhost&quot;; port = 3306; user = &quot;root&quot;;
+             password = &quot;&quot;): Db</a></li>
+          <li><a class="reference external"
+          data-doc-search-tag="postgres: openDatabase(host, port, user, password, database: string): Db" href="debby/postgres.html#openDatabase%2Cstring%2Cstring%2Cstring%2Cstring%2Cstring">postgres: openDatabase(host, port, user, password, database: string): Db</a></li>
+          <li><a class="reference external"
           data-doc-search-tag="sqlite: openDatabase(path: string): Db" href="debby/sqlite.html#openDatabase%2Cstring">sqlite: openDatabase(path: string): Db</a></li>
+          </ul></dd>
+<dt><a name="PFIELD" href="#PFIELD"><span>PFIELD:</span></a></dt><dd><ul class="simple">
+<li><a class="reference external"
+          data-doc-search-tag="mysql: PFIELD" href="debby/mysql.html#PFIELD">mysql: PFIELD</a></li>
+          </ul></dd>
+<dt><a name="PGRES_BAD_RESPONSE" href="#PGRES_BAD_RESPONSE"><span>PGRES_BAD_RESPONSE:</span></a></dt><dd><ul class="simple">
+<li><a class="reference external"
+          data-doc-search-tag="ExecStatusType.PGRES_BAD_RESPONSE" href="debby/postgres.html#PGRES_BAD_RESPONSE">ExecStatusType.PGRES_BAD_RESPONSE</a></li>
+          </ul></dd>
+<dt><a name="PGRES_COMMAND_OK" href="#PGRES_COMMAND_OK"><span>PGRES_COMMAND_OK:</span></a></dt><dd><ul class="simple">
+<li><a class="reference external"
+          data-doc-search-tag="ExecStatusType.PGRES_COMMAND_OK" href="debby/postgres.html#PGRES_COMMAND_OK">ExecStatusType.PGRES_COMMAND_OK</a></li>
+          </ul></dd>
+<dt><a name="PGRES_COPY_BOTH" href="#PGRES_COPY_BOTH"><span>PGRES_COPY_BOTH:</span></a></dt><dd><ul class="simple">
+<li><a class="reference external"
+          data-doc-search-tag="ExecStatusType.PGRES_COPY_BOTH" href="debby/postgres.html#PGRES_COPY_BOTH">ExecStatusType.PGRES_COPY_BOTH</a></li>
+          </ul></dd>
+<dt><a name="PGRES_COPY_IN" href="#PGRES_COPY_IN"><span>PGRES_COPY_IN:</span></a></dt><dd><ul class="simple">
+<li><a class="reference external"
+          data-doc-search-tag="ExecStatusType.PGRES_COPY_IN" href="debby/postgres.html#PGRES_COPY_IN">ExecStatusType.PGRES_COPY_IN</a></li>
+          </ul></dd>
+<dt><a name="PGRES_COPY_OUT" href="#PGRES_COPY_OUT"><span>PGRES_COPY_OUT:</span></a></dt><dd><ul class="simple">
+<li><a class="reference external"
+          data-doc-search-tag="ExecStatusType.PGRES_COPY_OUT" href="debby/postgres.html#PGRES_COPY_OUT">ExecStatusType.PGRES_COPY_OUT</a></li>
+          </ul></dd>
+<dt><a name="PGRES_EMPTY_QUERY" href="#PGRES_EMPTY_QUERY"><span>PGRES_EMPTY_QUERY:</span></a></dt><dd><ul class="simple">
+<li><a class="reference external"
+          data-doc-search-tag="ExecStatusType.PGRES_EMPTY_QUERY" href="debby/postgres.html#PGRES_EMPTY_QUERY">ExecStatusType.PGRES_EMPTY_QUERY</a></li>
+          </ul></dd>
+<dt><a name="PGRES_FATAL_ERROR" href="#PGRES_FATAL_ERROR"><span>PGRES_FATAL_ERROR:</span></a></dt><dd><ul class="simple">
+<li><a class="reference external"
+          data-doc-search-tag="ExecStatusType.PGRES_FATAL_ERROR" href="debby/postgres.html#PGRES_FATAL_ERROR">ExecStatusType.PGRES_FATAL_ERROR</a></li>
+          </ul></dd>
+<dt><a name="PGRES_NONFATAL_ERROR" href="#PGRES_NONFATAL_ERROR"><span>PGRES_NONFATAL_ERROR:</span></a></dt><dd><ul class="simple">
+<li><a class="reference external"
+          data-doc-search-tag="ExecStatusType.PGRES_NONFATAL_ERROR" href="debby/postgres.html#PGRES_NONFATAL_ERROR">ExecStatusType.PGRES_NONFATAL_ERROR</a></li>
+          </ul></dd>
+<dt><a name="PGRES_SINGLE_TUPLE" href="#PGRES_SINGLE_TUPLE"><span>PGRES_SINGLE_TUPLE:</span></a></dt><dd><ul class="simple">
+<li><a class="reference external"
+          data-doc-search-tag="ExecStatusType.PGRES_SINGLE_TUPLE" href="debby/postgres.html#PGRES_SINGLE_TUPLE">ExecStatusType.PGRES_SINGLE_TUPLE</a></li>
+          </ul></dd>
+<dt><a name="PGRES_TUPLES_OK" href="#PGRES_TUPLES_OK"><span>PGRES_TUPLES_OK:</span></a></dt><dd><ul class="simple">
+<li><a class="reference external"
+          data-doc-search-tag="ExecStatusType.PGRES_TUPLES_OK" href="debby/postgres.html#PGRES_TUPLES_OK">ExecStatusType.PGRES_TUPLES_OK</a></li>
+          </ul></dd>
+<dt><a name="PQclear" href="#PQclear"><span>PQclear:</span></a></dt><dd><ul class="simple">
+<li><a class="reference external"
+          data-doc-search-tag="postgres: PQclear(res: Result)" href="debby/postgres.html#PQclear%2CResult">postgres: PQclear(res: Result)</a></li>
+          </ul></dd>
+<dt><a name="PQerrorMessage" href="#PQerrorMessage"><span>PQerrorMessage:</span></a></dt><dd><ul class="simple">
+<li><a class="reference external"
+          data-doc-search-tag="postgres: PQerrorMessage(conn: Db): cstring" href="debby/postgres.html#PQerrorMessage%2CDb">postgres: PQerrorMessage(conn: Db): cstring</a></li>
+          </ul></dd>
+<dt><a name="PQexec" href="#PQexec"><span>PQexec:</span></a></dt><dd><ul class="simple">
+<li><a class="reference external"
+          data-doc-search-tag="postgres: PQexec(conn: Db; query: cstring): Result" href="debby/postgres.html#PQexec%2CDb%2Ccstring">postgres: PQexec(conn: Db; query: cstring): Result</a></li>
+          </ul></dd>
+<dt><a name="PQexecParams" href="#PQexecParams"><span>PQexecParams:</span></a></dt><dd><ul class="simple">
+<li><a class="reference external"
+          data-doc-search-tag="postgres: PQexecParams(conn: Db; command: cstring; nParams: int32; paramTypes: ptr int32;
+             paramValues: cstringArray; paramLengths: ptr int32;
+             paramFormats: ptr int32; resultFormat: int32): Result" href="debby/postgres.html#PQexecParams%2CDb%2Ccstring%2Cint32%2Cptr.int32%2CcstringArray%2Cptr.int32%2Cptr.int32%2Cint32">postgres: PQexecParams(conn: Db; command: cstring; nParams: int32; paramTypes: ptr int32;
+             paramValues: cstringArray; paramLengths: ptr int32;
+             paramFormats: ptr int32; resultFormat: int32): Result</a></li>
+          </ul></dd>
+<dt><a name="PQfinish" href="#PQfinish"><span>PQfinish:</span></a></dt><dd><ul class="simple">
+<li><a class="reference external"
+          data-doc-search-tag="postgres: PQfinish(conn: Db)" href="debby/postgres.html#PQfinish%2CDb">postgres: PQfinish(conn: Db)</a></li>
+          </ul></dd>
+<dt><a name="PQfname" href="#PQfname"><span>PQfname:</span></a></dt><dd><ul class="simple">
+<li><a class="reference external"
+          data-doc-search-tag="postgres: PQfname(res: Result; field_num: int32): cstring" href="debby/postgres.html#PQfname%2CResult%2Cint32">postgres: PQfname(res: Result; field_num: int32): cstring</a></li>
+          </ul></dd>
+<dt><a name="PQgetvalue" href="#PQgetvalue"><span>PQgetvalue:</span></a></dt><dd><ul class="simple">
+<li><a class="reference external"
+          data-doc-search-tag="postgres: PQgetvalue(res: Result; tup_num: int32; field_num: int32): cstring" href="debby/postgres.html#PQgetvalue%2CResult%2Cint32%2Cint32">postgres: PQgetvalue(res: Result; tup_num: int32; field_num: int32): cstring</a></li>
+          </ul></dd>
+<dt><a name="PQnfields" href="#PQnfields"><span>PQnfields:</span></a></dt><dd><ul class="simple">
+<li><a class="reference external"
+          data-doc-search-tag="postgres: PQnfields(res: Result): int32" href="debby/postgres.html#PQnfields%2CResult">postgres: PQnfields(res: Result): int32</a></li>
+          </ul></dd>
+<dt><a name="PQntuples" href="#PQntuples"><span>PQntuples:</span></a></dt><dd><ul class="simple">
+<li><a class="reference external"
+          data-doc-search-tag="postgres: PQntuples(res: Result): int32" href="debby/postgres.html#PQntuples%2CResult">postgres: PQntuples(res: Result): int32</a></li>
+          </ul></dd>
+<dt><a name="PQresultStatus" href="#PQresultStatus"><span>PQresultStatus:</span></a></dt><dd><ul class="simple">
+<li><a class="reference external"
+          data-doc-search-tag="postgres: PQresultStatus(res: Result): ExecStatusType" href="debby/postgres.html#PQresultStatus%2CResult">postgres: PQresultStatus(res: Result): ExecStatusType</a></li>
+          </ul></dd>
+<dt><a name="PQsetdbLogin" href="#PQsetdbLogin"><span>PQsetdbLogin:</span></a></dt><dd><ul class="simple">
+<li><a class="reference external"
+          data-doc-search-tag="postgres: PQsetdbLogin(pghost: cstring; pgport: cstring; pgoptions: cstring;
+             pgtty: cstring; dbName: cstring; login: cstring; pwd: cstring): Db" href="debby/postgres.html#PQsetdbLogin%2Ccstring%2Ccstring%2Ccstring%2Ccstring%2Ccstring%2Ccstring%2Ccstring">postgres: PQsetdbLogin(pghost: cstring; pgport: cstring; pgoptions: cstring;
+             pgtty: cstring; dbName: cstring; login: cstring; pwd: cstring): Db</a></li>
+          </ul></dd>
+<dt><a name="PQstatus" href="#PQstatus"><span>PQstatus:</span></a></dt><dd><ul class="simple">
+<li><a class="reference external"
+          data-doc-search-tag="postgres: PQstatus(conn: Db): ConnStatusType" href="debby/postgres.html#PQstatus%2CDb">postgres: PQstatus(conn: Db): ConnStatusType</a></li>
           </ul></dd>
 <dt><a name="query" href="#query"><span>query:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
+          data-doc-search-tag="mysql: query(db: Db; query: string; args: varargs[string, `$`]): seq[Row]" href="debby/mysql.html#query%2CDb%2Cstring%2Cvarargs%5Bstring%2C%5D">mysql: query(db: Db; query: string; args: varargs[string, `$`]): seq[Row]</a></li>
+          <li><a class="reference external"
+          data-doc-search-tag="mysql: query[T](db: Db; t: typedesc[T]; query: string; args: varargs[string, `$`]): seq[
+    T]" href="debby/mysql.html#query%2CDb%2Ctypedesc%5BT%5D%2Cstring%2Cvarargs%5Bstring%2C%5D">mysql: query[T](db: Db; t: typedesc[T]; query: string; args: varargs[string, `$`]): seq[
+    T]</a></li>
+          <li><a class="reference external"
+          data-doc-search-tag="postgres: query(db: Db; query: string; args: varargs[string, `$`]): seq[Row]" href="debby/postgres.html#query%2CDb%2Cstring%2Cvarargs%5Bstring%2C%5D">postgres: query(db: Db; query: string; args: varargs[string, `$`]): seq[Row]</a></li>
+          <li><a class="reference external"
+          data-doc-search-tag="postgres: query[T](db: Db; t: typedesc[T]; query: string; args: varargs[string, `$`]): seq[
+    T]" href="debby/postgres.html#query%2CDb%2Ctypedesc%5BT%5D%2Cstring%2Cvarargs%5Bstring%2C%5D">postgres: query[T](db: Db; t: typedesc[T]; query: string; args: varargs[string, `$`]): seq[
+    T]</a></li>
+          <li><a class="reference external"
           data-doc-search-tag="sqlite: query(db: Db; query: string; args: varargs[string, `$`]): seq[Row]" href="debby/sqlite.html#query%2CDb%2Cstring%2Cvarargs%5Bstring%2C%5D">sqlite: query(db: Db; query: string; args: varargs[string, `$`]): seq[Row]</a></li>
           <li><a class="reference external"
           data-doc-search-tag="sqlite: query[T](db: Db; t: typedesc[T]; query: string; args: varargs[string, `$`]): seq[
@@ -176,6 +444,10 @@ window.addEventListener('DOMContentLoaded', main);
 <dt><a name="ReservedNames" href="#ReservedNames"><span>ReservedNames:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
           data-doc-search-tag="common: ReservedNames" href="debby/common.html#ReservedNames">common: ReservedNames</a></li>
+          </ul></dd>
+<dt><a name="Result" href="#Result"><span>Result:</span></a></dt><dd><ul class="simple">
+<li><a class="reference external"
+          data-doc-search-tag="postgres: Result" href="debby/postgres.html#Result">postgres: Result</a></li>
           </ul></dd>
 <dt><a name="Row" href="#Row"><span>Row:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
@@ -192,6 +464,10 @@ window.addEventListener('DOMContentLoaded', main);
           data-doc-search-tag="common: sqlDumpHook[T: string](v: T): string" href="debby/common.html#sqlDumpHook%2CT_2">common: sqlDumpHook[T: string](v: T): string</a></li>
           <li><a class="reference external"
           data-doc-search-tag="common: sqlDumpHook[T: distinct](v: T): string" href="debby/common.html#sqlDumpHook%2CT_3">common: sqlDumpHook[T: distinct](v: T): string</a></li>
+          <li><a class="reference external"
+          data-doc-search-tag="mysql: sqlDumpHook(data: Bytes): string" href="debby/mysql.html#sqlDumpHook%2CBytes">mysql: sqlDumpHook(data: Bytes): string</a></li>
+          <li><a class="reference external"
+          data-doc-search-tag="postgres: sqlDumpHook(data: Bytes): string" href="debby/postgres.html#sqlDumpHook%2CBytes">postgres: sqlDumpHook(data: Bytes): string</a></li>
           </ul></dd>
 <dt><a name="sqlite3_bind_text" href="#sqlite3_bind_text"><span>sqlite3_bind_text:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
@@ -272,13 +548,23 @@ window.addEventListener('DOMContentLoaded', main);
           data-doc-search-tag="common: sqlParseHook[T: enum](data: string; v: var T)" href="debby/common.html#sqlParseHook%2Cstring%2CT_6">common: sqlParseHook[T: enum](data: string; v: var T)</a></li>
           <li><a class="reference external"
           data-doc-search-tag="common: sqlParseHook[T: distinct](data: string; v: var T)" href="debby/common.html#sqlParseHook%2Cstring%2CT_7">common: sqlParseHook[T: distinct](data: string; v: var T)</a></li>
+          <li><a class="reference external"
+          data-doc-search-tag="mysql: sqlParseHook(data: string; v: var Bytes)" href="debby/mysql.html#sqlParseHook%2Cstring%2CBytes">mysql: sqlParseHook(data: string; v: var Bytes)</a></li>
+          <li><a class="reference external"
+          data-doc-search-tag="postgres: sqlParseHook(data: string; v: var Bytes)" href="debby/postgres.html#sqlParseHook%2Cstring%2CBytes">postgres: sqlParseHook(data: string; v: var Bytes)</a></li>
           </ul></dd>
 <dt><a name="Statement" href="#Statement"><span>Statement:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
+          data-doc-search-tag="postgres: Statement" href="debby/postgres.html#Statement">postgres: Statement</a></li>
+          <li><a class="reference external"
           data-doc-search-tag="sqlite: Statement" href="debby/sqlite.html#Statement">sqlite: Statement</a></li>
           </ul></dd>
 <dt><a name="tableExists" href="#tableExists"><span>tableExists:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
+          data-doc-search-tag="mysql: tableExists[T](db: Db; t: typedesc[T]): bool" href="debby/mysql.html#tableExists%2CDb%2Ctypedesc%5BT%5D">mysql: tableExists[T](db: Db; t: typedesc[T]): bool</a></li>
+          <li><a class="reference external"
+          data-doc-search-tag="postgres: tableExists[T](db: Db; t: typedesc[T]): bool" href="debby/postgres.html#tableExists%2CDb%2Ctypedesc%5BT%5D">postgres: tableExists[T](db: Db; t: typedesc[T]): bool</a></li>
+          <li><a class="reference external"
           data-doc-search-tag="sqlite: tableExists[T](db: Db; t: typedesc[T]): bool" href="debby/sqlite.html#tableExists%2CDb%2Ctypedesc%5BT%5D">sqlite: tableExists[T](db: Db; t: typedesc[T]): bool</a></li>
           </ul></dd>
 <dt><a name="tableName" href="#tableName"><span>tableName:</span></a></dt><dd><ul class="simple">
@@ -307,6 +593,10 @@ window.addEventListener('DOMContentLoaded', main);
           </ul></dd>
 <dt><a name="withTransaction" href="#withTransaction"><span>withTransaction:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
+          data-doc-search-tag="mysql: withTransaction(db: Db; body)" href="debby/mysql.html#withTransaction.t%2CDb%2C">mysql: withTransaction(db: Db; body)</a></li>
+          <li><a class="reference external"
+          data-doc-search-tag="postgres: withTransaction(db: Db; body)" href="debby/postgres.html#withTransaction.t%2CDb%2C">postgres: withTransaction(db: Db; body)</a></li>
+          <li><a class="reference external"
           data-doc-search-tag="sqlite: withTransaction(db: Db; body)" href="debby/sqlite.html#withTransaction.t%2CDb%2C">sqlite: withTransaction(db: Db; body)</a></li>
           </ul></dd>
 </dl>
@@ -314,7 +604,7 @@ window.addEventListener('DOMContentLoaded', main);
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2023-07-22 14:24:09 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2023-07-22 14:59:14 UTC</small>
       </div>
     </div>
   </div>
