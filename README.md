@@ -268,4 +268,4 @@ ALTER TABLE cars ADD msrp REAL;
 Or compile --d:debbyYOLO to do this automatically
 ```
 
-Yes using `--d:debbyYOLO` can do this automatically, but it might be what you want! Always be vigilant.
+Yes using `--d:debbyYOLO` can do this automatically, but it might **not** be what you want! Always be vigilant.
