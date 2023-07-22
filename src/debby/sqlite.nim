@@ -87,26 +87,27 @@ proc sqlite3_last_insert_rowid*(
 
 {.pop.}
 
+proc sqlType(name, t: string): string =
+  ## Converts nim type to sql type.
+  case t:
+  of "string": "TEXT"
+  of "Bytes": "TEXT"
+  of "int": "INTEGER"
+  of "float", "float32", "float64": "REAL"
+  of "bool": "INTEGER"
+  of "bytes": "BLOB"
+  else: "TEXT"
+
 proc dbError*(db: Db) {.noreturn.} =
+  ## Raises an error from the database.
   raise newException(DbError, "SQLite: " & $sqlite3_errmsg(db))
-
-proc openDatabase*(path: string): Db =
-  var db: Db
-  if sqlite3_open(path, db) == SQLITE_OK:
-    result = db
-  else:
-    dbError(db)
-
-proc close*(db: Db) =
-  if sqlite3_close(db) != SQLITE_OK:
-    dbError(db)
 
 proc prepareQuery(
   db: Db,
   query: string,
   args: varargs[string]
 ): Statement =
-  ## Formats and prepares the statement.
+  ## Generates the query based on parameters.
 
   if query.count('?') != args.len:
     dbError("Number of arguments and number of ? in query does not match")
@@ -136,7 +137,7 @@ proc query*(
   query: string,
   args: varargs[string, `$`]
 ): seq[Row] {.discardable.} =
-  ## Queries the DB.
+  ## Runs a query and returns the results.
   when defined(debbyShowSql):
     debugEcho(query)
   var statement = prepareQuery(db, query, args)
@@ -150,16 +151,18 @@ proc query*(
     if sqlite3_finalize(statement) != SQLITE_OK:
       dbError(db)
 
-proc sqlType(name, t: string): string =
-  ## Converts nim type to sql type.
-  case t:
-  of "string": "TEXT"
-  of "Bytes": "TEXT"
-  of "int": "INTEGER"
-  of "float", "float32", "float64": "REAL"
-  of "bool": "INTEGER"
-  of "bytes": "BLOB"
-  else: "TEXT"
+proc openDatabase*(path: string): Db =
+  ## Opens the database file.
+  var db: Db
+  if sqlite3_open(path, db) == SQLITE_OK:
+    result = db
+  else:
+    dbError(db)
+
+proc close*(db: Db) =
+  ## Closes the database file.
+  if sqlite3_close(db) != SQLITE_OK:
+    dbError(db)
 
 proc tableExists*[T](db: Db, t: typedesc[T]): bool =
   ## Checks if table exists.
@@ -169,13 +172,25 @@ proc tableExists*[T](db: Db, t: typedesc[T]): bool =
     ):
     result = x[0] == T.tableName
 
-proc dropTable*[T](db: Db, t: typedesc[T]) =
-  ## Removes tables, errors out if it does not exist.
-  db.query("DROP TABLE " & T.tableName)
-
-proc dropTableIfExists*[T](db: Db, t: typedesc[T]) =
-  ## Removes tables if it exists.
-  db.query("DROP TABLE IF EXISTS " & T.tableName)
+proc createIndexStatement*[T: ref object](
+  db: Db,
+  t: typedesc[T],
+  ifNotExists: bool,
+  params: varargs[string]
+): string =
+  ## Returns the SQL code need to create an index.
+  result.add "CREATE INDEX "
+  if ifNotExists:
+    result.add "IF NOT EXISTS "
+  result.add "idx_"
+  result.add T.tableName
+  result.add "_"
+  result.add params.join("_")
+  result.add " ON "
+  result.add T.tableName
+  result.add "("
+  result.add params.join(", ")
+  result.add ")"
 
 proc createTableStatement*[T: ref object](db: Db, t: typedesc[T]): string =
   ## Given an object creates its table create statement.
@@ -196,10 +211,6 @@ proc createTableStatement*[T: ref object](db: Db, t: typedesc[T]): string =
     result.add ",\n"
   result.removeSuffix(",\n")
   result.add "\n)"
-
-proc createTable*[T: ref object](db: Db, t: typedesc[T]) =
-  ## Creates a table, errors out if it already exists.
-  db.query(db.createTableStatement(t))
 
 proc checkTable*[T: ref object](db: Db, t: typedesc[T]) =
   ## Checks to see if table matches the object.
@@ -251,24 +262,11 @@ proc checkTable*[T: ref object](db: Db, t: typedesc[T]) =
     issues.add "Or compile --d:debbyYOLO to do this automatically"
     raise newException(DBError, issues.join("\n"))
 
-proc createIndexStatement*[T: ref object](
-  db: Db,
-  t: typedesc[T],
-  ifNotExists: bool,
-  params: varargs[string]
-): string =
-  result.add "CREATE INDEX "
-  if ifNotExists:
-    result.add "IF NOT EXISTS "
-  result.add "idx_"
-  result.add T.tableName
-  result.add "_"
-  result.add params.join("_")
-  result.add " ON "
-  result.add T.tableName
-  result.add "("
-  result.add params.join(", ")
-  result.add ")"
+proc insert*[T: ref object](db: Db, obj: T) =
+  ## Inserts the object into the database.
+  ## Reads the ID of the inserted ref object back.
+  discard db.insertInner(obj)
+  obj.id = db.sqlite3_last_insert_rowid().int
 
 proc query*[T](
   db: Db,
@@ -276,7 +274,9 @@ proc query*[T](
   query: string,
   args: varargs[string, `$`]
 ): seq[T] =
-
+  ## Query the table, and returns results as a seq of ref objects.
+  ## This will match fields to column names.
+  ## This will also use JSONy for complex fields.
   let tmp = T()
 
   var
@@ -314,12 +314,9 @@ proc query*[T](
     if sqlite3_finalize(statement) != SQLITE_OK:
       dbError(db)
 
-proc insert*[T: ref object](db: Db, obj: T) =
-  ## Inserts the object into the database.
-  discard db.insertInner(obj)
-  obj.id = db.sqlite3_last_insert_rowid().int
-
 template withTransaction*(db: Db, body) =
+  ## Transaction block.
+
   # Start a transaction
   discard db.query("BEGIN TRANSACTION;")
 

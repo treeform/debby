@@ -10,8 +10,10 @@
 ##
 
 when defined(nimdoc):
-  ## Used to generate docs.
+  # Used to generate docs.
+  import debby/common
   import debby/sqlite
-  export sqlite
+  import debby/postgres
+  import debby/mysql
 else:
   {.error: "Import debby/sqlite, debby/postgres, or debby/mysql".}

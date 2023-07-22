@@ -9,8 +9,6 @@ elif defined(macosx):
 else:
   const Lib = "(libmysqlclient|libmariadbclient).so(|.21|)"
 
-# ?
-
 type
   PRES = pointer
 
@@ -58,14 +56,33 @@ proc mysql_fetch_field_direct*(res: PRES, fieldnr: cuint): PFIELD
 {.pop.}
 
 proc dbError*(db: Db) {.noreturn.} =
+  ## Raises an error from the database.
   raise newException(DbError, "MySQL: " & $mysql_error(db))
+
+proc sqlType(name, t: string): string =
+  ## Converts nim type to sql type.
+  case t:
+  of "string": "text"
+  of "int8": "tinyint"
+  of "uint8": "tinyint unsigned"
+  of "int16": "smallint"
+  of "uint16": "smallint unsigned"
+  of "int32": "int"
+  of "uint32": "int unsigned"
+  of "int", "int64": "bigint"
+  of "uint", "uint64": "bigint unsigned"
+  of "float", "float32": "float"
+  of "float64": "double"
+  of "bool": "boolean"
+  of "Bytes": "text"
+  else: "json"
 
 proc prepareQuery(
   db: DB,
   query: string,
   args: varargs[string]
 ): string =
-  ## Formats and prepares the statement.
+  ## Generates the query based on parameters.
   when defined(debbyShowSql):
     debugEcho(query)
 
@@ -102,7 +119,7 @@ proc query*(
   query: string,
   args: varargs[string, `$`]
 ): seq[Row] {.discardable.} =
-  ## Queries the DB.
+  ## Runs a query and returns the results.
   var sql = prepareQuery(db, query, args)
   if mysql_query(db, sql.cstring) != 0:
     dbError(db)
@@ -125,8 +142,7 @@ proc openDatabase*(
     user = "root",
     password = ""
 ): DB =
-  ## opens a database connection. Raises `EDb` if the connection could not
-  ## be established.
+  ## Opens a database connection.
   var db = mysql_init(nil)
   if db == nil:
     dbError("could not open database connection")
@@ -148,12 +164,8 @@ proc openDatabase*(
   return db
 
 proc close*(db: DB) =
-  ## closes the database connection.
+  ## Closes the database connection.
   mysql_close(db)
-
-proc dropTableIfExists*[T](db: Db, t: typedesc[T]) =
-  ## Removes tables if it exists.
-  db.query("DROP TABLE IF EXISTS " & T.tableName)
 
 proc tableExists*[T](db: Db, t: typedesc[T]): bool =
   ## Checks if table exists.
@@ -174,6 +186,7 @@ proc createIndexStatement*[T: ref object](
   ifNotExists: bool,
   params: varargs[string]
 ): string =
+  ## Returns the SQL code need to create an index.
   result.add "CREATE INDEX "
   if ifNotExists:
     result.add "IF NOT EXISTS "
@@ -186,24 +199,6 @@ proc createIndexStatement*[T: ref object](
   result.add " ("
   result.add params.join(", ")
   result.add ")"
-
-proc sqlType(name, t: string): string =
-  ## Converts nim type to sql type.
-  case t:
-  of "string": "text"
-  of "int8": "tinyint"
-  of "uint8": "tinyint unsigned"
-  of "int16": "smallint"
-  of "uint16": "smallint unsigned"
-  of "int32": "int"
-  of "uint32": "int unsigned"
-  of "int", "int64": "bigint"
-  of "uint", "uint64": "bigint unsigned"
-  of "float", "float32": "float"
-  of "float64": "double"
-  of "bool": "boolean"
-  of "Bytes": "text"
-  else: "json"
 
 proc createTableStatement*[T: ref object](db: Db, t: typedesc[T]): string =
   ## Given an object creates its table create statement.
@@ -222,10 +217,6 @@ proc createTableStatement*[T: ref object](db: Db, t: typedesc[T]): string =
     result.add ",\n"
   result.removeSuffix(",\n")
   result.add "\n)"
-
-proc createTable*[T: ref object](db: Db, t: typedesc[T]) =
-  ## Creates a table, errors out if it already exists.
-  db.query(db.createTableStatement(t))
 
 proc checkTable*[T: ref object](db: Db, t: typedesc[T]) =
   ## Checks to see if table matches the object.
@@ -283,6 +274,7 @@ proc checkTable*[T: ref object](db: Db, t: typedesc[T]) =
 
 proc insert*[T: ref object](db: Db, obj: T) =
   ## Inserts the object into the database.
+  ## Reads the ID of the inserted ref object back.
   discard db.insertInner(obj)
   obj.id = mysql_insert_id(db).int
 
@@ -292,7 +284,9 @@ proc query*[T](
   query: string,
   args: varargs[string, `$`]
 ): seq[T] =
-
+  ## Query the table, and returns results as a seq of ref objects.
+  ## This will match fields to column names.
+  ## This will also use JSONy for complex fields.
   let tmp = T()
 
   var
@@ -342,6 +336,8 @@ proc query*[T](
       mysql_free_result(res)
 
 template withTransaction*(db: Db, body) =
+  ## Transaction block.
+
   # Start a transaction
   discard db.query("START TRANSACTION;")
 
@@ -355,6 +351,7 @@ template withTransaction*(db: Db, body) =
     raise e
 
 proc sqlDumpHook*(data: Bytes): string =
+  ## MySQL-specific dump hook for binary data.
   let hexChars = "0123456789abcdef"
   var hexStr = "\\x"
   for ch in data.string:
@@ -363,18 +360,8 @@ proc sqlDumpHook*(data: Bytes): string =
     hexStr.add hexChars[code and 0x0F]  # Modulo operation with 16
   return hexStr
 
-proc hexNibble(ch: char): int =
-  case ch:
-  of '0'..'9':
-    return ch.ord - '0'.ord
-  of 'a'..'f':
-    return ch.ord - 'a'.ord + 10
-  of 'A'..'F':
-    return ch.ord - 'A'.ord + 10
-  else:
-    raise newException(DbError, "Invalid hexadecimal digit: " & $ch)
-
 proc sqlParseHook*(data: string, v: var Bytes) =
+  ## MySQL-specific parse hook for binary data.
   if not (data.len >= 2 and data[0] == '\\' and data[1] == 'x'):
     raise newException(DbError, "Invalid binary representation" )
   var buffer = ""

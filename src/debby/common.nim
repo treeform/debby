@@ -1,12 +1,12 @@
 import jsony, std/typetraits, std/strutils, std/macros, std/sets, std/strformat
 
 type
-  Db* = pointer
-  DbError* = object of IOError
-  Row* = seq[string]
-  Bytes* = distinct string
+  Db* = pointer  ## Generic database pointer.
+  DbError* = object of IOError ## Debby error.
+  Row* = seq[string] ## Debby Row type .. just a seq of strings.
+  Bytes* = distinct string ## Debby's binary datatype. Use this if your data contains nulls or non-utf8 bytes.
 
-const ReservedNames* = toHashSet([
+const ReservedNames* = [
   "select", "insert", "update", "delete", "from", "where", "join", "inner", "outer",
   "left", "right", "on", "group", "by", "order", "having", "limit", "offset", "union",
   "create", "alter", "drop", "set", "null", "not", "distinct", "as", "is", "like",
@@ -16,7 +16,9 @@ const ReservedNames* = toHashSet([
   "references", "varchar", "char", "text", "integer", "int", "smallint", "bigint",
   "decimal", "numeric", "float", "double", "real", "boolean", "date", "time", "timestamp",
   "user"
-])
+] ## Do not use these strings in your tables or column names.
+
+const ReservedSet = toHashSet(ReservedNames)
 
 proc toSnakeCase*(s: string): string =
   for c in s:
@@ -32,13 +34,15 @@ proc tableName*[T](t: typedesc[T]): string =
   ($type(T)).toSnakeCase
 
 proc dbError*(msg: string) {.noreturn.} =
+  ## Raises a DbError with just a message.
+  ## Does not query the database for error.
   raise newException(DbError, msg)
 
 proc validateObj*[T: ref object](t: typedesc[T]) =
 
   let tmp = T()
 
-  if T.tableName in ReservedNames:
+  if T.tableName in ReservedSet:
     dbError(&"The '{T.tableName}' is a reserved word in SQL, please use a different name.")
 
   var foundId = false
@@ -52,7 +56,7 @@ proc validateObj*[T: ref object](t: typedesc[T]) =
 
     let fieldName = name.toSnakeCase
 
-    if fieldName in ReservedNames:
+    if fieldName in ReservedSet:
       dbError(&"The '{fieldName}' is a reserved word in SQL, please use a different name.")
 
   if not foundId:
@@ -186,24 +190,31 @@ proc insertInner*[T: ref object](db: Db, obj: T, extra = ""): seq[Row] =
   db.query(query, values)
 
 template insert*[T: ref object](db: Db, objs: seq[T]) =
+  ## Inserts a seq of objects into the database.
   for obj in objs:
     db.insert(obj)
 
 template delete*[T: ref object](db: Db, objs: seq[T]) =
+  ## Deletes a seq of objects from the database.
   for obj in objs:
     db.delete(obj)
 
 template update*[T: ref object](db: Db, objs: seq[T]) =
+  ## Updates a seq of objects into the database.
   for obj in objs:
     db.update(obj)
 
 template upsert*[T: ref object](db: Db, obj: T) =
+  ## Either updates or inserts a ref object into the database.
+  ## Will read the inserted id back.
   if obj.id == 0:
     db.insert(obj)
   else:
     db.update(obj)
 
 template upsert*[T: ref object](db: Db, objs: seq[T]) =
+  ## Either updates or inserts a seq of object into the database.
+  ## Will read the inserted id back for each object.
   for obj in objs:
     db.upsert(obj)
 
@@ -318,4 +329,29 @@ proc filter*[T](
   db: Db,
   t: typedesc[T],
 ): seq[T] =
+  ## Filter without a filter clause just returns everything.
   db.query(t, ("select * from " & T.tableName))
+
+proc hexNibble*(ch: char): int =
+  ## Encodes a hex char.
+  case ch:
+  of '0'..'9':
+    return ch.ord - '0'.ord
+  of 'a'..'f':
+    return ch.ord - 'a'.ord + 10
+  of 'A'..'F':
+    return ch.ord - 'A'.ord + 10
+  else:
+    raise newException(DbError, "Invalid hexadecimal digit: " & $ch)
+
+proc dropTable*[T](db: Db, t: typedesc[T]) =
+  ## Removes tables, errors out if it does not exist.
+  db.query("DROP TABLE " & T.tableName)
+
+proc dropTableIfExists*[T](db: Db, t: typedesc[T]) =
+  ## Removes tables if it exists.
+  db.query("DROP TABLE IF EXISTS " & T.tableName)
+
+proc createTable*[T: ref object](db: Db, t: typedesc[T]) =
+  ## Creates a table, errors out if it already exists.
+  db.query(db.createTableStatement(t))

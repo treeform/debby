@@ -93,31 +93,29 @@ proc PQfname*(
 {.pop.}
 
 proc dbError*(db: DB) {.noreturn.} =
-  ## raises a DbError exception.
-  var e: ref DbError
-  new(e)
-  e.msg = "Postgres: " & $PQerrorMessage(db)
-  raise e
+  ## Raises an error from the database.
+  raise newException(DbError, "Postgres: " & $PQerrorMessage(db))
 
-proc openDatabase*(host, port, user, password, database: string): Db =
-
-  result = PQsetdbLogin(
-    host.cstring,
-    port.cstring,
-    nil,
-    nil,
-    database.cstring,
-    user.cstring,
-    password.cstring
-  )
-  if PQstatus(result) != CONNECTION_OK:
-    dbError(result)
+proc sqlType(name, t: string): string =
+  ## Converts nim type to SQL type.
+  case t:
+  of "string": "text"
+  of "Bytes": "bytea"
+  of "int8", "int16": "smallint"
+  of "uint8", "uint16", "int32": "integer"
+  of "uint32", "int64", "int": "integer"
+  of "uint", "uint64": "numeric(20)"
+  of "float", "float32": "real"
+  of "float64": "double precision"
+  of "bool": "boolean"
+  else: "jsonb"
 
 proc prepareQuery(
   db: DB,
   query: string,
   args: varargs[string]
 ): Result =
+  ## Generates the query based on parameters.
   when defined(debbyShowSql):
     debugEcho(query)
 
@@ -169,10 +167,10 @@ proc prepareQuery(
     PGRES_NONFATAL_ERROR,
     PGRES_FATAL_ERROR
   }:
-    echo "ERROR!!!"
     dbError(db)
 
 proc readRow(res: Result, r: var Row, line, cols: int32) =
+  ## Reads a single row back.
   for col in 0'i32..cols-1:
     setLen(r[col], 0)
     let x = PQgetvalue(res, line, col)
@@ -196,10 +194,26 @@ proc query*(
   query: string,
   args: varargs[string, `$`]
 ): seq[Row] {.discardable.} =
+  ## Runs a query and returns the results.
   let res = prepareQuery(db, query, args)
   result = getAllRows(res)
 
+proc openDatabase*(host, port, user, password, database: string): Db =
+  ## Opens a database connection.
+  result = PQsetdbLogin(
+    host.cstring,
+    port.cstring,
+    nil,
+    nil,
+    database.cstring,
+    user.cstring,
+    password.cstring
+  )
+  if PQstatus(result) != CONNECTION_OK:
+    dbError(result)
+
 proc close*(db: Db) =
+  ## Closes the database connection.
   PQfinish(db)
 
 proc tableExists*[T](db: Db, t: typedesc[T]): bool =
@@ -216,38 +230,32 @@ WHERE
     result = true
     break
 
-proc tableNameQuoted*[T](t: typedesc[T]): string =
-  ## Converts object type name to table name.
-  '"' & T.tableName & '"'
-
-proc dropTable*[T](db: Db, t: typedesc[T]) =
-  ## Removes tables, errors out if it does not exist.
-  db.query("DROP TABLE " & T.tableNameQuoted)
-
-proc dropTableIfExists*[T](db: Db, t: typedesc[T]) =
-  ## Removes tables if it exists.
-  db.query("DROP TABLE IF EXISTS " & T.tableNameQuoted)
-
-proc sqlType(name, t: string): string =
-  ## Converts nim type to SQL type.
-  case t:
-  of "string": "text"
-  of "Bytes": "bytea"
-  of "int8", "int16": "smallint"
-  of "uint8", "uint16", "int32": "integer"
-  of "uint32", "int64", "int": "integer"
-  of "uint", "uint64": "numeric(20)"
-  of "float", "float32": "real"
-  of "float64": "double precision"
-  of "bool": "boolean"
-  else: "jsonb"
+proc createIndexStatement*[T: ref object](
+  db: Db,
+  t: typedesc[T],
+  ifNotExists: bool,
+  params: varargs[string]
+): string =
+  ## Returns the SQL code need to create an index.
+  result.add "CREATE INDEX "
+  if ifNotExists:
+    result.add "IF NOT EXISTS "
+  result.add "idx_"
+  result.add T.tableName
+  result.add "_"
+  result.add params.join("_")
+  result.add " ON "
+  result.add T.tableName
+  result.add "("
+  result.add params.join(", ")
+  result.add ")"
 
 proc createTableStatement*[T: ref object](db: Db, t: typedesc[T]): string =
   ## Given an object creates its table create statement.
   validateObj(t)
   let tmp = T()
   result.add "CREATE TABLE "
-  result.add T.tableNameQuoted
+  result.add T.tableName
   result.add " (\n"
   for name, field in tmp[].fieldPairs:
     result.add "  "
@@ -261,10 +269,6 @@ proc createTableStatement*[T: ref object](db: Db, t: typedesc[T]): string =
   result.removeSuffix(",\n")
   result.add "\n)"
 
-proc createTable*[T: ref object](db: Db, t: typedesc[T]) =
-  ## Creates a table, errors out if it already exists.
-  db.query(db.createTableStatement(t))
-
 proc checkTable*[T: ref object](db: Db, t: typedesc[T]) =
   ## Checks to see if table matches the object.
   ## And recommends to create whole table or alter it.
@@ -275,7 +279,7 @@ proc checkTable*[T: ref object](db: Db, t: typedesc[T]) =
     when defined(debbyYOLO):
       db.createTable(T)
     else:
-      issues.add "Table " & T.tableNameQuoted & " does not exist."
+      issues.add "Table " & T.tableName & " does not exist."
       issues.add "Create it with:"
       issues.add db.createTableStatement(t)
   else:
@@ -306,11 +310,11 @@ WHERE
           # delete old table
           # rename new table
       else:
-        let addFieldStatement = "ALTER TABLE " & T.tableNameQuoted & " ADD COLUMN " & fieldName.toSnakeCase & " "  & sqlType
+        let addFieldStatement = "ALTER TABLE " & T.tableName & " ADD COLUMN " & fieldName.toSnakeCase & " "  & sqlType
         if defined(debbyYOLO):
           db.query(addFieldStatement)
         else:
-          issues.add "Field " & T.tableNameQuoted & "." & fieldName & " is missing"
+          issues.add "Field " & T.tableName & "." & fieldName & " is missing"
           issues.add "Add it with:"
           issues.add addFieldStatement
 
@@ -320,6 +324,7 @@ WHERE
 
 proc insert*[T: ref object](db: Db, obj: T) =
   ## Inserts the object into the database.
+  ## Reads the ID of the inserted ref object back.
   for row in db.insertInner(obj, " RETURNING id"):
     obj.id = row[0].parseInt()
 
@@ -329,7 +334,9 @@ proc query*[T](
   query: string,
   args: varargs[string, `$`]
 ): seq[T] =
-
+  ## Query the table, and returns results as a seq of ref objects.
+  ## This will match fields to column names.
+  ## This will also use JSONy for complex fields.
   let tmp = T()
 
   var
@@ -368,26 +375,9 @@ proc query*[T](
   finally:
     PQclear(statement)
 
-proc createIndexStatement*[T: ref object](
-  db: Db,
-  t: typedesc[T],
-  ifNotExists: bool,
-  params: varargs[string]
-): string =
-  result.add "CREATE INDEX "
-  if ifNotExists:
-    result.add "IF NOT EXISTS "
-  result.add "idx_"
-  result.add T.tableName
-  result.add "_"
-  result.add params.join("_")
-  result.add " ON "
-  result.add T.tableNameQuoted
-  result.add "("
-  result.add params.join(", ")
-  result.add ")"
-
 template withTransaction*(db: Db, body) =
+  ## Transaction block.
+
   # Start a transaction
   discard db.query("BEGIN;")
 
@@ -401,6 +391,7 @@ template withTransaction*(db: Db, body) =
     raise e
 
 proc sqlDumpHook*(data: Bytes): string =
+  ## Postgres-specific dump hook for binary data.
   let hexChars = "0123456789abcdef"
   var hexStr = "\\x"
   for ch in data.string:
@@ -409,18 +400,8 @@ proc sqlDumpHook*(data: Bytes): string =
     hexStr.add hexChars[code and 0x0F]  # Modulo operation with 16
   return hexStr
 
-proc hexNibble(ch: char): int =
-  case ch:
-  of '0'..'9':
-    return ch.ord - '0'.ord
-  of 'a'..'f':
-    return ch.ord - 'a'.ord + 10
-  of 'A'..'F':
-    return ch.ord - 'A'.ord + 10
-  else:
-    raise newException(DbError, "Invalid hexadecimal digit: " & $ch)
-
 proc sqlParseHook*(data: string, v: var Bytes) =
+  ## Postgres-specific parse hook for binary data.
   if not (data.len >= 2 and data[0] == '\\' and data[1] == 'x'):
     raise newException(DbError, "Invalid binary representation" )
   var buffer = ""
