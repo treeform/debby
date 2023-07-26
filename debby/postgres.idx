@@ -39,7 +39,7 @@ PQgetvalue	debby/postgres.html#PQgetvalue,Result,int32,int32	postgres: PQgetvalu
 PQfname	debby/postgres.html#PQfname,Result,int32	postgres: PQfname(res: Result; field_num: int32): cstring	
 dbError	debby/postgres.html#dbError,Db	postgres: dbError(db: Db)	
 query	debby/postgres.html#query,Db,string,varargs[string,]	postgres: query(db: Db; query: string; args: varargs[string, `$`]): seq[Row]	
-openDatabase	debby/postgres.html#openDatabase,string,string,string,string,string	postgres: openDatabase(host, port, user, password, database: string): Db	
+openDatabase	debby/postgres.html#openDatabase,string,string,string,string,string	postgres: openDatabase(host, user, password, database: string; port = &quot;&quot;): Db	
 close	debby/postgres.html#close,Db	postgres: close(db: Db)	
 tableExists	debby/postgres.html#tableExists,Db,typedesc[T]	postgres: tableExists[T](db: Db; t: typedesc[T]): bool	
 createIndexStatement	debby/postgres.html#createIndexStatement,Db,typedesc[T],bool,varargs[string]	postgres: createIndexStatement[T: ref object](db: Db; t: typedesc[T]; ifNotExists: bool;\n                                    params: varargs[string]): string	
