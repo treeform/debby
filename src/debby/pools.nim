@@ -1,7 +1,9 @@
-when not compileOption("threads"):
-  {.error: "Using --threads:on is required with debby pools.".}
-when not defined(gcArc) and not defined(gcOrc):
-  {.error: "Using --mm:arc or --mm:orc is required with debby pools.".}
+
+when not defined(nimdoc):
+  when not compileOption("threads"):
+    {.error: "Using --threads:on is required with debby pools.".}
+  when not defined(gcArc) and not defined(gcOrc):
+    {.error: "Using --mm:arc or --mm:orc is required with debby pools.".}
 
 import std/locks, std/random, common
 
