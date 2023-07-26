@@ -1,7 +1,7 @@
 import jsony, std/typetraits, std/strutils, std/macros, std/sets, std/strformat
 
 type
-  Db* = pointer  ## Generic database pointer.
+  Db* = distinct pointer  ## Generic database pointer.
   DbError* = object of IOError ## Debby error.
   Row* = seq[string] ## Debby Row type .. just a seq of strings.
   Bytes* = distinct string ## Debby's binary datatype. Use this if your data contains nulls or non-utf8 bytes.

@@ -65,3 +65,53 @@ block:
     doAssert counter.number == threads.len * numTimes
 
   pool.close()
+
+block:
+  let pool = newPool()
+  pool.add openDatabase(
+    host = "localhost",
+    user = "testuser",
+    password = "test",
+    database = "test"
+  )
+
+  # Test with basic object
+  type Auto = ref object
+    id: int
+    make: string
+    model: string
+    year: int
+
+  var vintageSportsCars = @[
+    Auto(make: "Chevrolet", model: "Camaro Z28", year: 1970),
+    Auto(make: "Porsche", model: "911 Carrera RS", year: 1973),
+    Auto(make: "Lamborghini", model: "Countach", year: 1974),
+    Auto(make: "Ferrari", model: "308 GTS", year: 1977),
+    Auto(make: "Aston Martin", model: "V8 Vantage", year: 1977),
+    Auto(make: "Datsun", model: "280ZX", year: 1980),
+    Auto(make: "Ferrari", model: "Testarossa", year: 1984),
+    Auto(make: "BMW", model: "M3", year: 1986),
+    Auto(make: "Mazda", model: "RX-7", year: 1993),
+    Auto(make: "Toyota", model: "Supra", year: 1998)
+  ]
+
+  pool.dropTableIfExists(Auto)
+  pool.checkTable(Auto)
+  pool.insert(vintageSportsCars)
+  pool.update(vintageSportsCars)
+  pool.upsert(vintageSportsCars)
+  pool.delete(vintageSportsCars)
+
+  let cars = pool.filter(Auto)
+  doAssert cars.len == 0
+
+  var sportsCar = Auto(make: "Jeep", model: "Wangler Sahara", year: 1993)
+  pool.insert(sportsCar)
+  pool.update(sportsCar)
+  pool.upsert(sportsCar)
+  pool.delete(sportsCar)
+
+  let cars2 = pool.filter(Auto, it.year > 1990)
+  doAssert cars2.len == 0
+
+  pool.close()

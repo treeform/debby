@@ -31,7 +31,7 @@ proc mysql_real_connect*(
   port: cuint,
   unix_socket: cstring,
   clientflag: int
-): DB
+): int
 
 proc mysql_close*(sock: DB)
 
@@ -144,7 +144,7 @@ proc openDatabase*(
 ): DB =
   ## Opens a database connection.
   var db = mysql_init(nil)
-  if db == nil:
+  if cast[pointer](db) == nil:
     dbError("could not open database connection")
 
   if mysql_real_connect(
@@ -156,7 +156,7 @@ proc openDatabase*(
     port.cuint,
     nil,
     0
-  ) == nil:
+  ) == 0:
     dbError(db)
 
   db.query("SET sql_mode='ANSI_QUOTES'")

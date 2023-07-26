@@ -58,13 +58,92 @@ template withDb*(pool: Pool, body: untyped) =
     let db {.inject.} = pool.borrow()
     try:
       body
+      discard
     finally:
       pool.add(db)
 
-proc get*[T, V](
-  pool: Pool,
-  t: typedesc[T],
-  id: V
-): T =
+proc dropTable*[T](pool: Pool, t: typedesc[T]) =
+  ## Removes tables, errors out if it does not exist.
+  pool.withDb:
+    db.dropTable(t)
+
+proc dropTableIfExists*[T](pool: Pool, t: typedesc[T]) =
+  ## Removes tables if it exists.
+  pool.withDb:
+    db.dropTableIfExists(t)
+
+proc createTable*[T: ref object](pool: Pool, t: typedesc[T]) =
+  ## Creates a table, errors out if it already exists.
+  pool.withDb:
+    db.createTable(t)
+
+template checkTable*[T: ref object](pool: Pool, t: typedesc[T]) =
+  ## Checks to see if table matches the object.
+  ## And recommends to create whole table or alter it.
+  pool.withDb:
+    db.checkTable(t)
+
+proc get*[T, V](pool: Pool, t: typedesc[T], id: V): T =
+  ## Gets the object by id.
   pool.withDb:
     return db.get(t, id)
+
+proc update*[T: ref object](pool: Pool, obj: T) =
+  ## Updates the row that corresponds to the object in the database.
+  ## Makes sure the obj.id is set.
+  pool.withDb:
+    db.update(obj)
+
+template update*[T: ref object](pool: Pool, objs: seq[T]) =
+  ## Updates a seq of objects into the database.
+  pool.withDb:
+    db.update(objs)
+
+proc delete*[T: ref object](pool: Pool, obj: T) =
+  ## Deletes the row that corresponds to the object from the data
+  ## base. Makes sure the obj.id is set.
+  pool.withDb:
+    db.delete(obj)
+
+template delete*[T: ref object](pool: Pool, objs: seq[T]) =
+  ## Deletes a seq of objects from the database.
+  pool.withDb:
+    db.delete(objs)
+
+template insert*[T: ref object](pool: Pool, obj: T) =
+  ## Inserts the object into the database.
+  ## Reads the ID of the inserted ref object back.
+  pool.withDb:
+    db.insert(obj)
+
+template insert*[T: ref object](pool: Pool, objs: seq[T]) =
+  ## Inserts a seq of objects into the database.
+  pool.withDb:
+    db.insert(objs)
+
+template upsert*[T: ref object](pool: Pool, obj: T) =
+  ## Either updates or inserts a ref object into the database.
+  ## Will read the inserted id back.
+  pool.withDb:
+    db.upsert(obj)
+
+template upsert*[T: ref object](pool: Pool, objs: seq[T]) =
+  ## Either updates or inserts a seq of object into the database.
+  ## Will read the inserted id back for each object.
+  pool.withDb:
+    db.upsert(objs)
+
+template filter*[T: ref object](pool: Pool, t: typedesc[T], expression: untyped): untyped =
+  ## Filters type's table with a Nim like filter expression.
+  ## db.filter(Auto, it.year > 1990)
+  ## db.filter(Auto, it.make == "Ferrari" or it.make == "Lamborghini")
+  ## db.filter(Auto, it.year >= startYear and it.year < endYear)
+  var tmp: seq[T]
+  pool.withDb:
+    tmp = db.filter(t, expression)
+  tmp
+
+proc filter*[T](pool: Pool, t: typedesc[T]): seq[T] =
+  ## Filter without a filter clause just returns everything.
+  pool.withDb:
+    return db.filter(t)

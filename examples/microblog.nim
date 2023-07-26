@@ -21,6 +21,7 @@ type Post = ref object
 
 # In order to use a pool, call `withDb:`, this will inject a `db` variable so
 # that you can query a db. It will return the db back to the pool after.
+# This is great if you are going to be making many database operations
 pool.withDb:
   if not db.tableExists(Post):
     # When running this for the first time, it will create the table
@@ -40,24 +41,25 @@ pool.withDb:
       postDate: "yesterday",
       body: "This is how to create a second post"
     ))
-  else:
-    # Its always a good idea to check if your tables in the db match the
-    # nim objects. If they don't match you will see an exception.
-    db.checkTable(Post)
+
+# But you can also use "one-shot" methods on the pool.
+# They will borrow a db from the pool and put it back.
+pool.checkTable(Post)
+# This is not performant if you are making several queries.
+# And will not work with transactions.
 
 proc indexHandler(request: Request) =
-  pool.withDb:
-    # Generate the HTML for index.html page.
-    var x = ""
-    x.add "<h1>Micro Blog</h1>"
-    x.add "<ul>"
-    for post in db.filter(Post):
-      x.add &"<li><a href='/posts/{post.id}'>{post.title}</a></li>"
-    x.add "</ul>"
+  # Generate the HTML for index.html page.
+  var x = ""
+  x.add "<h1>Micro Blog</h1>"
+  x.add "<ul>"
+  for post in pool.filter(Post):
+    x.add &"<li><a href='/posts/{post.id}'>{post.title}</a></li>"
+  x.add "</ul>"
 
-    var headers: HttpHeaders
-    headers["Content-Type"] = "text/html"
-    request.respond(200, headers, x)
+  var headers: HttpHeaders
+  headers["Content-Type"] = "text/html"
+  request.respond(200, headers, x)
 
 proc postHandler(request: Request) =
   # Generate the HTML for /posts/123 page.
