@@ -1,0 +1,21 @@
+Pool	debby/pools.html#Pool	pools: Pool	
+newPool	debby/pools.html#newPool	pools: newPool(): Pool	
+borrow	debby/pools.html#borrow,Pool	pools: borrow(pool: Pool): Db	
+add	debby/pools.html#add,Pool,Db	pools: add(pool: Pool; t: Db)	
+close	debby/pools.html#close.t,Pool	pools: close(pool: Pool)	
+withDb	debby/pools.html#withDb.t,Pool,untyped	pools: withDb(pool: Pool; body: untyped)	
+dropTable	debby/pools.html#dropTable,Pool,typedesc[T]	pools: dropTable[T](pool: Pool; t: typedesc[T])	
+dropTableIfExists	debby/pools.html#dropTableIfExists,Pool,typedesc[T]	pools: dropTableIfExists[T](pool: Pool; t: typedesc[T])	
+createTable	debby/pools.html#createTable,Pool,typedesc[T]	pools: createTable[T: ref object](pool: Pool; t: typedesc[T])	
+checkTable	debby/pools.html#checkTable.t,Pool,typedesc[T]	pools: checkTable[T: ref object](pool: Pool; t: typedesc[T])	
+get	debby/pools.html#get,Pool,typedesc[T],V	pools: get[T, V](pool: Pool; t: typedesc[T]; id: V): T	
+update	debby/pools.html#update,Pool,T	pools: update[T: ref object](pool: Pool; obj: T)	
+update	debby/pools.html#update.t,Pool,seq[T]	pools: update[T: ref object](pool: Pool; objs: seq[T])	
+delete	debby/pools.html#delete,Pool,T	pools: delete[T: ref object](pool: Pool; obj: T)	
+delete	debby/pools.html#delete.t,Pool,seq[T]	pools: delete[T: ref object](pool: Pool; objs: seq[T])	
+insert	debby/pools.html#insert.t,Pool,T	pools: insert[T: ref object](pool: Pool; obj: T)	
+insert	debby/pools.html#insert.t,Pool,seq[T]	pools: insert[T: ref object](pool: Pool; objs: seq[T])	
+upsert	debby/pools.html#upsert.t,Pool,T	pools: upsert[T: ref object](pool: Pool; obj: T)	
+upsert	debby/pools.html#upsert.t,Pool,seq[T]	pools: upsert[T: ref object](pool: Pool; objs: seq[T])	
+filter	debby/pools.html#filter.t,Pool,typedesc[T],untyped	pools: filter[T: ref object](pool: Pool; t: typedesc[T]; expression: untyped): untyped	
+filter	debby/pools.html#filter,Pool,typedesc[T]	pools: filter[T](pool: Pool; t: typedesc[T]): seq[T]	

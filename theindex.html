@@ -70,14 +70,24 @@ window.addEventListener('DOMContentLoaded', main);
 <div class="document" id="documentId">
   <div class="container">
     <h1 class="title">Index</h1>
-    Modules: <a href="debby/common.html">debby/common</a>, <a href="debby/mysql.html">debby/mysql</a>, <a href="debby/postgres.html">debby/postgres</a>, <a href="debby/sqlite.html">debby/sqlite</a>.<br/><p /><h2>API symbols</h2>
-<dl><dt><a name="Bytes" href="#Bytes"><span>Bytes:</span></a></dt><dd><ul class="simple">
+    Modules: <a href="debby/common.html">debby/common</a>, <a href="debby/mysql.html">debby/mysql</a>, <a href="debby/pools.html">debby/pools</a>, <a href="debby/postgres.html">debby/postgres</a>, <a href="debby/sqlite.html">debby/sqlite</a>.<br/><p /><h2>API symbols</h2>
+<dl><dt><a name="add" href="#add"><span>add:</span></a></dt><dd><ul class="simple">
+<li><a class="reference external"
+          data-doc-search-tag="pools: add(pool: Pool; t: Db)" href="debby/pools.html#add%2CPool%2CDb">pools: add(pool: Pool; t: Db)</a></li>
+          </ul></dd>
+<dt><a name="borrow" href="#borrow"><span>borrow:</span></a></dt><dd><ul class="simple">
+<li><a class="reference external"
+          data-doc-search-tag="pools: borrow(pool: Pool): Db" href="debby/pools.html#borrow%2CPool">pools: borrow(pool: Pool): Db</a></li>
+          </ul></dd>
+<dt><a name="Bytes" href="#Bytes"><span>Bytes:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
           data-doc-search-tag="common: Bytes" href="debby/common.html#Bytes">common: Bytes</a></li>
           </ul></dd>
 <dt><a name="checkTable" href="#checkTable"><span>checkTable:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
           data-doc-search-tag="mysql: checkTable[T: ref object](db: Db; t: typedesc[T])" href="debby/mysql.html#checkTable%2CDb%2Ctypedesc%5BT%5D">mysql: checkTable[T: ref object](db: Db; t: typedesc[T])</a></li>
+          <li><a class="reference external"
+          data-doc-search-tag="pools: checkTable[T: ref object](pool: Pool; t: typedesc[T])" href="debby/pools.html#checkTable.t%2CPool%2Ctypedesc%5BT%5D">pools: checkTable[T: ref object](pool: Pool; t: typedesc[T])</a></li>
           <li><a class="reference external"
           data-doc-search-tag="postgres: checkTable[T: ref object](db: Db; t: typedesc[T])" href="debby/postgres.html#checkTable%2CDb%2Ctypedesc%5BT%5D">postgres: checkTable[T: ref object](db: Db; t: typedesc[T])</a></li>
           <li><a class="reference external"
@@ -86,6 +96,8 @@ window.addEventListener('DOMContentLoaded', main);
 <dt><a name="close" href="#close"><span>close:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
           data-doc-search-tag="mysql: close(db: Db)" href="debby/mysql.html#close%2CDb">mysql: close(db: Db)</a></li>
+          <li><a class="reference external"
+          data-doc-search-tag="pools: close(pool: Pool)" href="debby/pools.html#close.t%2CPool">pools: close(pool: Pool)</a></li>
           <li><a class="reference external"
           data-doc-search-tag="postgres: close(db: Db)" href="debby/postgres.html#close%2CDb">postgres: close(db: Db)</a></li>
           <li><a class="reference external"
@@ -174,6 +186,8 @@ window.addEventListener('DOMContentLoaded', main);
 <dt><a name="createTable" href="#createTable"><span>createTable:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
           data-doc-search-tag="common: createTable[T: ref object](db: Db; t: typedesc[T])" href="debby/common.html#createTable%2CDb%2Ctypedesc%5BT%5D">common: createTable[T: ref object](db: Db; t: typedesc[T])</a></li>
+          <li><a class="reference external"
+          data-doc-search-tag="pools: createTable[T: ref object](pool: Pool; t: typedesc[T])" href="debby/pools.html#createTable%2CPool%2Ctypedesc%5BT%5D">pools: createTable[T: ref object](pool: Pool; t: typedesc[T])</a></li>
           </ul></dd>
 <dt><a name="createTableStatement" href="#createTableStatement"><span>createTableStatement:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
@@ -206,14 +220,22 @@ window.addEventListener('DOMContentLoaded', main);
           data-doc-search-tag="common: delete[T: ref object](db: Db; obj: T)" href="debby/common.html#delete%2CDb%2CT">common: delete[T: ref object](db: Db; obj: T)</a></li>
           <li><a class="reference external"
           data-doc-search-tag="common: delete[T: ref object](db: Db; objs: seq[T])" href="debby/common.html#delete.t%2CDb%2Cseq%5BT%5D">common: delete[T: ref object](db: Db; objs: seq[T])</a></li>
+          <li><a class="reference external"
+          data-doc-search-tag="pools: delete[T: ref object](pool: Pool; obj: T)" href="debby/pools.html#delete%2CPool%2CT">pools: delete[T: ref object](pool: Pool; obj: T)</a></li>
+          <li><a class="reference external"
+          data-doc-search-tag="pools: delete[T: ref object](pool: Pool; objs: seq[T])" href="debby/pools.html#delete.t%2CPool%2Cseq%5BT%5D">pools: delete[T: ref object](pool: Pool; objs: seq[T])</a></li>
           </ul></dd>
 <dt><a name="dropTable" href="#dropTable"><span>dropTable:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
           data-doc-search-tag="common: dropTable[T](db: Db; t: typedesc[T])" href="debby/common.html#dropTable%2CDb%2Ctypedesc%5BT%5D">common: dropTable[T](db: Db; t: typedesc[T])</a></li>
+          <li><a class="reference external"
+          data-doc-search-tag="pools: dropTable[T](pool: Pool; t: typedesc[T])" href="debby/pools.html#dropTable%2CPool%2Ctypedesc%5BT%5D">pools: dropTable[T](pool: Pool; t: typedesc[T])</a></li>
           </ul></dd>
 <dt><a name="dropTableIfExists" href="#dropTableIfExists"><span>dropTableIfExists:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
           data-doc-search-tag="common: dropTableIfExists[T](db: Db; t: typedesc[T])" href="debby/common.html#dropTableIfExists%2CDb%2Ctypedesc%5BT%5D">common: dropTableIfExists[T](db: Db; t: typedesc[T])</a></li>
+          <li><a class="reference external"
+          data-doc-search-tag="pools: dropTableIfExists[T](pool: Pool; t: typedesc[T])" href="debby/pools.html#dropTableIfExists%2CPool%2Ctypedesc%5BT%5D">pools: dropTableIfExists[T](pool: Pool; t: typedesc[T])</a></li>
           </ul></dd>
 <dt><a name="ExecStatusType" href="#ExecStatusType"><span>ExecStatusType:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
@@ -228,10 +250,16 @@ window.addEventListener('DOMContentLoaded', main);
           data-doc-search-tag="common: filter[T](db: Db; t: typedesc[T]): seq[T]" href="debby/common.html#filter%2CDb%2Ctypedesc%5BT%5D">common: filter[T](db: Db; t: typedesc[T]): seq[T]</a></li>
           <li><a class="reference external"
           data-doc-search-tag="common: filter[T: ref object](db: Db; t: typedesc[T]; expression: untyped): untyped" href="debby/common.html#filter.t%2CDb%2Ctypedesc%5BT%5D%2Cuntyped">common: filter[T: ref object](db: Db; t: typedesc[T]; expression: untyped): untyped</a></li>
+          <li><a class="reference external"
+          data-doc-search-tag="pools: filter[T](pool: Pool; t: typedesc[T]): seq[T]" href="debby/pools.html#filter%2CPool%2Ctypedesc%5BT%5D">pools: filter[T](pool: Pool; t: typedesc[T]): seq[T]</a></li>
+          <li><a class="reference external"
+          data-doc-search-tag="pools: filter[T: ref object](pool: Pool; t: typedesc[T]; expression: untyped): untyped" href="debby/pools.html#filter.t%2CPool%2Ctypedesc%5BT%5D%2Cuntyped">pools: filter[T: ref object](pool: Pool; t: typedesc[T]; expression: untyped): untyped</a></li>
           </ul></dd>
 <dt><a name="get" href="#get"><span>get:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
           data-doc-search-tag="common: get[T, V](db: Db; t: typedesc[T]; id: V): T" href="debby/common.html#get%2CDb%2Ctypedesc%5BT%5D%2CV">common: get[T, V](db: Db; t: typedesc[T]; id: V): T</a></li>
+          <li><a class="reference external"
+          data-doc-search-tag="pools: get[T, V](pool: Pool; t: typedesc[T]; id: V): T" href="debby/pools.html#get%2CPool%2Ctypedesc%5BT%5D%2CV">pools: get[T, V](pool: Pool; t: typedesc[T]; id: V): T</a></li>
           </ul></dd>
 <dt><a name="hexNibble" href="#hexNibble"><span>hexNibble:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
@@ -248,6 +276,10 @@ window.addEventListener('DOMContentLoaded', main);
           data-doc-search-tag="common: insert[T: ref object](db: Db; objs: seq[T])" href="debby/common.html#insert.t%2CDb%2Cseq%5BT%5D">common: insert[T: ref object](db: Db; objs: seq[T])</a></li>
           <li><a class="reference external"
           data-doc-search-tag="mysql: insert[T: ref object](db: Db; obj: T)" href="debby/mysql.html#insert%2CDb%2CT">mysql: insert[T: ref object](db: Db; obj: T)</a></li>
+          <li><a class="reference external"
+          data-doc-search-tag="pools: insert[T: ref object](pool: Pool; objs: seq[T])" href="debby/pools.html#insert.t%2CPool%2Cseq%5BT%5D">pools: insert[T: ref object](pool: Pool; objs: seq[T])</a></li>
+          <li><a class="reference external"
+          data-doc-search-tag="pools: insert[T: ref object](pool: Pool; obj: T)" href="debby/pools.html#insert.t%2CPool%2CT">pools: insert[T: ref object](pool: Pool; obj: T)</a></li>
           <li><a class="reference external"
           data-doc-search-tag="postgres: insert[T: ref object](db: Db; obj: T)" href="debby/postgres.html#insert%2CDb%2CT">postgres: insert[T: ref object](db: Db; obj: T)</a></li>
           <li><a class="reference external"
@@ -313,6 +345,10 @@ window.addEventListener('DOMContentLoaded', main);
 <li><a class="reference external"
           data-doc-search-tag="mysql: mysql_store_result(MySQL: Db): PRES" href="debby/mysql.html#mysql_store_result%2CDb">mysql: mysql_store_result(MySQL: Db): PRES</a></li>
           </ul></dd>
+<dt><a name="newPool" href="#newPool"><span>newPool:</span></a></dt><dd><ul class="simple">
+<li><a class="reference external"
+          data-doc-search-tag="pools: newPool(): Pool" href="debby/pools.html#newPool">pools: newPool(): Pool</a></li>
+          </ul></dd>
 <dt><a name="openDatabase" href="#openDatabase"><span>openDatabase:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
           data-doc-search-tag="mysql: openDatabase(database: string; host = &quot;localhost&quot;; port = 3306; user = &quot;root&quot;;
@@ -366,6 +402,10 @@ window.addEventListener('DOMContentLoaded', main);
 <dt><a name="PGRES_TUPLES_OK" href="#PGRES_TUPLES_OK"><span>PGRES_TUPLES_OK:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
           data-doc-search-tag="ExecStatusType.PGRES_TUPLES_OK" href="debby/postgres.html#PGRES_TUPLES_OK">ExecStatusType.PGRES_TUPLES_OK</a></li>
+          </ul></dd>
+<dt><a name="Pool" href="#Pool"><span>Pool:</span></a></dt><dd><ul class="simple">
+<li><a class="reference external"
+          data-doc-search-tag="pools: Pool" href="debby/pools.html#Pool">pools: Pool</a></li>
           </ul></dd>
 <dt><a name="PQclear" href="#PQclear"><span>PQclear:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
@@ -580,16 +620,28 @@ window.addEventListener('DOMContentLoaded', main);
           data-doc-search-tag="common: update[T: ref object](db: Db; obj: T)" href="debby/common.html#update%2CDb%2CT">common: update[T: ref object](db: Db; obj: T)</a></li>
           <li><a class="reference external"
           data-doc-search-tag="common: update[T: ref object](db: Db; objs: seq[T])" href="debby/common.html#update.t%2CDb%2Cseq%5BT%5D">common: update[T: ref object](db: Db; objs: seq[T])</a></li>
+          <li><a class="reference external"
+          data-doc-search-tag="pools: update[T: ref object](pool: Pool; obj: T)" href="debby/pools.html#update%2CPool%2CT">pools: update[T: ref object](pool: Pool; obj: T)</a></li>
+          <li><a class="reference external"
+          data-doc-search-tag="pools: update[T: ref object](pool: Pool; objs: seq[T])" href="debby/pools.html#update.t%2CPool%2Cseq%5BT%5D">pools: update[T: ref object](pool: Pool; objs: seq[T])</a></li>
           </ul></dd>
 <dt><a name="upsert" href="#upsert"><span>upsert:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
           data-doc-search-tag="common: upsert[T: ref object](db: Db; objs: seq[T])" href="debby/common.html#upsert.t%2CDb%2Cseq%5BT%5D">common: upsert[T: ref object](db: Db; objs: seq[T])</a></li>
           <li><a class="reference external"
           data-doc-search-tag="common: upsert[T: ref object](db: Db; obj: T)" href="debby/common.html#upsert.t%2CDb%2CT">common: upsert[T: ref object](db: Db; obj: T)</a></li>
+          <li><a class="reference external"
+          data-doc-search-tag="pools: upsert[T: ref object](pool: Pool; objs: seq[T])" href="debby/pools.html#upsert.t%2CPool%2Cseq%5BT%5D">pools: upsert[T: ref object](pool: Pool; objs: seq[T])</a></li>
+          <li><a class="reference external"
+          data-doc-search-tag="pools: upsert[T: ref object](pool: Pool; obj: T)" href="debby/pools.html#upsert.t%2CPool%2CT">pools: upsert[T: ref object](pool: Pool; obj: T)</a></li>
           </ul></dd>
 <dt><a name="validateObj" href="#validateObj"><span>validateObj:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
           data-doc-search-tag="common: validateObj[T: ref object](t: typedesc[T])" href="debby/common.html#validateObj%2Ctypedesc%5BT%5D">common: validateObj[T: ref object](t: typedesc[T])</a></li>
+          </ul></dd>
+<dt><a name="withDb" href="#withDb"><span>withDb:</span></a></dt><dd><ul class="simple">
+<li><a class="reference external"
+          data-doc-search-tag="pools: withDb(pool: Pool; body: untyped)" href="debby/pools.html#withDb.t%2CPool%2Cuntyped">pools: withDb(pool: Pool; body: untyped)</a></li>
           </ul></dd>
 <dt><a name="withTransaction" href="#withTransaction"><span>withTransaction:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
@@ -604,7 +656,7 @@ window.addEventListener('DOMContentLoaded', main);
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br/>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2023-07-26 01:26:20 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2023-07-26 01:29:43 UTC</small>
       </div>
     </div>
   </div>
