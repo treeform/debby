@@ -1,6 +1,11 @@
 import debby/postgres
 
-let db = openDatabase("localhost", "", "testuser", "test", "test")
+let db = openDatabase(
+  host = "localhost",
+  user = "testuser",
+  password = "test",
+  database = "test"
+)
 
 include common_test
 

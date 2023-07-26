@@ -198,7 +198,7 @@ proc query*(
   let res = prepareQuery(db, query, args)
   result = getAllRows(res)
 
-proc openDatabase*(host, port, user, password, database: string): Db =
+proc openDatabase*(host, user, password, database: string, port = ""): Db =
   ## Opens a database connection.
   result = PQsetdbLogin(
     host.cstring,
