@@ -269,3 +269,47 @@ Or compile --d:debbyYOLO to do this automatically
 ```
 
 Yes using `--d:debbyYOLO` can do this automatically, but it might **not** be what you want! Always be vigilant.
+
+## Pools
+
+If you are going to use Debby in threaded servers like [Mummy](https://github.com/guzba/mummy), it's best to use pools.
+
+Using `--mm:arc` or `--mm:orc` as well as `--threads:on` is required with Debby pools (and Mummy). First, import Debby pools and create a pool.
+
+```nim
+import debby/pools
+
+let pool = newPool()
+# You need to add as many connections as needed.
+# Many databases only allow a limited number of connections.
+for i in 0 ..< 10:
+  pool.add openDatabase(
+    host = "localhost",
+    user = "testuser",
+    password = "test",
+    database = "test"
+  )
+```
+
+Then you can use the pool as if it was a database object in one-shot mode:
+
+```
+pool.get(...)
+pool.filter(...)
+pool.insert(...)
+pool.update(...)
+pool.upsert(...)
+pool.delete(...)
+```
+
+However, it is more efficient to borrow a database object from the pool and use the same object to make many queries:
+
+```
+pool.withDb:
+  db.get(...)
+  db.filter(...)
+  db.insert(...)
+  db.update(...)
+  db.upsert(...)
+  db.delete(...)
+```
