@@ -2,7 +2,7 @@ FIELD	debby/mysql.html#FIELD	mysql: FIELD
 PFIELD	debby/mysql.html#PFIELD	mysql: PFIELD	
 mysql_init	debby/mysql.html#mysql_init,Db	mysql: mysql_init(MySQL: Db): Db	
 mysql_error	debby/mysql.html#mysql_error,Db	mysql: mysql_error(MySQL: Db): cstring	
-mysql_real_connect	debby/mysql.html#mysql_real_connect,Db,cstring,cstring,cstring,cstring,cuint,cstring,int	mysql: mysql_real_connect(MySQL: Db; host: cstring; user: cstring; passwd: cstring;\n                   db: cstring; port: cuint; unix_socket: cstring;\n                   clientflag: int): Db	
+mysql_real_connect	debby/mysql.html#mysql_real_connect,Db,cstring,cstring,cstring,cstring,cuint,cstring,int	mysql: mysql_real_connect(MySQL: Db; host: cstring; user: cstring; passwd: cstring;\n                   db: cstring; port: cuint; unix_socket: cstring;\n                   clientflag: int): int	
 mysql_close	debby/mysql.html#mysql_close,Db	mysql: mysql_close(sock: Db)	
 mysql_query	debby/mysql.html#mysql_query,Db,cstring	mysql: mysql_query(MySQL: Db; q: cstring): cint	
 mysql_store_result	debby/mysql.html#mysql_store_result,Db	mysql: mysql_store_result(MySQL: Db): PRES	
