@@ -328,3 +328,12 @@ template withTransaction*(db: Db, body) =
   except Exception as e:
     discard db.query("ROLLBACK;")
     raise e
+
+proc sqlDumpHook*(v: bool): string =
+  ## SQL dump hook to convert from bool.
+  if v: "1"
+  else: "0"
+
+proc sqlParseHook*(data: string, v: var bool) =
+  ## SQL parse hook to convert to bool.
+  v = data == "1"

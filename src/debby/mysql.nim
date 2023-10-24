@@ -350,6 +350,15 @@ template withTransaction*(db: Db, body) =
     discard db.query("ROLLBACK;")
     raise e
 
+proc sqlDumpHook*(v: bool): string =
+  ## SQL dump hook to convert from bool.
+  if v: "1"
+  else: "0"
+
+proc sqlParseHook*(data: string, v: var bool) =
+  ## SQL parse hook to convert to bool.
+  v = data == "1"
+
 proc sqlDumpHook*(data: Bytes): string =
   ## MySQL-specific dump hook for binary data.
   let hexChars = "0123456789abcdef"

@@ -138,7 +138,7 @@ block:
   db.upsert(vintageSportsCars)
   doAssert db.filter(Auto).len == 11
 
-  let jeeps = db.filter(Auto, not(it.make == "Jeep" and it.model == "Wrangler"))
+  let jeeps = db.filter(Auto, it.make == "Jeep" and it.model == "Wrangler")
   doAssert jeeps[0].truck == true
 
 block:
