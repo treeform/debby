@@ -1,4 +1,4 @@
-version     = "0.0.1"
+version     = "0.1.0"
 author      = "Andre von Houck"
 description = "An Opinionated ORM"
 license     = "MIT"
