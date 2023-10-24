@@ -143,7 +143,7 @@ proc openDatabase*(
     password = ""
 ): DB =
   ## Opens a database connection.
-  var db = mysql_init(nil)
+  var db = mysql_init(cast[Db](nil))
   if cast[pointer](db) == nil:
     dbError("could not open database connection")
 
