@@ -390,6 +390,15 @@ template withTransaction*(db: Db, body) =
     discard db.query("ROLLBACK;")
     raise e
 
+proc sqlDumpHook*(v: bool): string =
+  ## SQL dump hook to convert from bool.
+  if v: "t"
+  else: "f"
+
+proc sqlParseHook*(data: string, v: var bool) =
+  ## SQL parse hook to convert to bool.
+  v = data == "t"
+
 proc sqlDumpHook*(data: Bytes): string =
   ## Postgres-specific dump hook for binary data.
   let hexChars = "0123456789abcdef"

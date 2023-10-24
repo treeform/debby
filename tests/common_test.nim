@@ -30,6 +30,7 @@ type Auto = ref object
   make: string
   model: string
   year: int
+  truck: bool
 
 var vintageSportsCars = @[
   Auto(make: "Chevrolet", model: "Camaro Z28", year: 1970),
@@ -129,9 +130,16 @@ block:
 
 block:
   # Test upsert
-  vintageSportsCars.add Auto(make: "Jeep", model: "Wrangler", year: 1993)
+  vintageSportsCars.add Auto(
+    make: "Jeep",
+    model: "Wrangler",
+    year: 1993,
+    truck: true)
   db.upsert(vintageSportsCars)
   doAssert db.filter(Auto).len == 11
+
+  let jeeps = db.filter(Auto, it.make == "Jeep" and it.model == "Wrangler")
+  doAssert jeeps[0].truck == true
 
 block:
   # Test uint64 field as main field.

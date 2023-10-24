@@ -106,10 +106,6 @@ proc sqlParseHook*[T: SomeSignedInt](data: string, v: var T) =
   except:
     v = 0
 
-proc sqlParseHook*[T: bool](data: string, v: var T) =
-  ## SQL parse hook to convert to bool.
-  v = data == "t"
-
 proc sqlParseHook*[T: enum](data: string, v: var T) =
   ## SQL parse hook to convert to any enum.
   try:
