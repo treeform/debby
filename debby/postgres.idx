@@ -1,52 +1,58 @@
-Statement	debby/postgres.html#Statement	postgres: Statement	
-Result	debby/postgres.html#Result	postgres: Result	
-CONNECTION_OK	debby/postgres.html#CONNECTION_OK	ConnStatusType.CONNECTION_OK	
-CONNECTION_BAD	debby/postgres.html#CONNECTION_BAD	ConnStatusType.CONNECTION_BAD	
-CONNECTION_STARTED	debby/postgres.html#CONNECTION_STARTED	ConnStatusType.CONNECTION_STARTED	
-CONNECTION_MADE	debby/postgres.html#CONNECTION_MADE	ConnStatusType.CONNECTION_MADE	
-CONNECTION_AWAITING_RESPONSE	debby/postgres.html#CONNECTION_AWAITING_RESPONSE	ConnStatusType.CONNECTION_AWAITING_RESPONSE	
-CONNECTION_AUTH_OK	debby/postgres.html#CONNECTION_AUTH_OK	ConnStatusType.CONNECTION_AUTH_OK	
-CONNECTION_SETENV	debby/postgres.html#CONNECTION_SETENV	ConnStatusType.CONNECTION_SETENV	
-CONNECTION_SSL_STARTUP	debby/postgres.html#CONNECTION_SSL_STARTUP	ConnStatusType.CONNECTION_SSL_STARTUP	
-CONNECTION_NEEDED	debby/postgres.html#CONNECTION_NEEDED	ConnStatusType.CONNECTION_NEEDED	
-CONNECTION_CHECK_WRITABLE	debby/postgres.html#CONNECTION_CHECK_WRITABLE	ConnStatusType.CONNECTION_CHECK_WRITABLE	
-CONNECTION_CONSUME	debby/postgres.html#CONNECTION_CONSUME	ConnStatusType.CONNECTION_CONSUME	
-CONNECTION_GSS_STARTUP	debby/postgres.html#CONNECTION_GSS_STARTUP	ConnStatusType.CONNECTION_GSS_STARTUP	
-CONNECTION_CHECK_TARGET	debby/postgres.html#CONNECTION_CHECK_TARGET	ConnStatusType.CONNECTION_CHECK_TARGET	
-ConnStatusType	debby/postgres.html#ConnStatusType	postgres: ConnStatusType	
-PGRES_EMPTY_QUERY	debby/postgres.html#PGRES_EMPTY_QUERY	ExecStatusType.PGRES_EMPTY_QUERY	
-PGRES_COMMAND_OK	debby/postgres.html#PGRES_COMMAND_OK	ExecStatusType.PGRES_COMMAND_OK	
-PGRES_TUPLES_OK	debby/postgres.html#PGRES_TUPLES_OK	ExecStatusType.PGRES_TUPLES_OK	
-PGRES_COPY_OUT	debby/postgres.html#PGRES_COPY_OUT	ExecStatusType.PGRES_COPY_OUT	
-PGRES_COPY_IN	debby/postgres.html#PGRES_COPY_IN	ExecStatusType.PGRES_COPY_IN	
-PGRES_BAD_RESPONSE	debby/postgres.html#PGRES_BAD_RESPONSE	ExecStatusType.PGRES_BAD_RESPONSE	
-PGRES_NONFATAL_ERROR	debby/postgres.html#PGRES_NONFATAL_ERROR	ExecStatusType.PGRES_NONFATAL_ERROR	
-PGRES_FATAL_ERROR	debby/postgres.html#PGRES_FATAL_ERROR	ExecStatusType.PGRES_FATAL_ERROR	
-PGRES_COPY_BOTH	debby/postgres.html#PGRES_COPY_BOTH	ExecStatusType.PGRES_COPY_BOTH	
-PGRES_SINGLE_TUPLE	debby/postgres.html#PGRES_SINGLE_TUPLE	ExecStatusType.PGRES_SINGLE_TUPLE	
-ExecStatusType	debby/postgres.html#ExecStatusType	postgres: ExecStatusType	
-PQsetdbLogin	debby/postgres.html#PQsetdbLogin,cstring,cstring,cstring,cstring,cstring,cstring,cstring	postgres: PQsetdbLogin(pghost: cstring; pgport: cstring; pgoptions: cstring;\n             pgtty: cstring; dbName: cstring; login: cstring; pwd: cstring): Db	
-PQstatus	debby/postgres.html#PQstatus,Db	postgres: PQstatus(conn: Db): ConnStatusType	
-PQerrorMessage	debby/postgres.html#PQerrorMessage,Db	postgres: PQerrorMessage(conn: Db): cstring	
-PQfinish	debby/postgres.html#PQfinish,Db	postgres: PQfinish(conn: Db)	
-PQexec	debby/postgres.html#PQexec,Db,cstring	postgres: PQexec(conn: Db; query: cstring): Result	
-PQexecParams	debby/postgres.html#PQexecParams,Db,cstring,int32,ptr.int32,cstringArray,ptr.int32,ptr.int32,int32	postgres: PQexecParams(conn: Db; command: cstring; nParams: int32; paramTypes: ptr int32;\n             paramValues: cstringArray; paramLengths: ptr int32;\n             paramFormats: ptr int32; resultFormat: int32): Result	
-PQresultStatus	debby/postgres.html#PQresultStatus,Result	postgres: PQresultStatus(res: Result): ExecStatusType	
-PQntuples	debby/postgres.html#PQntuples,Result	postgres: PQntuples(res: Result): int32	
-PQnfields	debby/postgres.html#PQnfields,Result	postgres: PQnfields(res: Result): int32	
-PQclear	debby/postgres.html#PQclear,Result	postgres: PQclear(res: Result)	
-PQgetvalue	debby/postgres.html#PQgetvalue,Result,int32,int32	postgres: PQgetvalue(res: Result; tup_num: int32; field_num: int32): cstring	
-PQfname	debby/postgres.html#PQfname,Result,int32	postgres: PQfname(res: Result; field_num: int32): cstring	
-dbError	debby/postgres.html#dbError,Db	postgres: dbError(db: Db)	
-query	debby/postgres.html#query,Db,string,varargs[string,]	postgres: query(db: Db; query: string; args: varargs[string, `$`]): seq[Row]	
-openDatabase	debby/postgres.html#openDatabase,string,string,string,string,string	postgres: openDatabase(host, user, password, database: string; port = &quot;&quot;): Db	
-close	debby/postgres.html#close,Db	postgres: close(db: Db)	
-tableExists	debby/postgres.html#tableExists,Db,typedesc[T]	postgres: tableExists[T](db: Db; t: typedesc[T]): bool	
-createIndexStatement	debby/postgres.html#createIndexStatement,Db,typedesc[T],bool,varargs[string]	postgres: createIndexStatement[T: ref object](db: Db; t: typedesc[T]; ifNotExists: bool;\n                                    params: varargs[string]): string	
-createTableStatement	debby/postgres.html#createTableStatement,Db,typedesc[T]	postgres: createTableStatement[T: ref object](db: Db; t: typedesc[T]): string	
-checkTable	debby/postgres.html#checkTable,Db,typedesc[T]	postgres: checkTable[T: ref object](db: Db; t: typedesc[T])	
-insert	debby/postgres.html#insert,Db,T	postgres: insert[T: ref object](db: Db; obj: T)	
-query	debby/postgres.html#query,Db,typedesc[T],string,varargs[string,]	postgres: query[T](db: Db; t: typedesc[T]; query: string; args: varargs[string, `$`]): seq[\n    T]	
-withTransaction	debby/postgres.html#withTransaction.t,Db,	postgres: withTransaction(db: Db; body)	
-sqlDumpHook	debby/postgres.html#sqlDumpHook,Bytes	postgres: sqlDumpHook(data: Bytes): string	
-sqlParseHook	debby/postgres.html#sqlParseHook,string,Bytes	postgres: sqlParseHook(data: string; v: var Bytes)	
+nimTitle	postgres	debby/postgres.html	module src/debby/postgres		0
+nim	Statement	debby/postgres.html#Statement	type Statement		12
+nim	Result	debby/postgres.html#Result	type Result		13
+nim	CONNECTION_OK	debby/postgres.html#CONNECTION_OK	ConnStatusType.CONNECTION_OK		15
+nim	CONNECTION_BAD	debby/postgres.html#CONNECTION_BAD	ConnStatusType.CONNECTION_BAD		15
+nim	CONNECTION_STARTED	debby/postgres.html#CONNECTION_STARTED	ConnStatusType.CONNECTION_STARTED		15
+nim	CONNECTION_MADE	debby/postgres.html#CONNECTION_MADE	ConnStatusType.CONNECTION_MADE		15
+nim	CONNECTION_AWAITING_RESPONSE	debby/postgres.html#CONNECTION_AWAITING_RESPONSE	ConnStatusType.CONNECTION_AWAITING_RESPONSE		15
+nim	CONNECTION_AUTH_OK	debby/postgres.html#CONNECTION_AUTH_OK	ConnStatusType.CONNECTION_AUTH_OK		15
+nim	CONNECTION_SETENV	debby/postgres.html#CONNECTION_SETENV	ConnStatusType.CONNECTION_SETENV		15
+nim	CONNECTION_SSL_STARTUP	debby/postgres.html#CONNECTION_SSL_STARTUP	ConnStatusType.CONNECTION_SSL_STARTUP		15
+nim	CONNECTION_NEEDED	debby/postgres.html#CONNECTION_NEEDED	ConnStatusType.CONNECTION_NEEDED		15
+nim	CONNECTION_CHECK_WRITABLE	debby/postgres.html#CONNECTION_CHECK_WRITABLE	ConnStatusType.CONNECTION_CHECK_WRITABLE		15
+nim	CONNECTION_CONSUME	debby/postgres.html#CONNECTION_CONSUME	ConnStatusType.CONNECTION_CONSUME		15
+nim	CONNECTION_GSS_STARTUP	debby/postgres.html#CONNECTION_GSS_STARTUP	ConnStatusType.CONNECTION_GSS_STARTUP		15
+nim	CONNECTION_CHECK_TARGET	debby/postgres.html#CONNECTION_CHECK_TARGET	ConnStatusType.CONNECTION_CHECK_TARGET		15
+nim	ConnStatusType	debby/postgres.html#ConnStatusType	enum ConnStatusType		15
+nim	PGRES_EMPTY_QUERY	debby/postgres.html#PGRES_EMPTY_QUERY	ExecStatusType.PGRES_EMPTY_QUERY		21
+nim	PGRES_COMMAND_OK	debby/postgres.html#PGRES_COMMAND_OK	ExecStatusType.PGRES_COMMAND_OK		21
+nim	PGRES_TUPLES_OK	debby/postgres.html#PGRES_TUPLES_OK	ExecStatusType.PGRES_TUPLES_OK		21
+nim	PGRES_COPY_OUT	debby/postgres.html#PGRES_COPY_OUT	ExecStatusType.PGRES_COPY_OUT		21
+nim	PGRES_COPY_IN	debby/postgres.html#PGRES_COPY_IN	ExecStatusType.PGRES_COPY_IN		21
+nim	PGRES_BAD_RESPONSE	debby/postgres.html#PGRES_BAD_RESPONSE	ExecStatusType.PGRES_BAD_RESPONSE		21
+nim	PGRES_NONFATAL_ERROR	debby/postgres.html#PGRES_NONFATAL_ERROR	ExecStatusType.PGRES_NONFATAL_ERROR		21
+nim	PGRES_FATAL_ERROR	debby/postgres.html#PGRES_FATAL_ERROR	ExecStatusType.PGRES_FATAL_ERROR		21
+nim	PGRES_COPY_BOTH	debby/postgres.html#PGRES_COPY_BOTH	ExecStatusType.PGRES_COPY_BOTH		21
+nim	PGRES_SINGLE_TUPLE	debby/postgres.html#PGRES_SINGLE_TUPLE	ExecStatusType.PGRES_SINGLE_TUPLE		21
+nim	ExecStatusType	debby/postgres.html#ExecStatusType	enum ExecStatusType		21
+nim	PQsetdbLogin	debby/postgres.html#PQsetdbLogin,cstring,cstring,cstring,cstring,cstring,cstring,cstring	proc PQsetdbLogin(pghost: cstring; pgport: cstring; pgoptions: cstring;\n             pgtty: cstring; dbName: cstring; login: cstring; pwd: cstring): Db		28
+nim	PQstatus	debby/postgres.html#PQstatus,Db	proc PQstatus(conn: Db): ConnStatusType		38
+nim	PQerrorMessage	debby/postgres.html#PQerrorMessage,Db	proc PQerrorMessage(conn: Db): cstring		42
+nim	PQfinish	debby/postgres.html#PQfinish,Db	proc PQfinish(conn: Db)		46
+nim	PQexec	debby/postgres.html#PQexec,Db,cstring	proc PQexec(conn: Db; query: cstring): Result		50
+nim	PQexecParams	debby/postgres.html#PQexecParams,Db,cstring,int32,ptr.int32,cstringArray,ptr.int32,ptr.int32,int32	proc PQexecParams(conn: Db; command: cstring; nParams: int32; paramTypes: ptr int32;\n             paramValues: cstringArray; paramLengths: ptr int32;\n             paramFormats: ptr int32; resultFormat: int32): Result		55
+nim	PQresultStatus	debby/postgres.html#PQresultStatus,Result	proc PQresultStatus(res: Result): ExecStatusType		66
+nim	PQntuples	debby/postgres.html#PQntuples,Result	proc PQntuples(res: Result): int32		70
+nim	PQnfields	debby/postgres.html#PQnfields,Result	proc PQnfields(res: Result): int32		74
+nim	PQclear	debby/postgres.html#PQclear,Result	proc PQclear(res: Result)		78
+nim	PQgetvalue	debby/postgres.html#PQgetvalue,Result,int32,int32	proc PQgetvalue(res: Result; tup_num: int32; field_num: int32): cstring		82
+nim	PQfname	debby/postgres.html#PQfname,Result,int32	proc PQfname(res: Result; field_num: int32): cstring		88
+nim	dbError	debby/postgres.html#dbError,Db	proc dbError(db: Db)		95
+nim	query	debby/postgres.html#query,Db,string,varargs[string,]	proc query(db: Db; query: string; args: varargs[string, `$`]): seq[Row]		192
+nim	openDatabase	debby/postgres.html#openDatabase,string,string,string,string,string	proc openDatabase(host, user, password, database: string; port = ""): Db		201
+nim	close	debby/postgres.html#close,Db	proc close(db: Db)		215
+nim	tableExists	debby/postgres.html#tableExists,Db,typedesc[T]	proc tableExists[T](db: Db; t: typedesc[T]): bool		219
+nim	createIndexStatement	debby/postgres.html#createIndexStatement,Db,typedesc[T],bool,varargs[string]	proc createIndexStatement[T: ref object](db: Db; t: typedesc[T]; ifNotExists: bool;\n                                    params: varargs[string]): string		233
+nim	createTableStatement	debby/postgres.html#createTableStatement,Db,typedesc[T]	proc createTableStatement[T: ref object](db: Db; t: typedesc[T]): string		253
+nim	checkTable	debby/postgres.html#checkTable,Db,typedesc[T]	proc checkTable[T: ref object](db: Db; t: typedesc[T])		272
+nim	insert	debby/postgres.html#insert,Db,T	proc insert[T: ref object](db: Db; obj: T)		325
+nim	query	debby/postgres.html#query,Db,typedesc[T],string,varargs[string,]	proc query[T](db: Db; t: typedesc[T]; query: string; args: varargs[string, `$`]): seq[\n    T]		331
+nim	withTransaction	debby/postgres.html#withTransaction.t,Db,	template withTransaction(db: Db; body)		378
+nim	sqlDumpHook	debby/postgres.html#sqlDumpHook,bool	proc sqlDumpHook(v: bool): string		393
+nim	sqlParseHook	debby/postgres.html#sqlParseHook,string,bool	proc sqlParseHook(data: string; v: var bool)		398
+nim	sqlDumpHook	debby/postgres.html#sqlDumpHook,Bytes	proc sqlDumpHook(data: Bytes): string		402
+nim	sqlParseHook	debby/postgres.html#sqlParseHook,string,Bytes	proc sqlParseHook(data: string; v: var Bytes)		412
+nimgrp	query	debby/postgres.html#query-procs-all	proc		192
+nimgrp	sqldumphook	debby/postgres.html#sqlDumpHook-procs-all	proc		393
+nimgrp	sqlparsehook	debby/postgres.html#sqlParseHook-procs-all	proc		398

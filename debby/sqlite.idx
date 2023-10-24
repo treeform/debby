@@ -1,26 +1,30 @@
-SQLITE_OK	debby/sqlite.html#SQLITE_OK	sqlite: SQLITE_OK	
-SQLITE_ROW	debby/sqlite.html#SQLITE_ROW	sqlite: SQLITE_ROW	
-Statement	debby/sqlite.html#Statement	sqlite: Statement	
-sqlite3_errmsg	debby/sqlite.html#sqlite3_errmsg,Db	sqlite: sqlite3_errmsg(db: Db): cstring	
-sqlite3_open	debby/sqlite.html#sqlite3_open,cstring,Db	sqlite: sqlite3_open(filename: cstring; db: var Db): int32	
-sqlite3_close	debby/sqlite.html#sqlite3_close,Db	sqlite: sqlite3_close(db: Db): int32	
-sqlite3_prepare_v2	debby/sqlite.html#sqlite3_prepare_v2,Db,cstring,int32,Statement,ptr.cstring	sqlite: sqlite3_prepare_v2(db: Db; zSql: cstring; nByte: int32;\n                   pStatement: var Statement; pzTail: ptr cstring): int32	
-sqlite3_bind_text	debby/sqlite.html#sqlite3_bind_text,Statement,int32,cstring,int32,pointer	sqlite: sqlite3_bind_text(stmt: Statement; index: int32; text: cstring; size: int32;\n                  destructor: pointer): int32	
-sqlite3_column_bytes	debby/sqlite.html#sqlite3_column_bytes,Statement,int32	sqlite: sqlite3_column_bytes(stmt: Statement; iCol: int32): int32	
-sqlite3_column_blob	debby/sqlite.html#sqlite3_column_blob,Statement,int32	sqlite: sqlite3_column_blob(stmt: Statement; iCol: int32): pointer	
-sqlite3_column_count	debby/sqlite.html#sqlite3_column_count,Statement	sqlite: sqlite3_column_count(stmt: Statement): int32	
-sqlite3_step	debby/sqlite.html#sqlite3_step,Statement	sqlite: sqlite3_step(stmt: Statement): int32	
-sqlite3_finalize	debby/sqlite.html#sqlite3_finalize,Statement	sqlite: sqlite3_finalize(stmt: Statement): int32	
-sqlite3_column_name	debby/sqlite.html#sqlite3_column_name,Statement,int32	sqlite: sqlite3_column_name(stmt: Statement; iCol: int32): cstring	
-sqlite3_last_insert_rowid	debby/sqlite.html#sqlite3_last_insert_rowid,Db	sqlite: sqlite3_last_insert_rowid(db: Db): int64	
-dbError	debby/sqlite.html#dbError,Db	sqlite: dbError(db: Db)	
-query	debby/sqlite.html#query,Db,string,varargs[string,]	sqlite: query(db: Db; query: string; args: varargs[string, `$`]): seq[Row]	
-openDatabase	debby/sqlite.html#openDatabase,string	sqlite: openDatabase(path: string): Db	
-close	debby/sqlite.html#close,Db	sqlite: close(db: Db)	
-tableExists	debby/sqlite.html#tableExists,Db,typedesc[T]	sqlite: tableExists[T](db: Db; t: typedesc[T]): bool	
-createIndexStatement	debby/sqlite.html#createIndexStatement,Db,typedesc[T],bool,varargs[string]	sqlite: createIndexStatement[T: ref object](db: Db; t: typedesc[T]; ifNotExists: bool;\n                                    params: varargs[string]): string	
-createTableStatement	debby/sqlite.html#createTableStatement,Db,typedesc[T]	sqlite: createTableStatement[T: ref object](db: Db; t: typedesc[T]): string	
-checkTable	debby/sqlite.html#checkTable,Db,typedesc[T]	sqlite: checkTable[T: ref object](db: Db; t: typedesc[T])	
-insert	debby/sqlite.html#insert,Db,T	sqlite: insert[T: ref object](db: Db; obj: T)	
-query	debby/sqlite.html#query,Db,typedesc[T],string,varargs[string,]	sqlite: query[T](db: Db; t: typedesc[T]; query: string; args: varargs[string, `$`]): seq[\n    T]	
-withTransaction	debby/sqlite.html#withTransaction.t,Db,	sqlite: withTransaction(db: Db; body)	
+nimTitle	sqlite	debby/sqlite.html	module src/debby/sqlite		0
+nim	SQLITE_OK	debby/sqlite.html#SQLITE_OK	const SQLITE_OK		20
+nim	SQLITE_ROW	debby/sqlite.html#SQLITE_ROW	const SQLITE_ROW		21
+nim	Statement	debby/sqlite.html#Statement	type Statement		24
+nim	sqlite3_errmsg	debby/sqlite.html#sqlite3_errmsg,Db	proc sqlite3_errmsg(db: Db): cstring		28
+nim	sqlite3_open	debby/sqlite.html#sqlite3_open,cstring,Db	proc sqlite3_open(filename: cstring; db: var Db): int32		32
+nim	sqlite3_close	debby/sqlite.html#sqlite3_close,Db	proc sqlite3_close(db: Db): int32		37
+nim	sqlite3_prepare_v2	debby/sqlite.html#sqlite3_prepare_v2,Db,cstring,int32,Statement,ptr.cstring	proc sqlite3_prepare_v2(db: Db; zSql: cstring; nByte: int32;\n                   pStatement: var Statement; pzTail: ptr cstring): int32		41
+nim	sqlite3_bind_text	debby/sqlite.html#sqlite3_bind_text,Statement,int32,cstring,int32,pointer	proc sqlite3_bind_text(stmt: Statement; index: int32; text: cstring; size: int32;\n                  destructor: pointer): int32		49
+nim	sqlite3_column_bytes	debby/sqlite.html#sqlite3_column_bytes,Statement,int32	proc sqlite3_column_bytes(stmt: Statement; iCol: int32): int32		57
+nim	sqlite3_column_blob	debby/sqlite.html#sqlite3_column_blob,Statement,int32	proc sqlite3_column_blob(stmt: Statement; iCol: int32): pointer		62
+nim	sqlite3_column_count	debby/sqlite.html#sqlite3_column_count,Statement	proc sqlite3_column_count(stmt: Statement): int32		67
+nim	sqlite3_step	debby/sqlite.html#sqlite3_step,Statement	proc sqlite3_step(stmt: Statement): int32		71
+nim	sqlite3_finalize	debby/sqlite.html#sqlite3_finalize,Statement	proc sqlite3_finalize(stmt: Statement): int32		75
+nim	sqlite3_column_name	debby/sqlite.html#sqlite3_column_name,Statement,int32	proc sqlite3_column_name(stmt: Statement; iCol: int32): cstring		79
+nim	sqlite3_last_insert_rowid	debby/sqlite.html#sqlite3_last_insert_rowid,Db	proc sqlite3_last_insert_rowid(db: Db): int64		84
+nim	dbError	debby/sqlite.html#dbError,Db	proc dbError(db: Db)		101
+nim	query	debby/sqlite.html#query,Db,string,varargs[string,]	proc query(db: Db; query: string; args: varargs[string, `$`]): seq[Row]		135
+nim	openDatabase	debby/sqlite.html#openDatabase,string	proc openDatabase(path: string): Db		154
+nim	close	debby/sqlite.html#close,Db	proc close(db: Db)		162
+nim	tableExists	debby/sqlite.html#tableExists,Db,typedesc[T]	proc tableExists[T](db: Db; t: typedesc[T]): bool		167
+nim	createIndexStatement	debby/sqlite.html#createIndexStatement,Db,typedesc[T],bool,varargs[string]	proc createIndexStatement[T: ref object](db: Db; t: typedesc[T]; ifNotExists: bool;\n                                    params: varargs[string]): string		175
+nim	createTableStatement	debby/sqlite.html#createTableStatement,Db,typedesc[T]	proc createTableStatement[T: ref object](db: Db; t: typedesc[T]): string		195
+nim	checkTable	debby/sqlite.html#checkTable,Db,typedesc[T]	proc checkTable[T: ref object](db: Db; t: typedesc[T])		215
+nim	insert	debby/sqlite.html#insert,Db,T	proc insert[T: ref object](db: Db; obj: T)		265
+nim	query	debby/sqlite.html#query,Db,typedesc[T],string,varargs[string,]	proc query[T](db: Db; t: typedesc[T]; query: string; args: varargs[string, `$`]): seq[\n    T]		271
+nim	withTransaction	debby/sqlite.html#withTransaction.t,Db,	template withTransaction(db: Db; body)		317
+nim	sqlDumpHook	debby/sqlite.html#sqlDumpHook,bool	proc sqlDumpHook(v: bool): string		332
+nim	sqlParseHook	debby/sqlite.html#sqlParseHook,string,bool	proc sqlParseHook(data: string; v: var bool)		337
+nimgrp	query	debby/sqlite.html#query-procs-all	proc		135
