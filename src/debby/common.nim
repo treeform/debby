@@ -219,8 +219,11 @@ template createIndex*[T: ref object](
   t: typedesc[T],
   params: varargs[string]
 ) =
-  ## Creates a table, errors out if it already exists.
-  db.query(db.createIndexStatement(t, false, params))
+  ## Creates a index, errors out if it already exists.
+  var params2: seq[string]
+  for p in params:
+    params2.add p.toSnakeCase
+  db.query(db.createIndexStatement(t, false, params2))
 
 template createIndexIfNotExists*[T: ref object](
   db: Db,
@@ -228,7 +231,10 @@ template createIndexIfNotExists*[T: ref object](
   params: varargs[string]
 ) =
   ## Creates a index if it does not already exists.
-  db.query(db.createIndexStatement(t, true, params))
+  var params2: seq[string]
+  for p in params:
+    params2.add p.toSnakeCase
+  db.query(db.createIndexStatement(t, true, params2))
 
 # Filter macro is complex:
 

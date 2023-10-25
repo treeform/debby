@@ -105,4 +105,7 @@ block:
   let cars2 = pool.filter(Auto, it.year > 1990)
   doAssert cars2.len == 0
 
+  let cars3 = pool.query(Auto, "SELECT * FROM auto")
+  doAssert cars3.len == 0
+
   pool.close()

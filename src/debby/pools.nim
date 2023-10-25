@@ -151,3 +151,17 @@ proc filter*[T](pool: Pool, t: typedesc[T]): seq[T] =
   ## Filter without a filter clause just returns everything.
   pool.withDb:
     return db.filter(t)
+
+template query*(pool: Pool, sql: string, args: varargs[string, `$`]): seq[Row] =
+  ## Query returning plain results
+  var data: seq[Row]
+  pool.withDb:
+    db.query(sql, args)
+  data
+
+template query*[T](pool: Pool, t: typedesc[T], sql: string, args: varargs[string, `$`]): seq[T] =
+  ## Gets the object by id.
+  var data: seq[T]
+  pool.withDb:
+    data = db.query(t, sql, args)
+  data
