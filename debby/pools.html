@@ -132,6 +132,13 @@
 <li><a class="reference" href="#insert.t%2CPool%2Cseq%5BT%5D" title="insert[T: ref object](pool: Pool; objs: seq[T])">insert[T: ref object](pool: Pool; objs: seq[T])</a></li>
 
 </ul>
+<ul class="simple nested-toc-section">query
+  <li><a class="reference" href="#query.t%2CPool%2Cstring%2Cvarargs%5Bstring%2C%5D" title="query(pool: Pool; sql: string; args: varargs[string, `$`]): seq[Row]">query(pool: Pool; sql: string; args: varargs[string, `$`]): seq[Row]</a></li>
+<li><a class="reference" href="#query.t%2CPool%2Ctypedesc%5BT%5D%2Cstring%2Cvarargs%5Bstring%2C%5D" title="query[T](pool: Pool; t: typedesc[T]; sql: string; args: varargs[string, `$`]): seq[
+    T]">query[T](pool: Pool; t: typedesc[T]; sql: string; args: varargs[string, `$`]): seq[
+    T]</a></li>
+
+</ul>
 <ul class="simple nested-toc-section">update
   <li><a class="reference" href="#update.t%2CPool%2Cseq%5BT%5D" title="update[T: ref object](pool: Pool; objs: seq[T])">update[T: ref object](pool: Pool; objs: seq[T])</a></li>
 
@@ -396,6 +403,30 @@
 </div>
 
 </div>
+<div id="query-templates-all">
+  <div id="query.t,Pool,string,varargs[string,]">
+  <dt><pre><span class="Keyword">template</span> <a href="#query.t%2CPool%2Cstring%2Cvarargs%5Bstring%2C%5D"><span class="Identifier">query</span></a><span class="Other">(</span><span class="Identifier">pool</span><span class="Other">:</span> <a href="pools.html#Pool"><span class="Identifier">Pool</span></a><span class="Other">;</span> <span class="Identifier">sql</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">;</span> <span class="Identifier">args</span><span class="Other">:</span> <span class="Identifier">varargs</span><span class="Other">[</span><span class="Identifier">string</span><span class="Other">,</span> <span class="Other">`</span><span class="Operator">$</span><span class="Other">`</span><span class="Other">]</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">seq</span><span class="Other">[</span><a href="common.html#Row"><span class="Identifier">Row</span></a><span class="Other">]</span></pre></dt>
+  <dd>
+    
+    Query returning plain results
+    <a href="https://github.com/treeform/debby/tree/master/src/debby/pools.nim#L155" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
+<a href="https://github.com/treeform/debby/edit/devel/src/debby/pools.nim#L155" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
+
+  </dd>
+</div>
+<div id="query.t,Pool,typedesc[T],string,varargs[string,]">
+  <dt><pre><span class="Keyword">template</span> <a href="#query.t%2CPool%2Ctypedesc%5BT%5D%2Cstring%2Cvarargs%5Bstring%2C%5D"><span class="Identifier">query</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">(</span><span class="Identifier">pool</span><span class="Other">:</span> <a href="pools.html#Pool"><span class="Identifier">Pool</span></a><span class="Other">;</span> <span class="Identifier">t</span><span class="Other">:</span> <span class="Identifier">typedesc</span><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">;</span> <span class="Identifier">sql</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">;</span>
+                  <span class="Identifier">args</span><span class="Other">:</span> <span class="Identifier">varargs</span><span class="Other">[</span><span class="Identifier">string</span><span class="Other">,</span> <span class="Other">`</span><span class="Operator">$</span><span class="Other">`</span><span class="Other">]</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">seq</span><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span></pre></dt>
+  <dd>
+    
+    Gets the object by id.
+    <a href="https://github.com/treeform/debby/tree/master/src/debby/pools.nim#L162" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
+<a href="https://github.com/treeform/debby/edit/devel/src/debby/pools.nim#L162" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
+
+  </dd>
+</div>
+
+</div>
 <div id="update-templates-all">
   <div id="update.t,Pool,seq[T]">
   <dt><pre><span class="Keyword">template</span> <a href="#update.t%2CPool%2Cseq%5BT%5D"><span class="Identifier">update</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">:</span> <span class="Keyword">ref</span> <span class="Keyword">object</span><span class="Other">]</span><span class="Other">(</span><span class="Identifier">pool</span><span class="Other">:</span> <a href="pools.html#Pool"><span class="Identifier">Pool</span></a><span class="Other">;</span> <span class="Identifier">objs</span><span class="Other">:</span> <span class="Identifier">seq</span><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">)</span></pre></dt>
@@ -455,7 +486,7 @@
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2023-10-24 01:56:41 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2023-10-25 22:00:43 UTC</small>
       </div>
     </div>
   </div>
