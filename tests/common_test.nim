@@ -141,6 +141,15 @@ block:
   doAssert cars3.len == 5
 
 block:
+  # Test filter with invalid function call
+  proc isOfYear(a: Auto): bool = a.year >= 1980
+
+  let res = compiles:
+    let cars = db.filter(Auto, it.isOfYear())
+
+  doAssert not res, "`it` passed to function compiles when it shouldn't!"
+
+block:
   # Test upsert
   vintageSportsCars.add Auto(
     make: "Jeep",
