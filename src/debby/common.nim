@@ -285,6 +285,9 @@ proc walk(n: NimNode, params: var seq[NimNode]): string =
       return "'" & n.strVal & "'"
     of nnkIntLit:
       return n.repr()
+    of nnkCall:
+      params.add n
+      return "?"
     else:
       assert false, $n.kind & " not supported: " & n.treeRepr()
 
@@ -322,10 +325,11 @@ template filter*[T: ref object](db: Db, t: typedesc[T], expression: untyped): un
   ## db.filter(Auto, it.make == "Ferrari" or it.make == "Lamborghini")
   ## db.filter(Auto, it.year >= startYear and it.year < endYear)
 
-  # Inject the `it` into the expression.
-  var it {.inject.}: T = T()
-  # Pass the expression to a typed macro to convert it to SQL where clause.
-  innerFilter(expression)
+  block:
+    # Inject the `it` into the expression.
+    var it {.inject.}: T = T()
+    # Pass the expression to a typed macro to convert it to SQL where clause.
+    innerFilter(expression)
 
 proc filter*[T](
   db: Db,
