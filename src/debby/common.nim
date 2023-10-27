@@ -285,7 +285,14 @@ proc walk(n: NimNode, params: var seq[NimNode]): string =
       return "'" & n.strVal & "'"
     of nnkIntLit:
       return n.repr()
-    of nnkCall:
+    of nnkCall, nnkCommand:
+      for node in n.children:
+        if node.repr == "it":
+          var err = newNimNode(nnkPragma, n)
+          err.add newNimNode(nnkExprColonExpr)
+          err[0].add newIdentNode("error")
+          err[0].add newStrLitNode("Cannot pass `it` to any calling functions.")
+          params.add err
       params.add n
       return "?"
     else:
@@ -305,14 +312,14 @@ proc innerSelect*[T: ref object](
     args
   )
 
-macro innerFilter(expression: typed): untyped =
+macro innerFilter[T: ref object](it: var T, db: Db, expression: typed): untyped =
   ## Typed marco that makes the call to innerSelect
   var params: seq[NimNode]
   let clause = walk(expression, params)
   var call = nnkCall.newTree(
     newIdentNode("innerSelect"),
-    newIdentNode("db"),
-    newIdentNode("it"),
+    db,
+    it,
     newStrLitNode(clause),
   )
   for param in params:
@@ -329,7 +336,7 @@ template filter*[T: ref object](db: Db, t: typedesc[T], expression: untyped): un
     # Inject the `it` into the expression.
     var it {.inject.}: T = T()
     # Pass the expression to a typed macro to convert it to SQL where clause.
-    innerFilter(expression)
+    innerFilter(it, db, expression)
 
 proc filter*[T](
   db: Db,
