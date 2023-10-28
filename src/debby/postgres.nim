@@ -346,7 +346,7 @@ proc query*[T](
     headerIndex: seq[int]
 
   for i in 0 ..< columnCount:
-    let columnName = PQfname(statement, i)
+    let columnName = $PQfname(statement, i)
     var
       j = 0
       found = false

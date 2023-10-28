@@ -1,5 +1,7 @@
 import debby/postgres
 
+{.define: debbyTestPostgresql.}
+
 let db = openDatabase(
   host = "localhost",
   user = "testuser",
