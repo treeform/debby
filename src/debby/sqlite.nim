@@ -117,7 +117,7 @@ proc prepareQuery(
   for i, arg in args:
     if arg.len == 0:
       continue
-    if sqlite3_bind_text(result, int32(i + 1), arg[0].unsafeAddr, arg.len.int32, nil) != SQLITE_OK:
+    if sqlite3_bind_text(result, int32(i + 1), cast[cstring](arg[0].unsafeAddr), arg.len.int32, nil) != SQLITE_OK:
       dbError(db)
 
 proc readRow(statement: Statement, r: var Row, columnCount: int) =
@@ -284,7 +284,7 @@ proc query*[T](
     columnCount = sqlite3_column_count(statement)
     headerIndex: seq[int]
   for i in 0 ..< columnCount:
-    let columnName = sqlite3_column_name(statement, i)
+    let columnName = $sqlite3_column_name(statement, i)
     var
       j = 0
       found = false

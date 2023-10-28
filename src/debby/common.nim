@@ -302,7 +302,7 @@ proc innerSelect*[T: ref object](
   db: Db,
   it: T,
   where: string,
-  args: varargs[string, `$`]
+  args: varargs[string, `sqlDump`]
 ): seq[T] =
   ## Used by innerFilter to make the db.select call.
   let statement = "SELECT * FROM " & T.tableName & " WHERE " & where

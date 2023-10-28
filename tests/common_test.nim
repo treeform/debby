@@ -1,4 +1,7 @@
-import std/strutils
+import std/[
+  sequtils,
+  strutils
+]
 
 block:
   # Test the most basic operation:
@@ -148,6 +151,45 @@ block:
     let cars = db.filter(Auto, it.isOfYear())
 
   doAssert not res, "`it` passed to function compiles when it shouldn't!"
+
+block:
+  # Test complex object with custom representation
+  type
+    Account = ref object
+      id: int
+      uid: UID
+
+    UID = object
+      timestamp*: int64
+      randomness*: uint64
+
+  func toArray[T](oa: openArray[T], size: static Slice[int]): array[size.len, T] =
+    result[0..<size.len] = oa[size]
+
+  func sqlDumpHook(v: UID): string =
+    sqlDumpHook(cast[Bytes](
+      cast[array[8, byte]](v.timestamp).toSeq() & cast[array[8, byte]](v.randomness).toSeq()
+    ))
+
+  func sqlParseHook(data: string, v: var UID) =
+    var
+      bytes: Bytes
+
+    sqlParseHook(data, bytes)
+    v = UID(timestamp: cast[int64](bytes.string[0..7].toArray(0..7)),
+      randomness: cast[uint64](bytes.string[8..15].toArray(0..7))
+    )
+
+  let
+    uid = UID(timestamp: 1698493738197'i64, randomness: 92145482927'u64)
+    acc = Account(uid: uid)
+
+  db.dropTableIfExists(Account)
+  db.createTable(Account)
+  db.insert(acc)
+
+  let accounts = db.filter(Account, it.uid == uid)
+  doAssert accounts.len == 1
 
 block:
   # Test upsert
