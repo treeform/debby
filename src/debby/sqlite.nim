@@ -236,9 +236,9 @@ proc checkTable*[T: ref object](db: Db, t: typedesc[T]) =
       let
         fieldName = x[1]
         fieldType = x[2]
-        notNull = x[3] == "1"
-        defaultValue = x[4]
-        primaryKey = x[5]  == "1"
+        notNull {.used.} = x[3] == "1"
+        defaultValue {.used.} = x[4]
+        primaryKey {.used.} = x[5]  == "1"
 
       tableSchema[fieldName] = fieldType
 
