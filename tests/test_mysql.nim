@@ -1,7 +1,5 @@
 import debby/mysql
 
-{.define: debbyTestMysql.}
-
 let db = openDatabase(
   host = "127.0.0.1",
   user = "root",
