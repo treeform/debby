@@ -129,6 +129,34 @@ block:
   db.update(cars)
 
 block:
+  # Test filter with function call.
+  proc startYear(): int = 1980
+  let cars = db.filter(Auto, it.year >= startYear())
+  doAssert cars.len == 5
+
+  let cars2 = db.filter(Auto, it.year >= parseInt("1980"))
+  doAssert cars2.len == 5
+
+  let cars3 = db.filter(Auto, it.year >= parseInt("19" & "80"))
+  doAssert cars3.len == 5
+
+block:
+  # Test filter with invalid function call
+  proc isOfYear(a: Auto): bool = a.year >= 1980
+
+  let res = compiles:
+    let cars = db.filter(Auto, it.isOfYear())
+
+  doAssert not res, "`it` passed to function compiles when it shouldn't!"
+
+  proc nest1(a: Auto): Auto = a
+  proc nest2(a: Auto): bool = a.year >= 1980
+  let res2 = compiles:
+    let cars = db.filter(Auto, nest2(nest1(it)))
+
+  doAssert not res, "`it` passed to a nested function compiles when it shouldn't!"
+
+block:
   # Test upsert
   vintageSportsCars.add Auto(
     make: "Jeep",

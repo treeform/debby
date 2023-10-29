@@ -240,6 +240,15 @@ template createIndexIfNotExists*[T: ref object](
 
 const allowed = @["!=", ">=", "<=", ">", "<", "and", "or", "not"]
 
+proc findByStrVal(node: NimNode, s: string): NimNode =
+  ## Walks all children nodes, looking for matching string value.
+  if node.kind == nnkSym and node.strVal == s:
+    return node
+  for child in node.children:
+    let n = child.findByStrVal(s)
+    if n != nil:
+      return n
+
 proc walk(n: NimNode, params: var seq[NimNode]): string =
   ## Walks the Nim nodes and converts them from Nim to SQL expression.
   ## Values are removed and replaced with ? and then put in the params seq.
@@ -285,6 +294,12 @@ proc walk(n: NimNode, params: var seq[NimNode]): string =
       return "'" & n.strVal & "'"
     of nnkIntLit:
       return n.repr()
+    of nnkCall, nnkCommand:
+      params.add n
+      let itNode = n.findByStrVal("it")
+      if itNode != nil:
+        error("Cannot pass `it` to any calling functions", itNode)
+      return "?"
     else:
       assert false, $n.kind & " not supported: " & n.treeRepr()
 
@@ -302,14 +317,14 @@ proc innerSelect*[T: ref object](
     args
   )
 
-macro innerFilter(expression: typed): untyped =
+macro innerFilter(db, it, expression: typed): untyped =
   ## Typed marco that makes the call to innerSelect
   var params: seq[NimNode]
   let clause = walk(expression, params)
   var call = nnkCall.newTree(
     newIdentNode("innerSelect"),
-    newIdentNode("db"),
-    newIdentNode("it"),
+    db,
+    it,
     newStrLitNode(clause),
   )
   for param in params:
@@ -322,10 +337,11 @@ template filter*[T: ref object](db: Db, t: typedesc[T], expression: untyped): un
   ## db.filter(Auto, it.make == "Ferrari" or it.make == "Lamborghini")
   ## db.filter(Auto, it.year >= startYear and it.year < endYear)
 
-  # Inject the `it` into the expression.
-  var it {.inject.}: T = T()
-  # Pass the expression to a typed macro to convert it to SQL where clause.
-  innerFilter(expression)
+  block:
+    # Inject the `it` into the expression.
+    var it {.inject.}: T = T()
+    # Pass the expression to a typed macro to convert it to SQL where clause.
+    innerFilter(db, it, expression)
 
 proc filter*[T](
   db: Db,
