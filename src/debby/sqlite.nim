@@ -1,7 +1,7 @@
 ## Public interface to you library.
 
-import std/strutils, std/tables, std/sequtils, std/macros, std/parseutils,
-    std/typetraits, jsony, common, std/sets, std/strformat
+import std/strutils, std/tables, std/macros, std/typetraits, jsony, common,
+    std/sets, std/strformat
 
 export jsony
 export common
@@ -117,7 +117,12 @@ proc prepareQuery(
   for i, arg in args:
     if arg.len == 0:
       continue
-    if sqlite3_bind_text(result, int32(i + 1), arg[0].unsafeAddr, arg.len.int32, nil) != SQLITE_OK:
+    if sqlite3_bind_text(
+      result,
+      int32(i + 1),
+      arg.cstring,
+      arg.len.int32, nil
+    ) != SQLITE_OK:
       dbError(db)
 
 proc readRow(statement: Statement, r: var Row, columnCount: int) =
@@ -231,9 +236,9 @@ proc checkTable*[T: ref object](db: Db, t: typedesc[T]) =
       let
         fieldName = x[1]
         fieldType = x[2]
-        notNull = x[3] == "1"
-        defaultValue = x[4]
-        primaryKey = x[5]  == "1"
+        notNull {.used.} = x[3] == "1"
+        defaultValue {.used.} = x[4]
+        primaryKey {.used.} = x[5]  == "1"
 
       tableSchema[fieldName] = fieldType
 
@@ -284,7 +289,7 @@ proc query*[T](
     columnCount = sqlite3_column_count(statement)
     headerIndex: seq[int]
   for i in 0 ..< columnCount:
-    let columnName = sqlite3_column_name(statement, i)
+    let columnName = $sqlite3_column_name(statement, i)
     var
       j = 0
       found = false

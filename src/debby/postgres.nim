@@ -212,6 +212,9 @@ proc openDatabase*(host, user, password, database: string, port = ""): Db =
   if PQstatus(result) != CONNECTION_OK:
     dbError(result)
 
+  # Prevent Notice: junk messages from showing up.
+  discard result.query("SET client_min_messages TO WARNING")
+
 proc close*(db: Db) =
   ## Closes the database connection.
   PQfinish(db)
@@ -346,7 +349,7 @@ proc query*[T](
     headerIndex: seq[int]
 
   for i in 0 ..< columnCount:
-    let columnName = PQfname(statement, i)
+    let columnName = $PQfname(statement, i)
     var
       j = 0
       found = false
