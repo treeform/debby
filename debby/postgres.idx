@@ -41,18 +41,18 @@ nim	PQfname	debby/postgres.html#PQfname,Result,int32	proc PQfname(res: Result; f
 nim	dbError	debby/postgres.html#dbError,Db	proc dbError(db: Db)		95
 nim	query	debby/postgres.html#query,Db,string,varargs[string,]	proc query(db: Db; query: string; args: varargs[string, `$`]): seq[Row]		192
 nim	openDatabase	debby/postgres.html#openDatabase,string,string,string,string,string	proc openDatabase(host, user, password, database: string; port = ""): Db		201
-nim	close	debby/postgres.html#close,Db	proc close(db: Db)		215
-nim	tableExists	debby/postgres.html#tableExists,Db,typedesc[T]	proc tableExists[T](db: Db; t: typedesc[T]): bool		219
-nim	createIndexStatement	debby/postgres.html#createIndexStatement,Db,typedesc[T],bool,varargs[string]	proc createIndexStatement[T: ref object](db: Db; t: typedesc[T]; ifNotExists: bool;\n                                    params: varargs[string]): string		233
-nim	createTableStatement	debby/postgres.html#createTableStatement,Db,typedesc[T]	proc createTableStatement[T: ref object](db: Db; t: typedesc[T]): string		253
-nim	checkTable	debby/postgres.html#checkTable,Db,typedesc[T]	proc checkTable[T: ref object](db: Db; t: typedesc[T])		272
-nim	insert	debby/postgres.html#insert,Db,T	proc insert[T: ref object](db: Db; obj: T)		325
-nim	query	debby/postgres.html#query,Db,typedesc[T],string,varargs[string,]	proc query[T](db: Db; t: typedesc[T]; query: string; args: varargs[string, `$`]): seq[\n    T]		331
-nim	withTransaction	debby/postgres.html#withTransaction.t,Db,	template withTransaction(db: Db; body)		378
-nim	sqlDumpHook	debby/postgres.html#sqlDumpHook,bool	proc sqlDumpHook(v: bool): string		393
-nim	sqlParseHook	debby/postgres.html#sqlParseHook,string,bool	proc sqlParseHook(data: string; v: var bool)		398
-nim	sqlDumpHook	debby/postgres.html#sqlDumpHook,Bytes	proc sqlDumpHook(data: Bytes): string		402
-nim	sqlParseHook	debby/postgres.html#sqlParseHook,string,Bytes	proc sqlParseHook(data: string; v: var Bytes)		412
+nim	close	debby/postgres.html#close,Db	proc close(db: Db)		218
+nim	tableExists	debby/postgres.html#tableExists,Db,typedesc[T]	proc tableExists[T](db: Db; t: typedesc[T]): bool		222
+nim	createIndexStatement	debby/postgres.html#createIndexStatement,Db,typedesc[T],bool,varargs[string]	proc createIndexStatement[T: ref object](db: Db; t: typedesc[T]; ifNotExists: bool;\n                                    params: varargs[string]): string		236
+nim	createTableStatement	debby/postgres.html#createTableStatement,Db,typedesc[T]	proc createTableStatement[T: ref object](db: Db; t: typedesc[T]): string		256
+nim	checkTable	debby/postgres.html#checkTable,Db,typedesc[T]	proc checkTable[T: ref object](db: Db; t: typedesc[T])		275
+nim	insert	debby/postgres.html#insert,Db,T	proc insert[T: ref object](db: Db; obj: T)		328
+nim	query	debby/postgres.html#query,Db,typedesc[T],string,varargs[string,]	proc query[T](db: Db; t: typedesc[T]; query: string; args: varargs[string, `$`]): seq[\n    T]		334
+nim	withTransaction	debby/postgres.html#withTransaction.t,Db,	template withTransaction(db: Db; body)		381
+nim	sqlDumpHook	debby/postgres.html#sqlDumpHook,bool	proc sqlDumpHook(v: bool): string		396
+nim	sqlParseHook	debby/postgres.html#sqlParseHook,string,bool	proc sqlParseHook(data: string; v: var bool)		401
+nim	sqlDumpHook	debby/postgres.html#sqlDumpHook,Bytes	proc sqlDumpHook(data: Bytes): string		405
+nim	sqlParseHook	debby/postgres.html#sqlParseHook,string,Bytes	proc sqlParseHook(data: string; v: var Bytes)		415
 nimgrp	query	debby/postgres.html#query-procs-all	proc		192
-nimgrp	sqldumphook	debby/postgres.html#sqlDumpHook-procs-all	proc		393
-nimgrp	sqlparsehook	debby/postgres.html#sqlParseHook-procs-all	proc		398
+nimgrp	sqldumphook	debby/postgres.html#sqlDumpHook-procs-all	proc		396
+nimgrp	sqlparsehook	debby/postgres.html#sqlParseHook-procs-all	proc		401

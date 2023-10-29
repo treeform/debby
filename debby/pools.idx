@@ -5,23 +5,23 @@ nim	borrow	debby/pools.html#borrow,Pool	proc borrow(pool: Pool): Db		27
 nim	add	debby/pools.html#add,Pool,Db	proc add(pool: Pool; t: Db)		39
 nim	close	debby/pools.html#close.t,Pool	template close(pool: Pool)		47
 nim	withDb	debby/pools.html#withDb.t,Pool,untyped	template withDb(pool: Pool; body: untyped)		60
-nim	dropTable	debby/pools.html#dropTable,Pool,typedesc[T]	proc dropTable[T](pool: Pool; t: typedesc[T])		69
-nim	dropTableIfExists	debby/pools.html#dropTableIfExists,Pool,typedesc[T]	proc dropTableIfExists[T](pool: Pool; t: typedesc[T])		74
-nim	createTable	debby/pools.html#createTable,Pool,typedesc[T]	proc createTable[T: ref object](pool: Pool; t: typedesc[T])		79
-nim	checkTable	debby/pools.html#checkTable.t,Pool,typedesc[T]	template checkTable[T: ref object](pool: Pool; t: typedesc[T])		84
-nim	get	debby/pools.html#get,Pool,typedesc[T],V	proc get[T, V](pool: Pool; t: typedesc[T]; id: V): T		90
-nim	update	debby/pools.html#update,Pool,T	proc update[T: ref object](pool: Pool; obj: T)		95
-nim	update	debby/pools.html#update.t,Pool,seq[T]	template update[T: ref object](pool: Pool; objs: seq[T])		101
-nim	delete	debby/pools.html#delete,Pool,T	proc delete[T: ref object](pool: Pool; obj: T)		106
-nim	delete	debby/pools.html#delete.t,Pool,seq[T]	template delete[T: ref object](pool: Pool; objs: seq[T])		112
-nim	insert	debby/pools.html#insert.t,Pool,T	template insert[T: ref object](pool: Pool; obj: T)		117
-nim	insert	debby/pools.html#insert.t,Pool,seq[T]	template insert[T: ref object](pool: Pool; objs: seq[T])		123
-nim	upsert	debby/pools.html#upsert.t,Pool,T	template upsert[T: ref object](pool: Pool; obj: T)		128
-nim	upsert	debby/pools.html#upsert.t,Pool,seq[T]	template upsert[T: ref object](pool: Pool; objs: seq[T])		134
-nim	filter	debby/pools.html#filter.t,Pool,typedesc[T],untyped	template filter[T: ref object](pool: Pool; t: typedesc[T]; expression: untyped): untyped		140
-nim	filter	debby/pools.html#filter,Pool,typedesc[T]	proc filter[T](pool: Pool; t: typedesc[T]): seq[T]		150
-nim	query	debby/pools.html#query.t,Pool,string,varargs[string,]	template query(pool: Pool; sql: string; args: varargs[string, `$`]): seq[Row]		155
-nim	query	debby/pools.html#query.t,Pool,typedesc[T],string,varargs[string,]	template query[T](pool: Pool; t: typedesc[T]; sql: string; args: varargs[string, `$`]): seq[\n    T]		162
-nimgrp	query	debby/pools.html#query-templates-all	template		155
-nimgrp	upsert	debby/pools.html#upsert-templates-all	template		128
-nimgrp	insert	debby/pools.html#insert-templates-all	template		117
+nim	dropTable	debby/pools.html#dropTable,Pool,typedesc[T]	proc dropTable[T](pool: Pool; t: typedesc[T])		68
+nim	dropTableIfExists	debby/pools.html#dropTableIfExists,Pool,typedesc[T]	proc dropTableIfExists[T](pool: Pool; t: typedesc[T])		73
+nim	createTable	debby/pools.html#createTable,Pool,typedesc[T]	proc createTable[T: ref object](pool: Pool; t: typedesc[T])		78
+nim	checkTable	debby/pools.html#checkTable.t,Pool,typedesc[T]	template checkTable[T: ref object](pool: Pool; t: typedesc[T])		83
+nim	get	debby/pools.html#get,Pool,typedesc[T],V	proc get[T, V](pool: Pool; t: typedesc[T]; id: V): T		89
+nim	update	debby/pools.html#update,Pool,T	proc update[T: ref object](pool: Pool; obj: T)		94
+nim	update	debby/pools.html#update.t,Pool,seq[T]	template update[T: ref object](pool: Pool; objs: seq[T])		100
+nim	delete	debby/pools.html#delete,Pool,T	proc delete[T: ref object](pool: Pool; obj: T)		105
+nim	delete	debby/pools.html#delete.t,Pool,seq[T]	template delete[T: ref object](pool: Pool; objs: seq[T])		111
+nim	insert	debby/pools.html#insert.t,Pool,T	template insert[T: ref object](pool: Pool; obj: T)		116
+nim	insert	debby/pools.html#insert.t,Pool,seq[T]	template insert[T: ref object](pool: Pool; objs: seq[T])		122
+nim	upsert	debby/pools.html#upsert.t,Pool,T	template upsert[T: ref object](pool: Pool; obj: T)		127
+nim	upsert	debby/pools.html#upsert.t,Pool,seq[T]	template upsert[T: ref object](pool: Pool; objs: seq[T])		133
+nim	filter	debby/pools.html#filter.t,Pool,typedesc[T],untyped	template filter[T: ref object](pool: Pool; t: typedesc[T]; expression: untyped): untyped		139
+nim	filter	debby/pools.html#filter,Pool,typedesc[T]	proc filter[T](pool: Pool; t: typedesc[T]): seq[T]		149
+nim	query	debby/pools.html#query.t,Pool,string,varargs[string,]	template query(pool: Pool; sql: string; args: varargs[string, `$`]): seq[Row]		154
+nim	query	debby/pools.html#query.t,Pool,typedesc[T],string,varargs[string,]	template query[T](pool: Pool; t: typedesc[T]; sql: string; args: varargs[string, `$`]): seq[\n    T]		161
+nimgrp	query	debby/pools.html#query-templates-all	template		154
+nimgrp	upsert	debby/pools.html#upsert-templates-all	template		127
+nimgrp	insert	debby/pools.html#insert-templates-all	template		116
