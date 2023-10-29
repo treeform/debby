@@ -133,10 +133,10 @@
 
 </ul>
 <ul class="simple nested-toc-section">query
-  <li><a class="reference" href="#query.t%2CPool%2Cstring%2Cvarargs%5Bstring%2C%5D" title="query(pool: Pool; sql: string; args: varargs[string, `$`]): seq[Row]">query(pool: Pool; sql: string; args: varargs[string, `$`]): seq[Row]</a></li>
-<li><a class="reference" href="#query.t%2CPool%2Ctypedesc%5BT%5D%2Cstring%2Cvarargs%5Bstring%2C%5D" title="query[T](pool: Pool; t: typedesc[T]; sql: string; args: varargs[string, `$`]): seq[
-    T]">query[T](pool: Pool; t: typedesc[T]; sql: string; args: varargs[string, `$`]): seq[
-    T]</a></li>
+  <li><a class="reference" href="#query.t%2CPool%2Cstring%2Cvarargs%5BArgument%2CtoArgument%5D" title="query(pool: Pool; sql: string; args: varargs[Argument, toArgument]): seq[Row]">query(pool: Pool; sql: string; args: varargs[Argument, toArgument]): seq[Row]</a></li>
+<li><a class="reference" href="#query.t%2CPool%2Ctypedesc%5BT%5D%2Cstring%2Cvarargs%5BArgument%2CtoArgument%5D" title="query[T](pool: Pool; t: typedesc[T]; sql: string;
+         args: varargs[Argument, toArgument]): seq[T]">query[T](pool: Pool; t: typedesc[T]; sql: string;
+         args: varargs[Argument, toArgument]): seq[T]</a></li>
 
 </ul>
 <ul class="simple nested-toc-section">update
@@ -404,8 +404,9 @@
 
 </div>
 <div id="query-templates-all">
-  <div id="query.t,Pool,string,varargs[string,]">
-  <dt><pre><span class="Keyword">template</span> <a href="#query.t%2CPool%2Cstring%2Cvarargs%5Bstring%2C%5D"><span class="Identifier">query</span></a><span class="Other">(</span><span class="Identifier">pool</span><span class="Other">:</span> <a href="pools.html#Pool"><span class="Identifier">Pool</span></a><span class="Other">;</span> <span class="Identifier">sql</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">;</span> <span class="Identifier">args</span><span class="Other">:</span> <span class="Identifier">varargs</span><span class="Other">[</span><span class="Identifier">string</span><span class="Other">,</span> <span class="Other">`</span><span class="Operator">$</span><span class="Other">`</span><span class="Other">]</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">seq</span><span class="Other">[</span><a href="common.html#Row"><span class="Identifier">Row</span></a><span class="Other">]</span></pre></dt>
+  <div id="query.t,Pool,string,varargs[Argument,toArgument]">
+  <dt><pre><span class="Keyword">template</span> <a href="#query.t%2CPool%2Cstring%2Cvarargs%5BArgument%2CtoArgument%5D"><span class="Identifier">query</span></a><span class="Other">(</span><span class="Identifier">pool</span><span class="Other">:</span> <a href="pools.html#Pool"><span class="Identifier">Pool</span></a><span class="Other">;</span> <span class="Identifier">sql</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">;</span> <span class="Identifier">args</span><span class="Other">:</span> <span class="Identifier">varargs</span><span class="Other">[</span><a href="common.html#Argument"><span class="Identifier">Argument</span></a><span class="Other">,</span> <span class="Identifier">toArgument</span><span class="Other">]</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">seq</span><span class="Other">[</span>
+    <a href="common.html#Row"><span class="Identifier">Row</span></a><span class="Other">]</span></pre></dt>
   <dd>
     
     Query returning plain results
@@ -414,9 +415,9 @@
 
   </dd>
 </div>
-<div id="query.t,Pool,typedesc[T],string,varargs[string,]">
-  <dt><pre><span class="Keyword">template</span> <a href="#query.t%2CPool%2Ctypedesc%5BT%5D%2Cstring%2Cvarargs%5Bstring%2C%5D"><span class="Identifier">query</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">(</span><span class="Identifier">pool</span><span class="Other">:</span> <a href="pools.html#Pool"><span class="Identifier">Pool</span></a><span class="Other">;</span> <span class="Identifier">t</span><span class="Other">:</span> <span class="Identifier">typedesc</span><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">;</span> <span class="Identifier">sql</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">;</span>
-                  <span class="Identifier">args</span><span class="Other">:</span> <span class="Identifier">varargs</span><span class="Other">[</span><span class="Identifier">string</span><span class="Other">,</span> <span class="Other">`</span><span class="Operator">$</span><span class="Other">`</span><span class="Other">]</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">seq</span><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span></pre></dt>
+<div id="query.t,Pool,typedesc[T],string,varargs[Argument,toArgument]">
+  <dt><pre><span class="Keyword">template</span> <a href="#query.t%2CPool%2Ctypedesc%5BT%5D%2Cstring%2Cvarargs%5BArgument%2CtoArgument%5D"><span class="Identifier">query</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">(</span><span class="Identifier">pool</span><span class="Other">:</span> <a href="pools.html#Pool"><span class="Identifier">Pool</span></a><span class="Other">;</span> <span class="Identifier">t</span><span class="Other">:</span> <span class="Identifier">typedesc</span><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">;</span> <span class="Identifier">sql</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">;</span>
+                  <span class="Identifier">args</span><span class="Other">:</span> <span class="Identifier">varargs</span><span class="Other">[</span><a href="common.html#Argument"><span class="Identifier">Argument</span></a><span class="Other">,</span> <span class="Identifier">toArgument</span><span class="Other">]</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">seq</span><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span></pre></dt>
   <dd>
     
     Gets the object by id.
@@ -486,7 +487,7 @@
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2023-10-29 17:27:09 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2023-10-29 19:14:09 UTC</small>
       </div>
     </div>
   </div>

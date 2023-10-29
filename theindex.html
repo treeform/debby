@@ -26,6 +26,10 @@
 <li><a class="reference external"
           data-doc-search-tag="pools: proc add(pool: Pool; t: Db)" href="debby/pools.html#add%2CPool%2CDb">pools: proc add(pool: Pool; t: Db)</a></li>
           </ul></dd>
+<dt><a name="Argument" href="#Argument"><span>Argument:</span></a></dt><dd><ul class="simple">
+<li><a class="reference external"
+          data-doc-search-tag="common: object Argument" href="debby/common.html#Argument">common: object Argument</a></li>
+          </ul></dd>
 <dt><a name="borrow" href="#borrow"><span>borrow:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
           data-doc-search-tag="pools: proc borrow(pool: Pool): Db" href="debby/pools.html#borrow%2CPool">pools: proc borrow(pool: Pool): Db</a></li>
@@ -219,8 +223,8 @@
 <dt><a name="innerSelect" href="#innerSelect"><span>innerSelect:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
           data-doc-search-tag="common: proc innerSelect[T: ref object](db: Db; it: T; where: string;
-                           args: varargs[string, `$`]): seq[T]" href="debby/common.html#innerSelect%2CDb%2CT%2Cstring%2Cvarargs%5Bstring%2C%5D">common: proc innerSelect[T: ref object](db: Db; it: T; where: string;
-                           args: varargs[string, `$`]): seq[T]</a></li>
+                           args: varargs[Argument, toArgument]): seq[T]" href="debby/common.html#innerSelect%2CDb%2CT%2Cstring%2Cvarargs%5BArgument%2CtoArgument%5D">common: proc innerSelect[T: ref object](db: Db; it: T; where: string;
+                           args: varargs[Argument, toArgument]): seq[T]</a></li>
           </ul></dd>
 <dt><a name="insert" href="#insert"><span>insert:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
@@ -414,29 +418,29 @@
           </ul></dd>
 <dt><a name="query" href="#query"><span>query:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
-          data-doc-search-tag="mysql: proc query(db: Db; query: string; args: varargs[string, `$`]): seq[Row]" href="debby/mysql.html#query%2CDb%2Cstring%2Cvarargs%5Bstring%2C%5D">mysql: proc query(db: Db; query: string; args: varargs[string, `$`]): seq[Row]</a></li>
+          data-doc-search-tag="mysql: proc query(db: Db; query: string; args: varargs[Argument, toArgument]): seq[Row]" href="debby/mysql.html#query%2CDb%2Cstring%2Cvarargs%5BArgument%2CtoArgument%5D">mysql: proc query(db: Db; query: string; args: varargs[Argument, toArgument]): seq[Row]</a></li>
           <li><a class="reference external"
-          data-doc-search-tag="mysql: proc query[T](db: Db; t: typedesc[T]; query: string; args: varargs[string, `$`]): seq[
-    T]" href="debby/mysql.html#query%2CDb%2Ctypedesc%5BT%5D%2Cstring%2Cvarargs%5Bstring%2C%5D">mysql: proc query[T](db: Db; t: typedesc[T]; query: string; args: varargs[string, `$`]): seq[
-    T]</a></li>
+          data-doc-search-tag="mysql: proc query[T](db: Db; t: typedesc[T]; query: string;
+         args: varargs[Argument, toArgument]): seq[T]" href="debby/mysql.html#query%2CDb%2Ctypedesc%5BT%5D%2Cstring%2Cvarargs%5BArgument%2CtoArgument%5D">mysql: proc query[T](db: Db; t: typedesc[T]; query: string;
+         args: varargs[Argument, toArgument]): seq[T]</a></li>
           <li><a class="reference external"
-          data-doc-search-tag="pools: template query(pool: Pool; sql: string; args: varargs[string, `$`]): seq[Row]" href="debby/pools.html#query.t%2CPool%2Cstring%2Cvarargs%5Bstring%2C%5D">pools: template query(pool: Pool; sql: string; args: varargs[string, `$`]): seq[Row]</a></li>
+          data-doc-search-tag="pools: template query(pool: Pool; sql: string; args: varargs[Argument, toArgument]): seq[Row]" href="debby/pools.html#query.t%2CPool%2Cstring%2Cvarargs%5BArgument%2CtoArgument%5D">pools: template query(pool: Pool; sql: string; args: varargs[Argument, toArgument]): seq[Row]</a></li>
           <li><a class="reference external"
-          data-doc-search-tag="pools: template query[T](pool: Pool; t: typedesc[T]; sql: string; args: varargs[string, `$`]): seq[
-    T]" href="debby/pools.html#query.t%2CPool%2Ctypedesc%5BT%5D%2Cstring%2Cvarargs%5Bstring%2C%5D">pools: template query[T](pool: Pool; t: typedesc[T]; sql: string; args: varargs[string, `$`]): seq[
-    T]</a></li>
+          data-doc-search-tag="pools: template query[T](pool: Pool; t: typedesc[T]; sql: string;
+         args: varargs[Argument, toArgument]): seq[T]" href="debby/pools.html#query.t%2CPool%2Ctypedesc%5BT%5D%2Cstring%2Cvarargs%5BArgument%2CtoArgument%5D">pools: template query[T](pool: Pool; t: typedesc[T]; sql: string;
+         args: varargs[Argument, toArgument]): seq[T]</a></li>
           <li><a class="reference external"
-          data-doc-search-tag="postgres: proc query(db: Db; query: string; args: varargs[string, `$`]): seq[Row]" href="debby/postgres.html#query%2CDb%2Cstring%2Cvarargs%5Bstring%2C%5D">postgres: proc query(db: Db; query: string; args: varargs[string, `$`]): seq[Row]</a></li>
+          data-doc-search-tag="postgres: proc query(db: Db; query: string; args: varargs[Argument, toArgument]): seq[Row]" href="debby/postgres.html#query%2CDb%2Cstring%2Cvarargs%5BArgument%2CtoArgument%5D">postgres: proc query(db: Db; query: string; args: varargs[Argument, toArgument]): seq[Row]</a></li>
           <li><a class="reference external"
-          data-doc-search-tag="postgres: proc query[T](db: Db; t: typedesc[T]; query: string; args: varargs[string, `$`]): seq[
-    T]" href="debby/postgres.html#query%2CDb%2Ctypedesc%5BT%5D%2Cstring%2Cvarargs%5Bstring%2C%5D">postgres: proc query[T](db: Db; t: typedesc[T]; query: string; args: varargs[string, `$`]): seq[
-    T]</a></li>
+          data-doc-search-tag="postgres: proc query[T](db: Db; t: typedesc[T]; query: string;
+         args: varargs[Argument, toArgument]): seq[T]" href="debby/postgres.html#query%2CDb%2Ctypedesc%5BT%5D%2Cstring%2Cvarargs%5BArgument%2CtoArgument%5D">postgres: proc query[T](db: Db; t: typedesc[T]; query: string;
+         args: varargs[Argument, toArgument]): seq[T]</a></li>
           <li><a class="reference external"
-          data-doc-search-tag="sqlite: proc query(db: Db; query: string; args: varargs[string, `$`]): seq[Row]" href="debby/sqlite.html#query%2CDb%2Cstring%2Cvarargs%5Bstring%2C%5D">sqlite: proc query(db: Db; query: string; args: varargs[string, `$`]): seq[Row]</a></li>
+          data-doc-search-tag="sqlite: proc query(db: Db; query: string; args: varargs[Argument, toArgument]): seq[Row]" href="debby/sqlite.html#query%2CDb%2Cstring%2Cvarargs%5BArgument%2CtoArgument%5D">sqlite: proc query(db: Db; query: string; args: varargs[Argument, toArgument]): seq[Row]</a></li>
           <li><a class="reference external"
-          data-doc-search-tag="sqlite: proc query[T](db: Db; t: typedesc[T]; query: string; args: varargs[string, `$`]): seq[
-    T]" href="debby/sqlite.html#query%2CDb%2Ctypedesc%5BT%5D%2Cstring%2Cvarargs%5Bstring%2C%5D">sqlite: proc query[T](db: Db; t: typedesc[T]; query: string; args: varargs[string, `$`]): seq[
-    T]</a></li>
+          data-doc-search-tag="sqlite: proc query[T](db: Db; t: typedesc[T]; query: string;
+         args: varargs[Argument, toArgument]): seq[T]" href="debby/sqlite.html#query%2CDb%2Ctypedesc%5BT%5D%2Cstring%2Cvarargs%5BArgument%2CtoArgument%5D">sqlite: proc query[T](db: Db; t: typedesc[T]; query: string;
+         args: varargs[Argument, toArgument]): seq[T]</a></li>
           </ul></dd>
 <dt><a name="ReservedNames" href="#ReservedNames"><span>ReservedNames:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
@@ -578,6 +582,10 @@
 <li><a class="reference external"
           data-doc-search-tag="common: proc tableName[T](t: typedesc[T]): string" href="debby/common.html#tableName%2Ctypedesc%5BT%5D">common: proc tableName[T](t: typedesc[T]): string</a></li>
           </ul></dd>
+<dt><a name="toArgument" href="#toArgument"><span>toArgument:</span></a></dt><dd><ul class="simple">
+<li><a class="reference external"
+          data-doc-search-tag="common: proc toArgument[T](v: T): Argument" href="debby/common.html#toArgument%2CT">common: proc toArgument[T](v: T): Argument</a></li>
+          </ul></dd>
 <dt><a name="toSnakeCase" href="#toSnakeCase"><span>toSnakeCase:</span></a></dt><dd><ul class="simple">
 <li><a class="reference external"
           data-doc-search-tag="common: proc toSnakeCase(s: string): string" href="debby/common.html#toSnakeCase%2Cstring">common: proc toSnakeCase(s: string): string</a></li>
@@ -622,7 +630,7 @@
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2023-10-29 17:27:09 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2023-10-29 19:14:09 UTC</small>
       </div>
     </div>
   </div>

@@ -20,8 +20,8 @@ nim	upsert	debby/pools.html#upsert.t,Pool,T	template upsert[T: ref object](pool:
 nim	upsert	debby/pools.html#upsert.t,Pool,seq[T]	template upsert[T: ref object](pool: Pool; objs: seq[T])		133
 nim	filter	debby/pools.html#filter.t,Pool,typedesc[T],untyped	template filter[T: ref object](pool: Pool; t: typedesc[T]; expression: untyped): untyped		139
 nim	filter	debby/pools.html#filter,Pool,typedesc[T]	proc filter[T](pool: Pool; t: typedesc[T]): seq[T]		149
-nim	query	debby/pools.html#query.t,Pool,string,varargs[string,]	template query(pool: Pool; sql: string; args: varargs[string, `$`]): seq[Row]		154
-nim	query	debby/pools.html#query.t,Pool,typedesc[T],string,varargs[string,]	template query[T](pool: Pool; t: typedesc[T]; sql: string; args: varargs[string, `$`]): seq[\n    T]		161
+nim	query	debby/pools.html#query.t,Pool,string,varargs[Argument,toArgument]	template query(pool: Pool; sql: string; args: varargs[Argument, toArgument]): seq[Row]		154
+nim	query	debby/pools.html#query.t,Pool,typedesc[T],string,varargs[Argument,toArgument]	template query[T](pool: Pool; t: typedesc[T]; sql: string;\n         args: varargs[Argument, toArgument]): seq[T]		161
 nimgrp	query	debby/pools.html#query-templates-all	template		154
 nimgrp	upsert	debby/pools.html#upsert-templates-all	template		127
 nimgrp	insert	debby/pools.html#insert-templates-all	template		116

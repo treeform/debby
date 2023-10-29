@@ -51,7 +51,10 @@
   <details open>
     <summary><a class="reference reference-toplevel" href="#7" id="57">Types</a></summary>
     <ul class="simple simple-toc-section">
-      <li><a class="reference" href="#Bytes" title="Bytes = distinct string">Bytes</a></li>
+      <li><a class="reference" href="#Argument" title="Argument = object
+  kind*: string
+  value*: string">Argument</a></li>
+<li><a class="reference" href="#Bytes" title="Bytes = distinct string">Bytes</a></li>
 <li><a class="reference" href="#Db" title="Db = distinct pointer">Db</a></li>
 <li><a class="reference" href="#DbError" title="DbError = object of IOError">DbError</a></li>
 <li><a class="reference" href="#Row" title="Row = seq[string]">Row</a></li>
@@ -115,9 +118,9 @@
 
 </ul>
 <ul class="simple nested-toc-section">innerSelect
-  <li><a class="reference" href="#innerSelect%2CDb%2CT%2Cstring%2Cvarargs%5Bstring%2C%5D" title="innerSelect[T: ref object](db: Db; it: T; where: string;
-                           args: varargs[string, `$`]): seq[T]">innerSelect[T: ref object](db: Db; it: T; where: string;
-                           args: varargs[string, `$`]): seq[T]</a></li>
+  <li><a class="reference" href="#innerSelect%2CDb%2CT%2Cstring%2Cvarargs%5BArgument%2CtoArgument%5D" title="innerSelect[T: ref object](db: Db; it: T; where: string;
+                           args: varargs[Argument, toArgument]): seq[T]">innerSelect[T: ref object](db: Db; it: T; where: string;
+                           args: varargs[Argument, toArgument]): seq[T]</a></li>
 
 </ul>
 <ul class="simple nested-toc-section">insertInner
@@ -149,6 +152,10 @@
 </ul>
 <ul class="simple nested-toc-section">tableName
   <li><a class="reference" href="#tableName%2Ctypedesc%5BT%5D" title="tableName[T](t: typedesc[T]): string">tableName[T](t: typedesc[T]): string</a></li>
+
+</ul>
+<ul class="simple nested-toc-section">toArgument
+  <li><a class="reference" href="#toArgument%2CT" title="toArgument[T](v: T): Argument">toArgument[T](v: T): Argument</a></li>
 
 </ul>
 <ul class="simple nested-toc-section">toSnakeCase
@@ -220,7 +227,20 @@
     <div class="section" id="7">
   <h1><a class="toc-backref" href="#7">Types</a></h1>
   <dl class="item">
-    <div id="Bytes">
+    <div id="Argument">
+  <dt><pre><a href="common.html#Argument"><span class="Identifier">Argument</span></a> <span class="Other">=</span> <span class="Keyword">object</span>
+  <span class="Identifier">kind</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">string</span>
+  <span class="Identifier">value</span><span class="Operator">*</span><span class="Other">:</span> <span class="Identifier">string</span>
+</pre></dt>
+  <dd>
+    
+    
+    <a href="https://github.com/treeform/debby/tree/master/src/debby/common.nim#L127" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
+<a href="https://github.com/treeform/debby/edit/devel/src/debby/common.nim#L127" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
+
+  </dd>
+</div>
+<div id="Bytes">
   <dt><pre><a href="common.html#Bytes"><span class="Identifier">Bytes</span></a> <span class="Other">=</span> <span class="Keyword">distinct</span> <span class="Identifier">string</span></pre></dt>
   <dd>
     
@@ -298,8 +318,8 @@
   <dd>
     
     Creates a table, errors out if it already exists.
-    <a href="https://github.com/treeform/debby/tree/master/src/debby/common.nim#L373" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
-<a href="https://github.com/treeform/debby/edit/devel/src/debby/common.nim#L373" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
+    <a href="https://github.com/treeform/debby/tree/master/src/debby/common.nim#L381" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
+<a href="https://github.com/treeform/debby/edit/devel/src/debby/common.nim#L381" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
 
   </dd>
 </div>
@@ -324,8 +344,8 @@
   <dd>
     
     Deletes the row that corresponds to the object from the data base. Makes sure the obj.id is set.
-    <a href="https://github.com/treeform/debby/tree/master/src/debby/common.nim#L154" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
-<a href="https://github.com/treeform/debby/edit/devel/src/debby/common.nim#L154" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
+    <a href="https://github.com/treeform/debby/tree/master/src/debby/common.nim#L162" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
+<a href="https://github.com/treeform/debby/edit/devel/src/debby/common.nim#L162" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
 
   </dd>
 </div>
@@ -337,8 +357,8 @@
   <dd>
     
     Removes tables, errors out if it does not exist.
-    <a href="https://github.com/treeform/debby/tree/master/src/debby/common.nim#L365" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
-<a href="https://github.com/treeform/debby/edit/devel/src/debby/common.nim#L365" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
+    <a href="https://github.com/treeform/debby/tree/master/src/debby/common.nim#L373" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
+<a href="https://github.com/treeform/debby/edit/devel/src/debby/common.nim#L373" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
 
   </dd>
 </div>
@@ -350,8 +370,8 @@
   <dd>
     
     Removes tables if it exists.
-    <a href="https://github.com/treeform/debby/tree/master/src/debby/common.nim#L369" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
-<a href="https://github.com/treeform/debby/edit/devel/src/debby/common.nim#L369" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
+    <a href="https://github.com/treeform/debby/tree/master/src/debby/common.nim#L377" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
+<a href="https://github.com/treeform/debby/edit/devel/src/debby/common.nim#L377" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
 
   </dd>
 </div>
@@ -363,8 +383,8 @@
   <dd>
     
     Filter without a filter clause just returns everything.
-    <a href="https://github.com/treeform/debby/tree/master/src/debby/common.nim#L346" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
-<a href="https://github.com/treeform/debby/edit/devel/src/debby/common.nim#L346" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
+    <a href="https://github.com/treeform/debby/tree/master/src/debby/common.nim#L354" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
+<a href="https://github.com/treeform/debby/edit/devel/src/debby/common.nim#L354" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
 
   </dd>
 </div>
@@ -376,8 +396,8 @@
   <dd>
     
     Gets the object by id.
-    <a href="https://github.com/treeform/debby/tree/master/src/debby/common.nim#L127" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
-<a href="https://github.com/treeform/debby/edit/devel/src/debby/common.nim#L127" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
+    <a href="https://github.com/treeform/debby/tree/master/src/debby/common.nim#L135" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
+<a href="https://github.com/treeform/debby/edit/devel/src/debby/common.nim#L135" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
 
   </dd>
 </div>
@@ -389,22 +409,22 @@
   <dd>
     
     Encodes a hex char.
-    <a href="https://github.com/treeform/debby/tree/master/src/debby/common.nim#L353" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
-<a href="https://github.com/treeform/debby/edit/devel/src/debby/common.nim#L353" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
+    <a href="https://github.com/treeform/debby/tree/master/src/debby/common.nim#L361" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
+<a href="https://github.com/treeform/debby/edit/devel/src/debby/common.nim#L361" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
 
   </dd>
 </div>
 
 </div>
 <div id="innerSelect-procs-all">
-  <div id="innerSelect,Db,T,string,varargs[string,]">
-  <dt><pre><span class="Keyword">proc</span> <a href="#innerSelect%2CDb%2CT%2Cstring%2Cvarargs%5Bstring%2C%5D"><span class="Identifier">innerSelect</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">:</span> <span class="Keyword">ref</span> <span class="Keyword">object</span><span class="Other">]</span><span class="Other">(</span><span class="Identifier">db</span><span class="Other">:</span> <a href="common.html#Db"><span class="Identifier">Db</span></a><span class="Other">;</span> <span class="Identifier">it</span><span class="Other">:</span> <span class="Identifier">T</span><span class="Other">;</span> <span class="Identifier">where</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">;</span>
-                                <span class="Identifier">args</span><span class="Other">:</span> <span class="Identifier">varargs</span><span class="Other">[</span><span class="Identifier">string</span><span class="Other">,</span> <span class="Other">`</span><span class="Operator">$</span><span class="Other">`</span><span class="Other">]</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">seq</span><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span></pre></dt>
+  <div id="innerSelect,Db,T,string,varargs[Argument,toArgument]">
+  <dt><pre><span class="Keyword">proc</span> <a href="#innerSelect%2CDb%2CT%2Cstring%2Cvarargs%5BArgument%2CtoArgument%5D"><span class="Identifier">innerSelect</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">:</span> <span class="Keyword">ref</span> <span class="Keyword">object</span><span class="Other">]</span><span class="Other">(</span><span class="Identifier">db</span><span class="Other">:</span> <a href="common.html#Db"><span class="Identifier">Db</span></a><span class="Other">;</span> <span class="Identifier">it</span><span class="Other">:</span> <span class="Identifier">T</span><span class="Other">;</span> <span class="Identifier">where</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">;</span>
+                                <span class="Identifier">args</span><span class="Other">:</span> <span class="Identifier">varargs</span><span class="Other">[</span><a href="common.html#Argument"><span class="Identifier">Argument</span></a><span class="Other">,</span> <span class="Identifier">toArgument</span><span class="Other">]</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">seq</span><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span></pre></dt>
   <dd>
     
     Used by innerFilter to make the db.select call.
-    <a href="https://github.com/treeform/debby/tree/master/src/debby/common.nim#L306" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
-<a href="https://github.com/treeform/debby/edit/devel/src/debby/common.nim#L306" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
+    <a href="https://github.com/treeform/debby/tree/master/src/debby/common.nim#L314" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
+<a href="https://github.com/treeform/debby/edit/devel/src/debby/common.nim#L314" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
 
   </dd>
 </div>
@@ -416,8 +436,8 @@
   <dd>
     
     Inserts the object into the database.
-    <a href="https://github.com/treeform/debby/tree/master/src/debby/common.nim#L159" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
-<a href="https://github.com/treeform/debby/edit/devel/src/debby/common.nim#L159" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
+    <a href="https://github.com/treeform/debby/tree/master/src/debby/common.nim#L167" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
+<a href="https://github.com/treeform/debby/edit/devel/src/debby/common.nim#L167" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
 
   </dd>
 </div>
@@ -558,6 +578,19 @@
 </div>
 
 </div>
+<div id="toArgument-procs-all">
+  <div id="toArgument,T">
+  <dt><pre><span class="Keyword">proc</span> <a href="#toArgument%2CT"><span class="Identifier">toArgument</span></a><span class="Other">[</span><span class="Identifier">T</span><span class="Other">]</span><span class="Other">(</span><span class="Identifier">v</span><span class="Other">:</span> <span class="Identifier">T</span><span class="Other">)</span><span class="Other">:</span> <a href="common.html#Argument"><span class="Identifier">Argument</span></a></pre></dt>
+  <dd>
+    
+    
+    <a href="https://github.com/treeform/debby/tree/master/src/debby/common.nim#L131" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
+<a href="https://github.com/treeform/debby/edit/devel/src/debby/common.nim#L131" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
+
+  </dd>
+</div>
+
+</div>
 <div id="toSnakeCase-procs-all">
   <div id="toSnakeCase,string">
   <dt><pre><span class="Keyword">proc</span> <a href="#toSnakeCase%2Cstring"><span class="Identifier">toSnakeCase</span></a><span class="Other">(</span><span class="Identifier">s</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">string</span> {.<span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">forbids</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
@@ -577,8 +610,8 @@
   <dd>
     
     Updates the row that corresponds to the object in the database. Makes sure the obj.id is set.
-    <a href="https://github.com/treeform/debby/tree/master/src/debby/common.nim#L138" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
-<a href="https://github.com/treeform/debby/edit/devel/src/debby/common.nim#L138" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
+    <a href="https://github.com/treeform/debby/tree/master/src/debby/common.nim#L146" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
+<a href="https://github.com/treeform/debby/edit/devel/src/debby/common.nim#L146" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
 
   </dd>
 </div>
@@ -610,8 +643,8 @@
   <dd>
     
     Creates a index, errors out if it already exists.
-    <a href="https://github.com/treeform/debby/tree/master/src/debby/common.nim#L217" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
-<a href="https://github.com/treeform/debby/edit/devel/src/debby/common.nim#L217" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
+    <a href="https://github.com/treeform/debby/tree/master/src/debby/common.nim#L225" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
+<a href="https://github.com/treeform/debby/edit/devel/src/debby/common.nim#L225" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
 
   </dd>
 </div>
@@ -624,8 +657,8 @@
   <dd>
     
     Creates a index if it does not already exists.
-    <a href="https://github.com/treeform/debby/tree/master/src/debby/common.nim#L228" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
-<a href="https://github.com/treeform/debby/edit/devel/src/debby/common.nim#L228" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
+    <a href="https://github.com/treeform/debby/tree/master/src/debby/common.nim#L236" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
+<a href="https://github.com/treeform/debby/edit/devel/src/debby/common.nim#L236" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
 
   </dd>
 </div>
@@ -637,8 +670,8 @@
   <dd>
     
     Deletes a seq of objects from the database.
-    <a href="https://github.com/treeform/debby/tree/master/src/debby/common.nim#L193" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
-<a href="https://github.com/treeform/debby/edit/devel/src/debby/common.nim#L193" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
+    <a href="https://github.com/treeform/debby/tree/master/src/debby/common.nim#L201" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
+<a href="https://github.com/treeform/debby/edit/devel/src/debby/common.nim#L201" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
 
   </dd>
 </div>
@@ -650,8 +683,8 @@
   <dd>
     
     Filters type's table with a Nim like filter expression. db.filter(Auto, it.year &gt; 1990) db.filter(Auto, it.make == &quot;Ferrari&quot; or it.make == &quot;Lamborghini&quot;) db.filter(Auto, it.year &gt;= startYear and it.year &lt; endYear)
-    <a href="https://github.com/treeform/debby/tree/master/src/debby/common.nim#L334" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
-<a href="https://github.com/treeform/debby/edit/devel/src/debby/common.nim#L334" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
+    <a href="https://github.com/treeform/debby/tree/master/src/debby/common.nim#L342" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
+<a href="https://github.com/treeform/debby/edit/devel/src/debby/common.nim#L342" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
 
   </dd>
 </div>
@@ -663,8 +696,8 @@
   <dd>
     
     Inserts a seq of objects into the database.
-    <a href="https://github.com/treeform/debby/tree/master/src/debby/common.nim#L188" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
-<a href="https://github.com/treeform/debby/edit/devel/src/debby/common.nim#L188" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
+    <a href="https://github.com/treeform/debby/tree/master/src/debby/common.nim#L196" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
+<a href="https://github.com/treeform/debby/edit/devel/src/debby/common.nim#L196" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
 
   </dd>
 </div>
@@ -676,8 +709,8 @@
   <dd>
     
     Updates a seq of objects into the database.
-    <a href="https://github.com/treeform/debby/tree/master/src/debby/common.nim#L198" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
-<a href="https://github.com/treeform/debby/edit/devel/src/debby/common.nim#L198" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
+    <a href="https://github.com/treeform/debby/tree/master/src/debby/common.nim#L206" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
+<a href="https://github.com/treeform/debby/edit/devel/src/debby/common.nim#L206" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
 
   </dd>
 </div>
@@ -689,8 +722,8 @@
   <dd>
     
     Either updates or inserts a ref object into the database. Will read the inserted id back.
-    <a href="https://github.com/treeform/debby/tree/master/src/debby/common.nim#L203" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
-<a href="https://github.com/treeform/debby/edit/devel/src/debby/common.nim#L203" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
+    <a href="https://github.com/treeform/debby/tree/master/src/debby/common.nim#L211" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
+<a href="https://github.com/treeform/debby/edit/devel/src/debby/common.nim#L211" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
 
   </dd>
 </div>
@@ -699,8 +732,8 @@
   <dd>
     
     Either updates or inserts a seq of object into the database. Will read the inserted id back for each object.
-    <a href="https://github.com/treeform/debby/tree/master/src/debby/common.nim#L211" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
-<a href="https://github.com/treeform/debby/edit/devel/src/debby/common.nim#L211" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
+    <a href="https://github.com/treeform/debby/tree/master/src/debby/common.nim#L219" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
+<a href="https://github.com/treeform/debby/edit/devel/src/debby/common.nim#L219" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
 
   </dd>
 </div>
@@ -716,7 +749,7 @@
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2023-10-29 17:27:09 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2023-10-29 19:14:09 UTC</small>
       </div>
     </div>
   </div>
