@@ -1,4 +1,4 @@
-import std/strutils
+import std/strutils, std/sequtils
 
 block:
   # Test the most basic operation:
@@ -401,37 +401,77 @@ block:
   doAssert row.pos.lat == 0
   doAssert row.pos.lon == 0
 
-# Text sqlDumpHook/sqlParseHook (can't be in a block)
-type
-  Money = distinct int64
+block:
+  # Test simple sqlDumpHook/sqlParseHook
+  type
+    Money = distinct int64
 
-type CheckEntry = ref object
-  id: int
-  toField: string
-  money: Money
+  type CheckEntry = ref object
+    id: int
+    toField: string
+    money: Money
 
-proc sqlDumpHook(v: Money): string =
-  result = "\"$" & $v.int64 & "USD\""
+  proc sqlDumpHook(v: Money): string =
+    result = "\"$" & $v.int64 & "USD\""
 
-proc sqlParseHook(data: string, v: var Money) =
-  v = data[2..^5].parseInt().Money
+  proc sqlParseHook(data: string, v: var Money) =
+    v = data[2..^5].parseInt().Money
 
-db.dropTableIfExists(CheckEntry)
-db.createTable(CheckEntry)
-db.checkTable(CheckEntry)
+  db.dropTableIfExists(CheckEntry)
+  db.createTable(CheckEntry)
+  db.checkTable(CheckEntry)
 
-db.insert CheckEntry(
-  toField: "Super Cars",
-  money: 1234.Money
-)
+  db.insert CheckEntry(
+    toField: "Super Cars",
+    money: 1234.Money
+  )
 
-let check = db.get(CheckEntry, 1)
-doAssert check.id == 1
-doAssert check.toField == "Super Cars"
-doAssert check.money.int == 1234.Money.int
+  let check = db.get(CheckEntry, 1)
+  doAssert check.id == 1
+  doAssert check.toField == "Super Cars"
+  doAssert check.money.int == 1234.Money.int
 
-db.update(check)
-db.upsert(check)
-check.id = 0
-db.upsert(check)
-db.delete(check)
+  db.update(check)
+  db.upsert(check)
+  check.id = 0
+  db.upsert(check)
+  db.delete(check)
+
+block:
+  # Test complex object with custom *binary* representation
+  type
+    Account = ref object
+      id: int
+      uid: UID
+
+    UID = object
+      timestamp*: int64
+      randomness*: uint64
+
+  func toArray[T](oa: openArray[T], size: static Slice[int]): array[size.len, T] =
+    result[0..<size.len] = oa[size]
+
+  func sqlDumpHook(v: UID): string =
+    sqlDumpHook(cast[Bytes](
+      cast[array[8, byte]](v.timestamp).toSeq() & cast[array[8, byte]](v.randomness).toSeq()
+    ))
+
+  func sqlParseHook(data: string, v: var UID) =
+    var
+      bytes: Bytes
+
+    sqlParseHook(data, bytes)
+    v = UID(timestamp: cast[int64](bytes.string[0..7].toArray(0..7)),
+      randomness: cast[uint64](bytes.string[8..15].toArray(0..7))
+    )
+
+  let
+    uid = UID(timestamp: 1698493738197'i64, randomness: 92145482927'u64)
+    acc = Account(uid: uid)
+
+  db.dropTableIfExists(Account)
+  db.createTable(Account)
+  db.insert(acc)
+
+  let accounts = db.filter(Account, it.uid == uid)
+  doAssert accounts.len == 1
