@@ -105,7 +105,7 @@ proc dbError*(db: Db) {.noreturn.} =
 proc prepareQuery(
   db: Db,
   query: string,
-  args: varargs[string]
+  args: varargs[string, sqlDump]
 ): Statement =
   ## Generates the query based on parameters.
 
@@ -140,7 +140,7 @@ proc readRow(statement: Statement, r: var Row, columnCount: int) =
 proc query*(
   db: Db,
   query: string,
-  args: varargs[string, `$`]
+  args: varargs[string, sqlDump]
 ): seq[Row] {.discardable.} =
   ## Runs a query and returns the results.
   when defined(debbyShowSql):
@@ -277,11 +277,14 @@ proc query*[T](
   db: Db,
   t: typedesc[T],
   query: string,
-  args: varargs[string, `$`]
+  args: varargs[string, sqlDump]
 ): seq[T] =
   ## Query the table, and returns results as a seq of ref objects.
   ## This will match fields to column names.
   ## This will also use JSONy for complex fields.
+  when defined(debbyShowSql):
+    debugEcho(query)
+
   let tmp = T()
 
   var

@@ -369,6 +369,38 @@ block:
   for row in db.query("select ?", "? ?"):
     doAssert row == @["? ?"]
 
+block:
+  # Test compare with complex type.
+  type
+    Position = object
+      lat, lon: float64
+    Feature = ref object
+      id: int
+      name: string
+      pos: Position
+
+  db.dropTableIfExists(Feature)
+  db.createTable(Feature)
+
+  db.insert(Feature(name:"center", pos: Position(lat: 0, lon: 0)))
+  db.insert(Feature(name:"off-center", pos: Position(lat: -1.2, lon: +3.14)))
+
+
+  # echo "-----------"
+  # echo db.query("SELECT * FROM feature WHERE pos = '{\\\"lat\\\":0.0,\\\"lon\\\":0.0}'")
+
+
+  let rows = db.query(
+    Feature,
+    "SELECT * FROM feature WHERE pos = ?",
+    Position(lat: 0, lon: 0)
+  )
+  doAssert rows.len == 1
+  let row = rows[0]
+  doAssert row.name == "center"
+  doAssert row.pos.lat == 0
+  doAssert row.pos.lon == 0
+
 # Text sqlDumpHook/sqlParseHook (can't be in a block)
 type
   Money = distinct int64

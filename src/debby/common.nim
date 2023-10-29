@@ -6,6 +6,10 @@ type
   Row* = seq[string] ## Debby Row type .. just a seq of strings.
   Bytes* = distinct string ## Debby's binary datatype. Use this if your data contains nulls or non-utf8 bytes.
 
+  Argument* = object
+    kind*: string
+    value*: string
+
 const ReservedNames* = [
   "select", "insert", "update", "delete", "from", "where", "join", "inner", "outer",
   "left", "right", "on", "group", "by", "order", "having", "limit", "offset", "union",
@@ -307,7 +311,7 @@ proc innerSelect*[T: ref object](
   db: Db,
   it: T,
   where: string,
-  args: varargs[string, `$`]
+  args: varargs[string, sqlDump]
 ): seq[T] =
   ## Used by innerFilter to make the db.select call.
   let statement = "SELECT * FROM " & T.tableName & " WHERE " & where

@@ -192,7 +192,7 @@ proc getAllRows(res: Result): seq[Row] =
 proc query*(
   db: DB,
   query: string,
-  args: varargs[string, `$`]
+  args: varargs[string, sqlDump]
 ): seq[Row] {.discardable.} =
   ## Runs a query and returns the results.
   let res = prepareQuery(db, query, args)
@@ -335,7 +335,7 @@ proc query*[T](
   db: Db,
   t: typedesc[T],
   query: string,
-  args: varargs[string, `$`]
+  args: varargs[string, sqlDump]
 ): seq[T] =
   ## Query the table, and returns results as a seq of ref objects.
   ## This will match fields to column names.
