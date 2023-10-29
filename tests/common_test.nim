@@ -170,7 +170,7 @@ block:
   doAssert jeeps[0].truck == true
 
 block:
-  # Test uint64 field as main field.
+  # Test uint64 field
   type SteamPlayer = ref object
     id: int
     steamId: uint64

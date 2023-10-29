@@ -6,10 +6,6 @@ type
   Row* = seq[string] ## Debby Row type .. just a seq of strings.
   Bytes* = distinct string ## Debby's binary datatype. Use this if your data contains nulls or non-utf8 bytes.
 
-  Argument* = object
-    kind*: string
-    value*: string
-
 const ReservedNames* = [
   "select", "insert", "update", "delete", "from", "where", "join", "inner", "outer",
   "left", "right", "on", "group", "by", "order", "having", "limit", "offset", "union",
@@ -128,6 +124,14 @@ proc sqlParse*[T](data: string, v: var T) =
   else:
     v = data.fromJson(type(v))
 
+type Argument* = object
+  kind*: string
+  value*: string
+
+proc toArgument*[T](v: T): Argument =
+  result.kind = $T
+  result.value = v.sqlDump()
+
 proc get*[T, V](
   db: Db,
   t: typedesc[T],
@@ -144,15 +148,15 @@ proc update*[T: ref object](db: Db, obj: T) =
   ## Makes sure the obj.id is set.
   var
     query = ""
-    values: seq[string]
+    values: seq[Argument]
   query.add "UPDATE " & T.tableName & " SET\n"
   for name, field in obj[].fieldPairs:
     if name != "id":
       query.add "  " & name.toSnakeCase & " = ?,\n"
-      values.add sqlDump(field)
+      values.add toArgument(field)
   query.removeSuffix(",\n")
   query.add "\nWHERE id = ?;"
-  values.add sqlDump(obj[].id)
+  values.add toArgument(obj[].id)
   db.query(query, values)
 
 proc delete*[T: ref object](db: Db, obj: T) =
@@ -168,7 +172,7 @@ proc insertInner*[T: ref object](db: Db, obj: T, extra = ""): seq[Row] =
   var
     query = ""
     qs = ""
-    values: seq[string]
+    values: seq[Argument]
 
   query.add "INSERT INTO " & T.tableName & " (\n"
   for name, field in obj[].fieldPairs:
@@ -176,7 +180,7 @@ proc insertInner*[T: ref object](db: Db, obj: T, extra = ""): seq[Row] =
       discard
     else:
       query.add "  " & name.toSnakeCase & ",\n"
-      values.add sqlDump(field)
+      values.add toArgument(field)
       qs.add "?"
       qs.add ", "
   query.removeSuffix(",\n")
@@ -311,7 +315,7 @@ proc innerSelect*[T: ref object](
   db: Db,
   it: T,
   where: string,
-  args: varargs[string, sqlDump]
+  args: varargs[Argument, toArgument]
 ): seq[T] =
   ## Used by innerFilter to make the db.select call.
   let statement = "SELECT * FROM " & T.tableName & " WHERE " & where

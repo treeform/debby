@@ -105,7 +105,7 @@ proc dbError*(db: Db) {.noreturn.} =
 proc prepareQuery(
   db: Db,
   query: string,
-  args: varargs[string, sqlDump]
+  args: varargs[Argument, toArgument]
 ): Statement =
   ## Generates the query based on parameters.
 
@@ -115,13 +115,13 @@ proc prepareQuery(
   if sqlite3_prepare_v2(db, query.cstring, query.len.cint, result, nil) != SQLITE_OK:
     dbError(db)
   for i, arg in args:
-    if arg.len == 0:
+    if arg.value.len == 0:
       continue
     if sqlite3_bind_text(
       result,
       int32(i + 1),
-      arg.cstring,
-      arg.len.int32, nil
+      arg.value.cstring,
+      arg.value.len.int32, nil
     ) != SQLITE_OK:
       dbError(db)
 
@@ -140,7 +140,7 @@ proc readRow(statement: Statement, r: var Row, columnCount: int) =
 proc query*(
   db: Db,
   query: string,
-  args: varargs[string, sqlDump]
+  args: varargs[Argument, toArgument]
 ): seq[Row] {.discardable.} =
   ## Runs a query and returns the results.
   when defined(debbyShowSql):
@@ -277,7 +277,7 @@ proc query*[T](
   db: Db,
   t: typedesc[T],
   query: string,
-  args: varargs[string, sqlDump]
+  args: varargs[Argument, toArgument]
 ): seq[T] =
   ## Query the table, and returns results as a seq of ref objects.
   ## This will match fields to column names.

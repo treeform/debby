@@ -80,12 +80,14 @@ proc sqlType(t: string): string =
 proc prepareQuery(
   db: DB,
   query: string,
-  args: varargs[string, sqlDump]
+  args: varargs[Argument, toArgument]
 ): string =
   ## Generates the query based on parameters.
   when defined(debbyShowSql):
     debugEcho(query)
 
+  echo query.count('?')
+  echo args
   if query.count('?') != args.len:
     dbError("Number of arguments and number of ? in query does not match")
 
@@ -97,20 +99,20 @@ proc prepareQuery(
       # mySQL does not take JSON in the query
       # It must be CAST AS JSON.
       # At this point I just check for {} an cast it?
-      if arg.startsWith("{"):
+      if sqlType(arg.kind) == "json":
         result.add "CAST("
       result.add "'"
-      var escapedArg = newString(arg.len * 2 + 1)
+      var escapedArg = newString(arg.value.len * 2 + 1)
       let newLen = mysql_real_escape_string(
         db,
         escapedArg.cstring,
-        arg.cstring,
-        arg.len.int32
+        arg.value.cstring,
+        arg.value.len.int32
       )
       escapedArg.setLen(newLen)
       result.add escapedArg
       result.add "'"
-      if arg.startsWith("{"):
+      if sqlType(arg.kind) == "json":
         result.add " AS JSON)"
       inc argNum
     else:
@@ -125,7 +127,7 @@ proc readRow(res: PRES, r: var seq[string], columnCount: int) =
 proc query*(
   db: DB,
   query: string,
-  args: varargs[string, sqlDump]
+  args: varargs[Argument, toArgument]
 ): seq[Row] {.discardable.} =
   ## Runs a query and returns the results.
   var sql = prepareQuery(db, query, args)
@@ -290,7 +292,7 @@ proc query*[T](
   db: Db,
   t: typedesc[T],
   query: string,
-  args: varargs[string, sqlDump]
+  args: varargs[Argument, toArgument]
 ): seq[T] =
   ## Query the table, and returns results as a seq of ref objects.
   ## This will match fields to column names.
