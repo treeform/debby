@@ -121,22 +121,6 @@ block:
   doAssert cars.len == 9
 
 block:
-  # Test filter with invalid function call
-  proc isOfYear(a: Auto): bool = a.year >= 1980
-
-  let res = compiles:
-    let cars = db.filter(Auto, it.isOfYear())
-
-  doAssert not res, "`it` passed to function compiles when it shouldn't!"
-
-  proc nest1(a: Auto): Auto = a
-  proc nest2(a: Auto): bool = a.year >= 1980
-  let res2 = compiles:
-    let cars = db.filter(Auto, nest2(nest1(it)))
-
-  doAssert not res, "`it` passed to a nested function compiles when it shouldn't!"
-
-block:
   # Test update
   let startYear = 1970
   let endYear = 1980
@@ -155,6 +139,22 @@ block:
 
   let cars3 = db.filter(Auto, it.year >= parseInt("19" & "80"))
   doAssert cars3.len == 5
+
+block:
+  # Test filter with invalid function call
+  proc isOfYear(a: Auto): bool = a.year >= 1980
+
+  let res = compiles:
+    let cars = db.filter(Auto, it.isOfYear())
+
+  doAssert not res, "`it` passed to function compiles when it shouldn't!"
+
+  proc nest1(a: Auto): Auto = a
+  proc nest2(a: Auto): bool = a.year >= 1980
+  let res2 = compiles:
+    let cars = db.filter(Auto, nest2(nest1(it)))
+
+  doAssert not res, "`it` passed to a nested function compiles when it shouldn't!"
 
 block:
   # Test upsert
