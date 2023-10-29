@@ -113,7 +113,7 @@ proc sqlType(name, t: string): string =
 proc prepareQuery(
   db: DB,
   query: string,
-  args: varargs[string]
+  args: varargs[Argument, toArgument]
 ): Result =
   ## Generates the query based on parameters.
   when defined(debbyShowSql):
@@ -140,8 +140,8 @@ proc prepareQuery(
       paramFormats: seq[int32]
 
     for arg in args:
-      paramData.add(arg)
-      paramLengths.add(arg.len.int32)
+      paramData.add(arg.value)
+      paramLengths.add(arg.value.len.int32)
       paramFormats.add(0)
 
     var paramValues = allocCStringArray(paramData)
@@ -192,7 +192,7 @@ proc getAllRows(res: Result): seq[Row] =
 proc query*(
   db: DB,
   query: string,
-  args: varargs[string, `$`]
+  args: varargs[Argument, toArgument]
 ): seq[Row] {.discardable.} =
   ## Runs a query and returns the results.
   let res = prepareQuery(db, query, args)
@@ -335,7 +335,7 @@ proc query*[T](
   db: Db,
   t: typedesc[T],
   query: string,
-  args: varargs[string, `$`]
+  args: varargs[Argument, toArgument]
 ): seq[T] =
   ## Query the table, and returns results as a seq of ref objects.
   ## This will match fields to column names.

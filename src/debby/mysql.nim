@@ -59,7 +59,7 @@ proc dbError*(db: Db) {.noreturn.} =
   ## Raises an error from the database.
   raise newException(DbError, "MySQL: " & $mysql_error(db))
 
-proc sqlType(name, t: string): string =
+proc sqlType(t: string): string =
   ## Converts nim type to sql type.
   case t:
   of "string": "text"
@@ -80,30 +80,40 @@ proc sqlType(name, t: string): string =
 proc prepareQuery(
   db: DB,
   query: string,
-  args: varargs[string]
+  args: varargs[Argument, toArgument]
 ): string =
   ## Generates the query based on parameters.
   when defined(debbyShowSql):
     debugEcho(query)
 
+  echo query.count('?')
+  echo args
   if query.count('?') != args.len:
     dbError("Number of arguments and number of ? in query does not match")
 
   var argNum = 0
   for c in query:
     if c == '?':
-      result.add "'"
       let arg = args[argNum]
-      var escapedArg = newString(arg.len * 2 + 1)
+      # This is a bit hacky, I am open to suggestions.
+      # mySQL does not take JSON in the query
+      # It must be CAST AS JSON.
+      # At this point I just check for {} an cast it?
+      if sqlType(arg.kind) == "json":
+        result.add "CAST("
+      result.add "'"
+      var escapedArg = newString(arg.value.len * 2 + 1)
       let newLen = mysql_real_escape_string(
         db,
         escapedArg.cstring,
-        arg.cstring,
-        arg.len.int32
+        arg.value.cstring,
+        arg.value.len.int32
       )
       escapedArg.setLen(newLen)
       result.add escapedArg
       result.add "'"
+      if sqlType(arg.kind) == "json":
+        result.add " AS JSON)"
       inc argNum
     else:
       result.add c
@@ -117,7 +127,7 @@ proc readRow(res: PRES, r: var seq[string], columnCount: int) =
 proc query*(
   db: DB,
   query: string,
-  args: varargs[string, `$`]
+  args: varargs[Argument, toArgument]
 ): seq[Row] {.discardable.} =
   ## Runs a query and returns the results.
   var sql = prepareQuery(db, query, args)
@@ -211,7 +221,7 @@ proc createTableStatement*[T: ref object](db: Db, t: typedesc[T]): string =
     result.add "  "
     result.add name.toSnakeCase
     result.add " "
-    result.add sqlType(name, $type(field))
+    result.add sqlType($type(field))
     if name == "id":
       result.add " PRIMARY KEY AUTO_INCREMENT"
     result.add ",\n"
@@ -248,7 +258,7 @@ proc checkTable*[T: ref object](db: Db, t: typedesc[T]) =
       tableSchema[fieldName] = fieldType
 
     for fieldName, field in tmp[].fieldPairs:
-      let sqlType = sqlType(fieldName, $type(field))
+      let sqlType = sqlType($type(field))
 
       if fieldName.toSnakeCase in tableSchema:
         if tableSchema[fieldName.toSnakeCase] == sqlType:
@@ -282,7 +292,7 @@ proc query*[T](
   db: Db,
   t: typedesc[T],
   query: string,
-  args: varargs[string, `$`]
+  args: varargs[Argument, toArgument]
 ): seq[T] =
   ## Query the table, and returns results as a seq of ref objects.
   ## This will match fields to column names.
