@@ -240,6 +240,15 @@ template createIndexIfNotExists*[T: ref object](
 
 const allowed = @["!=", ">=", "<=", ">", "<", "and", "or", "not"]
 
+proc findByStrVal(node: NimNode, s: string): NimNode =
+  ## Walks all children nodes, looking for matching string value.
+  if node.kind == nnkSym and node.strVal == s:
+    return node
+  for child in node.children:
+    let n = child.findByStrVal(s)
+    if n != nil:
+      return n
+
 proc walk(n: NimNode, params: var seq[NimNode]): string =
   ## Walks the Nim nodes and converts them from Nim to SQL expression.
   ## Values are removed and replaced with ? and then put in the params seq.
@@ -285,8 +294,11 @@ proc walk(n: NimNode, params: var seq[NimNode]): string =
       return "'" & n.strVal & "'"
     of nnkIntLit:
       return n.repr()
-    of nnkCall:
+    of nnkCall, nnkCommand:
       params.add n
+      let itNode = n.findByStrVal("it")
+      if itNode != nil:
+        error("Cannot pass `it` to any calling functions", itNode)
       return "?"
     else:
       assert false, $n.kind & " not supported: " & n.treeRepr()
