@@ -141,6 +141,18 @@ block:
   doAssert cars3.len == 5
 
 block:
+  # Test with another db name
+  let database = db
+  let autos = database.filter(Auto, it.year > 1990)
+
+  type App = object
+    db: Db
+
+  var app = App()
+  app.db = db
+  let autos2 = app.db.filter(Auto, it.year > 1990)
+
+block:
   # Test filter with invalid function call
   proc isOfYear(a: Auto): bool = a.year >= 1980
 
