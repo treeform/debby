@@ -317,7 +317,7 @@ proc innerSelect*[T: ref object](
     args
   )
 
-macro innerFilter[T: ref object](it: var T, db: Db, expression: typed): untyped =
+macro innerFilter(db, it, expression: typed): untyped =
   ## Typed marco that makes the call to innerSelect
   var params: seq[NimNode]
   let clause = walk(expression, params)
@@ -341,7 +341,7 @@ template filter*[T: ref object](db: Db, t: typedesc[T], expression: untyped): un
     # Inject the `it` into the expression.
     var it {.inject.}: T = T()
     # Pass the expression to a typed macro to convert it to SQL where clause.
-    innerFilter(it, db, expression)
+    innerFilter(db, it, expression)
 
 proc filter*[T](
   db: Db,
