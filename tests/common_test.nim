@@ -152,6 +152,13 @@ block:
 
   doAssert not res, "`it` passed to function compiles when it shouldn't!"
 
+  proc nest1(a: Auto): Auto = a
+  proc nest2(a: Auto): bool = a.year >= 1980
+  let res2 = compiles:
+    let cars = db.filter(Auto, nest2(nest1(it)))
+
+  doAssert not res, "`it` passed to a nested function compiles when it shouldn't!"
+
 block:
   # Test upsert
   vintageSportsCars.add Auto(
