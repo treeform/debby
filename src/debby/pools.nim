@@ -62,7 +62,6 @@ template withDb*(pool: Pool, body: untyped) =
     let db {.inject.} = pool.borrow()
     try:
       body
-      discard
     finally:
       pool.add(db)
 
