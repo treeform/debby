@@ -155,7 +155,7 @@ template query*(pool: Pool, sql: string, args: varargs[Argument, toArgument]): s
   ## Query returning plain results
   var data: seq[Row]
   pool.withDb:
-    db.query(sql, args)
+    data = db.query(sql, args)
   data
 
 template query*[T](pool: Pool, t: typedesc[T], sql: string, args: varargs[Argument, toArgument]): seq[T] =
