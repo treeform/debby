@@ -108,4 +108,8 @@ block:
   let cars3 = pool.query(Auto, "SELECT * FROM auto")
   doAssert cars3.len == 0
 
+  # Test raw insert and update
+  discard pool.query("INSERT INTO auto (make, model, year) VALUES (?, ?, ?)", "Jeep", "Wangler Sahara", 1993)
+  discard pool.query("UPDATE auto SET year = ? WHERE make = ?", 1994, "Jeep")
+
   pool.close()
