@@ -412,9 +412,6 @@ proc sqlDumpHook*(data: Bytes): string =
     hexStr.add hexChars[code and 0x0F]  # Modulo operation with 16
   return hexStr
 
-proc sqlDumpJson(data: string): string =
-  data
-
 proc sqlParseHook*(data: string, v: var Bytes) =
   ## Postgres-specific parse hook for binary data.
   if not (data.len >= 2 and data[0] == '\\' and data[1] == 'x'):
