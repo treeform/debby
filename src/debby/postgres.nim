@@ -191,11 +191,12 @@ proc getAllRows(res: Result): seq[Row] =
   if PQresultStatus(res) == PGRES_TUPLES_OK:
     let N = PQntuples(res)
     let L = PQnfields(res)
-    result = newSeqOfCap[Row](N)
-    var row = newSeq[string](L)
-    for i in 0'i32..N-1:
-      readRow(res, row, i, L)
-      result.add(row)
+    if N > 0 and L > 0:
+      result = newSeqOfCap[Row](N)
+      var row = newSeq[string](L)
+      for i in 0'i32..N-1:
+        readRow(res, row, i, L)
+        result.add(row)
   PQclear(res)
 
 proc query*(
