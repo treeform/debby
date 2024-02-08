@@ -192,6 +192,10 @@ proc getAllRows(res: Result): seq[Row] =
     let N = PQntuples(res)
     let L = PQnfields(res)
     if N > 0 and L > 0:
+      echo "here"
+      echo "N: ", N
+      echo "L: ", L
+      echo "github CI debugging!"
       result = newSeqOfCap[Row](N)
       var row = newSeq[string](L)
       for i in 0'i32..N-1:
