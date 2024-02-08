@@ -32,13 +32,13 @@ nim	upsert	debby/common.html#upsert.t,Db,T	template upsert[T: ref object](db: Db
 nim	upsert	debby/common.html#upsert.t,Db,seq[T]	template upsert[T: ref object](db: Db; objs: seq[T])		220
 nim	createIndex	debby/common.html#createIndex.t,Db,typedesc[T],varargs[string]	template createIndex[T: ref object](db: Db; t: typedesc[T]; params: varargs[string])		226
 nim	createIndexIfNotExists	debby/common.html#createIndexIfNotExists.t,Db,typedesc[T],varargs[string]	template createIndexIfNotExists[T: ref object](db: Db; t: typedesc[T];\n                                      params: varargs[string])		237
-nim	innerSelect	debby/common.html#innerSelect,Db,T,string,varargs[Argument,toArgument]	proc innerSelect[T: ref object](db: Db; it: T; where: string;\n                           args: varargs[Argument, toArgument]): seq[T]		315
-nim	filter	debby/common.html#filter.t,Db,typedesc[T],untyped	template filter[T: ref object](db: Db; t: typedesc[T]; expression: untyped): untyped		343
-nim	filter	debby/common.html#filter,Db,typedesc[T]	proc filter[T](db: Db; t: typedesc[T]): seq[T]		355
-nim	hexNibble	debby/common.html#hexNibble,char	proc hexNibble(ch: char): int		362
-nim	dropTable	debby/common.html#dropTable,Db,typedesc[T]	proc dropTable[T](db: Db; t: typedesc[T])		374
-nim	dropTableIfExists	debby/common.html#dropTableIfExists,Db,typedesc[T]	proc dropTableIfExists[T](db: Db; t: typedesc[T])		378
-nim	createTable	debby/common.html#createTable,Db,typedesc[T]	proc createTable[T: ref object](db: Db; t: typedesc[T])		382
+nim	innerSelect	debby/common.html#innerSelect,Db,T,string,varargs[Argument,toArgument]	proc innerSelect[T: ref object](db: Db; it: T; where: string;\n                           args: varargs[Argument, toArgument]): seq[T]		316
+nim	filter	debby/common.html#filter.t,Db,typedesc[T],untyped	template filter[T: ref object](db: Db; t: typedesc[T]; expression: untyped): untyped		344
+nim	filter	debby/common.html#filter,Db,typedesc[T]	proc filter[T](db: Db; t: typedesc[T]): seq[T]		356
+nim	hexNibble	debby/common.html#hexNibble,char	proc hexNibble(ch: char): int		363
+nim	dropTable	debby/common.html#dropTable,Db,typedesc[T]	proc dropTable[T](db: Db; t: typedesc[T])		375
+nim	dropTableIfExists	debby/common.html#dropTableIfExists,Db,typedesc[T]	proc dropTableIfExists[T](db: Db; t: typedesc[T])		379
+nim	createTable	debby/common.html#createTable,Db,typedesc[T]	proc createTable[T: ref object](db: Db; t: typedesc[T])		383
 nimgrp	sqldumphook	debby/common.html#sqlDumpHook-procs-all	proc		65
 nimgrp	sqlparsehook	debby/common.html#sqlParseHook-procs-all	proc		82
 nimgrp	upsert	debby/common.html#upsert-templates-all	template		212

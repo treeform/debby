@@ -276,8 +276,8 @@
   <dd>
     
     Checks to see if table matches the object. And recommends to create whole table or alter it.
-    <a href="https://github.com/treeform/debby/tree/master/src/debby/postgres.nim#L279" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
-<a href="https://github.com/treeform/debby/edit/devel/src/debby/postgres.nim#L279" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
+    <a href="https://github.com/treeform/debby/tree/master/src/debby/postgres.nim#L289" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
+<a href="https://github.com/treeform/debby/edit/devel/src/debby/postgres.nim#L289" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
 
   </dd>
 </div>
@@ -289,8 +289,8 @@
   <dd>
     
     Closes the database connection.
-    <a href="https://github.com/treeform/debby/tree/master/src/debby/postgres.nim#L222" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
-<a href="https://github.com/treeform/debby/edit/devel/src/debby/postgres.nim#L222" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
+    <a href="https://github.com/treeform/debby/tree/master/src/debby/postgres.nim#L232" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
+<a href="https://github.com/treeform/debby/edit/devel/src/debby/postgres.nim#L232" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
 
   </dd>
 </div>
@@ -303,8 +303,8 @@
   <dd>
     
     Returns the SQL code need to create an index.
-    <a href="https://github.com/treeform/debby/tree/master/src/debby/postgres.nim#L240" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
-<a href="https://github.com/treeform/debby/edit/devel/src/debby/postgres.nim#L240" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
+    <a href="https://github.com/treeform/debby/tree/master/src/debby/postgres.nim#L250" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
+<a href="https://github.com/treeform/debby/edit/devel/src/debby/postgres.nim#L250" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
 
   </dd>
 </div>
@@ -316,8 +316,8 @@
   <dd>
     
     Given an object creates its table create statement.
-    <a href="https://github.com/treeform/debby/tree/master/src/debby/postgres.nim#L260" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
-<a href="https://github.com/treeform/debby/edit/devel/src/debby/postgres.nim#L260" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
+    <a href="https://github.com/treeform/debby/tree/master/src/debby/postgres.nim#L270" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
+<a href="https://github.com/treeform/debby/edit/devel/src/debby/postgres.nim#L270" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
 
   </dd>
 </div>
@@ -342,8 +342,8 @@
   <dd>
     
     Inserts the object into the database. Reads the ID of the inserted ref object back.
-    <a href="https://github.com/treeform/debby/tree/master/src/debby/postgres.nim#L332" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
-<a href="https://github.com/treeform/debby/edit/devel/src/debby/postgres.nim#L332" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
+    <a href="https://github.com/treeform/debby/tree/master/src/debby/postgres.nim#L342" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
+<a href="https://github.com/treeform/debby/edit/devel/src/debby/postgres.nim#L342" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
 
   </dd>
 </div>
@@ -356,8 +356,8 @@
   <dd>
     
     Opens a database connection.
-    <a href="https://github.com/treeform/debby/tree/master/src/debby/postgres.nim#L205" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
-<a href="https://github.com/treeform/debby/edit/devel/src/debby/postgres.nim#L205" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
+    <a href="https://github.com/treeform/debby/tree/master/src/debby/postgres.nim#L215" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
+<a href="https://github.com/treeform/debby/edit/devel/src/debby/postgres.nim#L215" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
 
   </dd>
 </div>
@@ -536,12 +536,12 @@
 <div id="query-procs-all">
   <div id="query,Db,string,varargs[Argument,toArgument]">
   <dt><pre><span class="Keyword">proc</span> <a href="#query%2CDb%2Cstring%2Cvarargs%5BArgument%2CtoArgument%5D"><span class="Identifier">query</span></a><span class="Other">(</span><span class="Identifier">db</span><span class="Other">:</span> <a href="common.html#Db"><span class="Identifier">Db</span></a><span class="Other">;</span> <span class="Identifier">query</span><span class="Other">:</span> <span class="Identifier">string</span><span class="Other">;</span> <span class="Identifier">args</span><span class="Other">:</span> <span class="Identifier">varargs</span><span class="Other">[</span><a href="common.html#Argument"><span class="Identifier">Argument</span></a><span class="Other">,</span> <span class="Identifier">toArgument</span><span class="Other">]</span><span class="Other">)</span><span class="Other">:</span> <span class="Identifier">seq</span><span class="Other">[</span><a href="common.html#Row"><span class="Identifier">Row</span></a><span class="Other">]</span> {.
-    <span class="Identifier">discardable</span><span class="Other">,</span> <span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">DbError</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">forbids</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
+    <span class="Identifier">discardable</span><span class="Other">,</span> <span><span class="Other pragmadots">...</span></span><span class="pragmawrap"><span class="Identifier">raises</span><span class="Other">:</span> <span class="Other">[</span><span class="Identifier">DbError</span><span class="Other">,</span> <span class="Identifier">DbError</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">tags</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span><span class="Other">,</span> <span class="Identifier">forbids</span><span class="Other">:</span> <span class="Other">[</span><span class="Other">]</span></span>.}</pre></dt>
   <dd>
     
     Runs a query and returns the results.
-    <a href="https://github.com/treeform/debby/tree/master/src/debby/postgres.nim#L196" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
-<a href="https://github.com/treeform/debby/edit/devel/src/debby/postgres.nim#L196" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
+    <a href="https://github.com/treeform/debby/tree/master/src/debby/postgres.nim#L202" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
+<a href="https://github.com/treeform/debby/edit/devel/src/debby/postgres.nim#L202" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
 
   </dd>
 </div>
@@ -551,8 +551,8 @@
   <dd>
     
     Query the table, and returns results as a seq of ref objects. This will match fields to column names. This will also use JSONy for complex fields.
-    <a href="https://github.com/treeform/debby/tree/master/src/debby/postgres.nim#L338" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
-<a href="https://github.com/treeform/debby/edit/devel/src/debby/postgres.nim#L338" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
+    <a href="https://github.com/treeform/debby/tree/master/src/debby/postgres.nim#L348" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
+<a href="https://github.com/treeform/debby/edit/devel/src/debby/postgres.nim#L348" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
 
   </dd>
 </div>
@@ -564,8 +564,8 @@
   <dd>
     
     Postgres-specific dump hook for binary data.
-    <a href="https://github.com/treeform/debby/tree/master/src/debby/postgres.nim#L409" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
-<a href="https://github.com/treeform/debby/edit/devel/src/debby/postgres.nim#L409" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
+    <a href="https://github.com/treeform/debby/tree/master/src/debby/postgres.nim#L420" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
+<a href="https://github.com/treeform/debby/edit/devel/src/debby/postgres.nim#L420" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
 
   </dd>
 </div>
@@ -574,8 +574,8 @@
   <dd>
     
     SQL dump hook to convert from bool.
-    <a href="https://github.com/treeform/debby/tree/master/src/debby/postgres.nim#L400" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
-<a href="https://github.com/treeform/debby/edit/devel/src/debby/postgres.nim#L400" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
+    <a href="https://github.com/treeform/debby/tree/master/src/debby/postgres.nim#L411" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
+<a href="https://github.com/treeform/debby/edit/devel/src/debby/postgres.nim#L411" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
 
   </dd>
 </div>
@@ -587,8 +587,8 @@
   <dd>
     
     SQL parse hook to convert to bool.
-    <a href="https://github.com/treeform/debby/tree/master/src/debby/postgres.nim#L405" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
-<a href="https://github.com/treeform/debby/edit/devel/src/debby/postgres.nim#L405" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
+    <a href="https://github.com/treeform/debby/tree/master/src/debby/postgres.nim#L416" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
+<a href="https://github.com/treeform/debby/edit/devel/src/debby/postgres.nim#L416" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
 
   </dd>
 </div>
@@ -598,8 +598,8 @@
   <dd>
     
     Postgres-specific parse hook for binary data.
-    <a href="https://github.com/treeform/debby/tree/master/src/debby/postgres.nim#L419" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
-<a href="https://github.com/treeform/debby/edit/devel/src/debby/postgres.nim#L419" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
+    <a href="https://github.com/treeform/debby/tree/master/src/debby/postgres.nim#L430" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
+<a href="https://github.com/treeform/debby/edit/devel/src/debby/postgres.nim#L430" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
 
   </dd>
 </div>
@@ -611,8 +611,8 @@
   <dd>
     
     Checks if table exists.
-    <a href="https://github.com/treeform/debby/tree/master/src/debby/postgres.nim#L226" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
-<a href="https://github.com/treeform/debby/edit/devel/src/debby/postgres.nim#L226" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
+    <a href="https://github.com/treeform/debby/tree/master/src/debby/postgres.nim#L236" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
+<a href="https://github.com/treeform/debby/edit/devel/src/debby/postgres.nim#L236" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
 
   </dd>
 </div>
@@ -630,8 +630,8 @@
   <dd>
     
     Transaction block.
-    <a href="https://github.com/treeform/debby/tree/master/src/debby/postgres.nim#L385" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
-<a href="https://github.com/treeform/debby/edit/devel/src/debby/postgres.nim#L385" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
+    <a href="https://github.com/treeform/debby/tree/master/src/debby/postgres.nim#L396" class="link-seesrc" target="_blank">Source</a>&nbsp;&nbsp;
+<a href="https://github.com/treeform/debby/edit/devel/src/debby/postgres.nim#L396" class="link-seesrc" target="_blank" >Edit</a>&nbsp;&nbsp;
 
   </dd>
 </div>
@@ -653,7 +653,7 @@
       <div class="twelve-columns footer">
         <span class="nim-sprite"></span>
         <br>
-        <small style="color: var(--hint);">Made with Nim. Generated: 2024-02-08 18:04:29 UTC</small>
+        <small style="color: var(--hint);">Made with Nim. Generated: 2024-02-08 19:15:55 UTC</small>
       </div>
     </div>
   </div>

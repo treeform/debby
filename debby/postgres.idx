@@ -39,20 +39,20 @@ nim	PQclear	debby/postgres.html#PQclear,Result	proc PQclear(res: Result)		78
 nim	PQgetvalue	debby/postgres.html#PQgetvalue,Result,int32,int32	proc PQgetvalue(res: Result; tup_num: int32; field_num: int32): cstring		82
 nim	PQfname	debby/postgres.html#PQfname,Result,int32	proc PQfname(res: Result; field_num: int32): cstring		88
 nim	dbError	debby/postgres.html#dbError,Db	proc dbError(db: Db)		95
-nim	query	debby/postgres.html#query,Db,string,varargs[Argument,toArgument]	proc query(db: Db; query: string; args: varargs[Argument, toArgument]): seq[Row]		196
-nim	openDatabase	debby/postgres.html#openDatabase,string,string,string,string,string	proc openDatabase(host, user, password, database: string; port = ""): Db		205
-nim	close	debby/postgres.html#close,Db	proc close(db: Db)		222
-nim	tableExists	debby/postgres.html#tableExists,Db,typedesc[T]	proc tableExists[T](db: Db; t: typedesc[T]): bool		226
-nim	createIndexStatement	debby/postgres.html#createIndexStatement,Db,typedesc[T],bool,varargs[string]	proc createIndexStatement[T: ref object](db: Db; t: typedesc[T]; ifNotExists: bool;\n                                    params: varargs[string]): string		240
-nim	createTableStatement	debby/postgres.html#createTableStatement,Db,typedesc[T]	proc createTableStatement[T: ref object](db: Db; t: typedesc[T]): string		260
-nim	checkTable	debby/postgres.html#checkTable,Db,typedesc[T]	proc checkTable[T: ref object](db: Db; t: typedesc[T])		279
-nim	insert	debby/postgres.html#insert,Db,T	proc insert[T: ref object](db: Db; obj: T)		332
-nim	query	debby/postgres.html#query,Db,typedesc[T],string,varargs[Argument,toArgument]	proc query[T](db: Db; t: typedesc[T]; query: string;\n         args: varargs[Argument, toArgument]): seq[T]		338
-nim	withTransaction	debby/postgres.html#withTransaction.t,Db,	template withTransaction(db: Db; body)		385
-nim	sqlDumpHook	debby/postgres.html#sqlDumpHook,bool	proc sqlDumpHook(v: bool): string		400
-nim	sqlParseHook	debby/postgres.html#sqlParseHook,string,bool	proc sqlParseHook(data: string; v: var bool)		405
-nim	sqlDumpHook	debby/postgres.html#sqlDumpHook,Bytes	proc sqlDumpHook(data: Bytes): string		409
-nim	sqlParseHook	debby/postgres.html#sqlParseHook,string,Bytes	proc sqlParseHook(data: string; v: var Bytes)		419
-nimgrp	query	debby/postgres.html#query-procs-all	proc		196
-nimgrp	sqldumphook	debby/postgres.html#sqlDumpHook-procs-all	proc		400
-nimgrp	sqlparsehook	debby/postgres.html#sqlParseHook-procs-all	proc		405
+nim	query	debby/postgres.html#query,Db,string,varargs[Argument,toArgument]	proc query(db: Db; query: string; args: varargs[Argument, toArgument]): seq[Row]		202
+nim	openDatabase	debby/postgres.html#openDatabase,string,string,string,string,string	proc openDatabase(host, user, password, database: string; port = ""): Db		215
+nim	close	debby/postgres.html#close,Db	proc close(db: Db)		232
+nim	tableExists	debby/postgres.html#tableExists,Db,typedesc[T]	proc tableExists[T](db: Db; t: typedesc[T]): bool		236
+nim	createIndexStatement	debby/postgres.html#createIndexStatement,Db,typedesc[T],bool,varargs[string]	proc createIndexStatement[T: ref object](db: Db; t: typedesc[T]; ifNotExists: bool;\n                                    params: varargs[string]): string		250
+nim	createTableStatement	debby/postgres.html#createTableStatement,Db,typedesc[T]	proc createTableStatement[T: ref object](db: Db; t: typedesc[T]): string		270
+nim	checkTable	debby/postgres.html#checkTable,Db,typedesc[T]	proc checkTable[T: ref object](db: Db; t: typedesc[T])		289
+nim	insert	debby/postgres.html#insert,Db,T	proc insert[T: ref object](db: Db; obj: T)		342
+nim	query	debby/postgres.html#query,Db,typedesc[T],string,varargs[Argument,toArgument]	proc query[T](db: Db; t: typedesc[T]; query: string;\n         args: varargs[Argument, toArgument]): seq[T]		348
+nim	withTransaction	debby/postgres.html#withTransaction.t,Db,	template withTransaction(db: Db; body)		396
+nim	sqlDumpHook	debby/postgres.html#sqlDumpHook,bool	proc sqlDumpHook(v: bool): string		411
+nim	sqlParseHook	debby/postgres.html#sqlParseHook,string,bool	proc sqlParseHook(data: string; v: var bool)		416
+nim	sqlDumpHook	debby/postgres.html#sqlDumpHook,Bytes	proc sqlDumpHook(data: Bytes): string		420
+nim	sqlParseHook	debby/postgres.html#sqlParseHook,string,Bytes	proc sqlParseHook(data: string; v: var Bytes)		430
+nimgrp	query	debby/postgres.html#query-procs-all	proc		202
+nimgrp	sqldumphook	debby/postgres.html#sqlDumpHook-procs-all	proc		411
+nimgrp	sqlparsehook	debby/postgres.html#sqlParseHook-procs-all	proc		416
