@@ -62,6 +62,7 @@ proc dbError*(db: Db) {.noreturn.} =
 proc sqlType(t: typedesc): string =
   ## Converts nim type to sql type.
   when t is string: "text"
+  elif t is Bytes: "text"
   elif t is int8: "tinyint"
   elif t is uint8: "tinyint unsigned"
   elif t is int16: "smallint"
@@ -73,7 +74,6 @@ proc sqlType(t: typedesc): string =
   elif t is float or t is float32: "float"
   elif t is float64: "double"
   elif t is bool: "boolean"
-  elif t is Bytes: "text"
   elif t is enum: "text"
   else: "json"
 

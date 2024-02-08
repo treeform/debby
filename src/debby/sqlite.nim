@@ -91,9 +91,18 @@ proc sqlType(t: typedesc): string =
   ## Converts nim type to sql type.
   when t is string: "TEXT"
   elif t is Bytes: "BLOB"
-  elif t is int: "INTEGER"
-  elif t is float or t is float32 or t is float64: "REAL"
+  elif t is int8: "INTEGER"
+  elif t is uint8: "INTEGER"
+  elif t is int16: "INTEGER"
+  elif t is uint16: "INTEGER"
+  elif t is int32: "INTEGER"
+  elif t is uint32: "INTEGER"
+  elif t is int or t is int64: "INTEGER"
+  elif t is uint or t is uint64: "TEXT"
+  elif t is float or t is float32: "REAL"
+  elif t is float64: "REAL"
   elif t is bool: "INTEGER"
+  elif t is enum: "TEXT"
   else: "TEXT"
 
 proc dbError*(db: Db) {.noreturn.} =
