@@ -300,7 +300,8 @@ proc walk(n: NimNode, params: var seq[NimNode]): string =
     of nnkStmtListExpr:
       return walk(n[1], params)
     of nnkStrLit:
-      return "'" & n.strVal & "'"
+      params.add n
+      return "?"
     of nnkIntLit:
       return n.repr()
     of nnkCall, nnkCommand:

@@ -495,3 +495,59 @@ block:
   doAssert longJobs.len == 1
   doAssert longjobs[0].id == 1
   doAssert longjobs[0].state == JobRunning
+
+block:
+  # Test inserting and filtering for ? and other special characters.
+
+  type
+    SpecialChars = ref object
+      id: int
+      name: string
+
+  db.dropTableIfExists(SpecialChars)
+  db.createTable(SpecialChars)
+
+  db.insert(SpecialChars(name: "hello world"))
+  db.insert(SpecialChars(name: "hello ? world"))
+  db.insert(SpecialChars(name: "hello ' world"))
+  db.insert(SpecialChars(name: "hello \" world"))
+  db.insert(SpecialChars(name: "hello \\ world"))
+  db.insert(SpecialChars(name: "hello \n world"))
+  db.insert(SpecialChars(name: "hello \r world"))
+  db.insert(SpecialChars(name: "hello \t world"))
+  # null byte is not supported and will be cut off instead
+  # TODO: Figure out what to do about null byte.
+  # db.insert(SpecialChars(name: "hello \x00 world"))
+
+  let rows = db.query(SpecialChars, "select * from special_chars")
+  echo rows.len
+  doAssert rows.len == 8
+  doAssert rows[0].name == "hello world"
+  doAssert rows[1].name == "hello ? world"
+  doAssert rows[2].name == "hello ' world"
+  doAssert rows[3].name == "hello \" world"
+  doAssert rows[4].name == "hello \\ world"
+  doAssert rows[5].name == "hello \n world"
+  doAssert rows[6].name == "hello \r world"
+  doAssert rows[7].name == "hello \t world"
+
+  # Now test selecting
+  let sql = "select * from special_chars where name = ?"
+  doAssert db.query(SpecialChars, sql, "hello world").len == 1
+  doAssert db.query(SpecialChars, sql, "hello ? world").len == 1
+  doAssert db.query(SpecialChars, sql, "hello ' world").len == 1
+  doAssert db.query(SpecialChars, sql, "hello \" world").len == 1
+  doAssert db.query(SpecialChars, sql, "hello \\ world").len == 1
+  doAssert db.query(SpecialChars, sql, "hello \n world").len == 1
+  doAssert db.query(SpecialChars, sql, "hello \r world").len == 1
+  doAssert db.query(SpecialChars, sql, "hello \t world").len == 1
+
+  # Now test filtering
+  doAssert db.filter(SpecialChars, it.name == "hello world").len == 1
+  doAssert db.filter(SpecialChars, it.name == "hello ? world").len == 1
+  doAssert db.filter(SpecialChars, it.name == "hello ' world").len == 1
+  doAssert db.filter(SpecialChars, it.name == "hello \" world").len == 1
+  doAssert db.filter(SpecialChars, it.name == "hello \\ world").len == 1
+  doAssert db.filter(SpecialChars, it.name == "hello \n world").len == 1
+  doAssert db.filter(SpecialChars, it.name == "hello \r world").len == 1
+  doAssert db.filter(SpecialChars, it.name == "hello \t world").len == 1
