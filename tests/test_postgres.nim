@@ -22,9 +22,11 @@ block:
 
   db.query("CREATE UNIQUE INDEX unique_name_idx ON unique_name (name)")
 
+  echo "at the unique constraint"
   db.insert(UniqueName(name: "hello"))
   doAssertRaises(DbError):
     db.insert(UniqueName(name: "hello"))
+  echo "done unique constraint"
 
 block:
   # Test PG wrong type
@@ -38,11 +40,14 @@ block:
   db.dropTableIfExists(WrongType)
   db.createTable(WrongType)
 
+  echo "at the wrong type:"
   doAssertRaises(DbError):
     db.query(
       "INSERT INTO wrong_type (num, name) VALUES (?,?)",
       "hello",
       123
     )
+  echo "done wrong type"
 
+echo "close"
 db.close()
