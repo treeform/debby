@@ -87,15 +87,22 @@ proc sqlite3_last_insert_rowid*(
 
 {.pop.}
 
-proc sqlType(name, t: string): string =
+proc sqlType(t: typedesc): string =
   ## Converts nim type to sql type.
-  case t:
-  of "string": "TEXT"
-  of "Bytes": "TEXT"
-  of "int": "INTEGER"
-  of "float", "float32", "float64": "REAL"
-  of "bool": "INTEGER"
-  of "bytes": "BLOB"
+  when t is string: "TEXT"
+  elif t is Bytes: "BLOB"
+  elif t is int8: "INTEGER"
+  elif t is uint8: "INTEGER"
+  elif t is int16: "INTEGER"
+  elif t is uint16: "INTEGER"
+  elif t is int32: "INTEGER"
+  elif t is uint32: "INTEGER"
+  elif t is int or t is int64: "INTEGER"
+  elif t is uint or t is uint64: "TEXT"
+  elif t is float or t is float32: "REAL"
+  elif t is float64: "REAL"
+  elif t is bool: "INTEGER"
+  elif t is enum: "TEXT"
   else: "TEXT"
 
 proc dbError*(db: Db) {.noreturn.} =
@@ -208,7 +215,7 @@ proc createTableStatement*[T: ref object](db: Db, t: typedesc[T]): string =
     result.add "  "
     result.add name.toSnakeCase
     result.add " "
-    result.add sqlType(name, $type(field))
+    result.add sqlType(type(field))
     if name == "id":
       result.add " PRIMARY KEY"
       if type(field) is int:
@@ -244,7 +251,7 @@ proc checkTable*[T: ref object](db: Db, t: typedesc[T]) =
 
     for name, field in tmp[].fieldPairs:
       let fieldName = name.toSnakeCase
-      let sqlType = sqlType(fieldName, $type(field))
+      let sqlType = sqlType(type(field))
       if fieldName.toSnakeCase in tableSchema:
         if tableSchema[fieldName.toSnakeCase ] == sqlType:
           discard # good everything matches

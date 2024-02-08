@@ -65,7 +65,7 @@ block:
   doAssert cars.len == 1
 
 block:
-  # test filters with or
+  # Test filters with or
   let cars = db.filter(Auto, it.make == "Ferrari" or it.make == "Lamborghini")
   doAssert cars.len == 3
 
@@ -385,11 +385,6 @@ block:
   db.insert(Feature(name:"center", pos: Position(lat: 0, lon: 0)))
   db.insert(Feature(name:"off-center", pos: Position(lat: -1.2, lon: +3.14)))
 
-
-  # echo "-----------"
-  # echo db.query("SELECT * FROM feature WHERE pos = '{\\\"lat\\\":0.0,\\\"lon\\\":0.0}'")
-
-
   let rows = db.query(
     Feature,
     "SELECT * FROM feature WHERE pos = ?",
@@ -475,3 +470,28 @@ block:
 
   let accounts = db.filter(Account, it.uid == uid)
   doAssert accounts.len == 1
+
+block:
+  # Test enums
+  type
+    JobState = enum
+      JobStaring
+      JobRunning
+      JobDone
+      JobError
+    LongJob = ref object
+      id: int
+      state: JobState
+
+  db.dropTableIfExists(LongJob)
+  db.createTable(LongJob)
+  let
+    longJob = LongJob(
+      state: JobRunning
+    )
+  db.upsert(longJob)
+
+  let longJobs = db.filter(LongJob, it.state == JobRunning)
+  doAssert longJobs.len == 1
+  doAssert longjobs[0].id == 1
+  doAssert longjobs[0].state == JobRunning

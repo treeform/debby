@@ -59,22 +59,22 @@ proc dbError*(db: Db) {.noreturn.} =
   ## Raises an error from the database.
   raise newException(DbError, "MySQL: " & $mysql_error(db))
 
-proc sqlType(t: string): string =
+proc sqlType(t: typedesc): string =
   ## Converts nim type to sql type.
-  case t:
-  of "string": "text"
-  of "int8": "tinyint"
-  of "uint8": "tinyint unsigned"
-  of "int16": "smallint"
-  of "uint16": "smallint unsigned"
-  of "int32": "int"
-  of "uint32": "int unsigned"
-  of "int", "int64": "bigint"
-  of "uint", "uint64": "bigint unsigned"
-  of "float", "float32": "float"
-  of "float64": "double"
-  of "bool": "boolean"
-  of "Bytes": "text"
+  when t is string: "text"
+  elif t is Bytes: "text"
+  elif t is int8: "tinyint"
+  elif t is uint8: "tinyint unsigned"
+  elif t is int16: "smallint"
+  elif t is uint16: "smallint unsigned"
+  elif t is int32: "int"
+  elif t is uint32: "int unsigned"
+  elif t is int or t is int64: "bigint"
+  elif t is uint or t is uint64: "bigint unsigned"
+  elif t is float or t is float32: "float"
+  elif t is float64: "double"
+  elif t is bool: "boolean"
+  elif t is enum: "text"
   else: "json"
 
 proc prepareQuery(
@@ -86,8 +86,6 @@ proc prepareQuery(
   when defined(debbyShowSql):
     debugEcho(query)
 
-  echo query.count('?')
-  echo args
   if query.count('?') != args.len:
     dbError("Number of arguments and number of ? in query does not match")
 
@@ -98,8 +96,7 @@ proc prepareQuery(
       # This is a bit hacky, I am open to suggestions.
       # mySQL does not take JSON in the query
       # It must be CAST AS JSON.
-      # At this point I just check for {} an cast it?
-      if sqlType(arg.kind) == "json":
+      if arg.sqlType != "":
         result.add "CAST("
       result.add "'"
       var escapedArg = newString(arg.value.len * 2 + 1)
@@ -112,11 +109,12 @@ proc prepareQuery(
       escapedArg.setLen(newLen)
       result.add escapedArg
       result.add "'"
-      if sqlType(arg.kind) == "json":
-        result.add " AS JSON)"
+      if arg.sqlType != "":
+        result.add " AS " & arg.sqlType & ")"
       inc argNum
     else:
       result.add c
+  echo result
 
 proc readRow(res: PRES, r: var seq[string], columnCount: int) =
   ## Reads a single row back.
@@ -221,7 +219,7 @@ proc createTableStatement*[T: ref object](db: Db, t: typedesc[T]): string =
     result.add "  "
     result.add name.toSnakeCase
     result.add " "
-    result.add sqlType($type(field))
+    result.add sqlType(type(field))
     if name == "id":
       result.add " PRIMARY KEY AUTO_INCREMENT"
     result.add ",\n"
@@ -258,7 +256,7 @@ proc checkTable*[T: ref object](db: Db, t: typedesc[T]) =
       tableSchema[fieldName] = fieldType
 
     for fieldName, field in tmp[].fieldPairs:
-      let sqlType = sqlType($type(field))
+      let sqlType = sqlType(type(field))
 
       if fieldName.toSnakeCase in tableSchema:
         if tableSchema[fieldName.toSnakeCase] == sqlType:

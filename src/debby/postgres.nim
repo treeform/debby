@@ -96,18 +96,22 @@ proc dbError*(db: DB) {.noreturn.} =
   ## Raises an error from the database.
   raise newException(DbError, "Postgres: " & $PQerrorMessage(db))
 
-proc sqlType(name, t: string): string =
+proc sqlType(t: typedesc): string =
   ## Converts nim type to SQL type.
-  case t:
-  of "string": "text"
-  of "Bytes": "bytea"
-  of "int8", "int16": "smallint"
-  of "uint8", "uint16", "int32": "integer"
-  of "uint32", "int64", "int": "integer"
-  of "uint", "uint64": "numeric(20)"
-  of "float", "float32": "real"
-  of "float64": "double precision"
-  of "bool": "boolean"
+  when t is string: "text"
+  elif t is Bytes: "bytea"
+  elif t is int8: "smallint"
+  elif t is uint8: "integer"
+  elif t is int16: "smallint"
+  elif t is uint16: "integer"
+  elif t is int32: "integer"
+  elif t is uint32: "integer"
+  elif t is int or t is int64: "integer"
+  elif t is uint or t is uint64: "numeric(20)"
+  elif t is float or t is float32: "REAL"
+  elif t is float64: "double precision"
+  elif t is bool: "boolean"
+  elif t is enum: "text"
   else: "jsonb"
 
 proc prepareQuery(
@@ -267,7 +271,7 @@ proc createTableStatement*[T: ref object](db: Db, t: typedesc[T]): string =
     if name == "id":
       result.add " SERIAL PRIMARY KEY"
     else:
-      result.add sqlType(name, $type(field))
+      result.add sqlType(type(field))
     result.add ",\n"
   result.removeSuffix(",\n")
   result.add "\n)"
@@ -302,7 +306,7 @@ WHERE
       tableSchema[fieldName] = fieldType
 
     for fieldName, field in tmp[].fieldPairs:
-      let sqlType = sqlType(fieldName, $type(field))
+      let sqlType = sqlType(type(field))
       if fieldName.toSnakeCase in tableSchema:
         if tableSchema[fieldName.toSnakeCase] == sqlType:
           discard # good everything matches
