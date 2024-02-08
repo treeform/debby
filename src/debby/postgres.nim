@@ -166,10 +166,13 @@ proc prepareQuery(
   else:
     result = PQexec(db, query)
 
-  if PQresultStatus(result) in {
-    PGRES_BAD_RESPONSE,
-    PGRES_NONFATAL_ERROR,
-    PGRES_FATAL_ERROR
+  if result == nil:
+    dbError("Result is nil")
+
+  if PQresultStatus(result) notin {
+    PGRES_TUPLES_OK,
+    PGRES_COMMAND_OK,
+    PGRES_EMPTY_QUERY
   }:
     dbError(db)
 
@@ -184,13 +187,15 @@ proc readRow(res: Result, r: var Row, line, cols: int32) =
       add(r[col], x)
 
 proc getAllRows(res: Result): seq[Row] =
-  let N = PQntuples(res)
-  let L = PQnfields(res)
-  result = newSeqOfCap[Row](N)
-  var row = newSeq[string](L)
-  for i in 0'i32..N-1:
-    readRow(res, row, i, L)
-    result.add(row)
+  ## Try to get all rows from the result.
+  if PQresultStatus(res) == PGRES_TUPLES_OK:
+    let N = PQntuples(res)
+    let L = PQnfields(res)
+    result = newSeqOfCap[Row](N)
+    var row = newSeq[string](L)
+    for i in 0'i32..N-1:
+      readRow(res, row, i, L)
+      result.add(row)
   PQclear(res)
 
 proc query*(
