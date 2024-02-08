@@ -14,17 +14,17 @@ nim	sqlite3_step	debby/sqlite.html#sqlite3_step,Statement	proc sqlite3_step(stmt
 nim	sqlite3_finalize	debby/sqlite.html#sqlite3_finalize,Statement	proc sqlite3_finalize(stmt: Statement): int32		75
 nim	sqlite3_column_name	debby/sqlite.html#sqlite3_column_name,Statement,int32	proc sqlite3_column_name(stmt: Statement; iCol: int32): cstring		79
 nim	sqlite3_last_insert_rowid	debby/sqlite.html#sqlite3_last_insert_rowid,Db	proc sqlite3_last_insert_rowid(db: Db): int64		84
-nim	dbError	debby/sqlite.html#dbError,Db	proc dbError(db: Db)		101
-nim	query	debby/sqlite.html#query,Db,string,varargs[Argument,toArgument]	proc query(db: Db; query: string; args: varargs[Argument, toArgument]): seq[Row]		140
-nim	openDatabase	debby/sqlite.html#openDatabase,string	proc openDatabase(path: string): Db		159
-nim	close	debby/sqlite.html#close,Db	proc close(db: Db)		167
-nim	tableExists	debby/sqlite.html#tableExists,Db,typedesc[T]	proc tableExists[T](db: Db; t: typedesc[T]): bool		172
-nim	createIndexStatement	debby/sqlite.html#createIndexStatement,Db,typedesc[T],bool,varargs[string]	proc createIndexStatement[T: ref object](db: Db; t: typedesc[T]; ifNotExists: bool;\n                                    params: varargs[string]): string		180
-nim	createTableStatement	debby/sqlite.html#createTableStatement,Db,typedesc[T]	proc createTableStatement[T: ref object](db: Db; t: typedesc[T]): string		200
-nim	checkTable	debby/sqlite.html#checkTable,Db,typedesc[T]	proc checkTable[T: ref object](db: Db; t: typedesc[T])		220
-nim	insert	debby/sqlite.html#insert,Db,T	proc insert[T: ref object](db: Db; obj: T)		270
-nim	query	debby/sqlite.html#query,Db,typedesc[T],string,varargs[Argument,toArgument]	proc query[T](db: Db; t: typedesc[T]; query: string;\n         args: varargs[Argument, toArgument]): seq[T]		276
-nim	withTransaction	debby/sqlite.html#withTransaction.t,Db,	template withTransaction(db: Db; body)		325
-nim	sqlDumpHook	debby/sqlite.html#sqlDumpHook,bool	proc sqlDumpHook(v: bool): string		340
-nim	sqlParseHook	debby/sqlite.html#sqlParseHook,string,bool	proc sqlParseHook(data: string; v: var bool)		345
-nimgrp	query	debby/sqlite.html#query-procs-all	proc		140
+nim	dbError	debby/sqlite.html#dbError,Db	proc dbError(db: Db)		108
+nim	query	debby/sqlite.html#query,Db,string,varargs[Argument,toArgument]	proc query(db: Db; query: string; args: varargs[Argument, toArgument]): seq[Row]		147
+nim	openDatabase	debby/sqlite.html#openDatabase,string	proc openDatabase(path: string): Db		166
+nim	close	debby/sqlite.html#close,Db	proc close(db: Db)		174
+nim	tableExists	debby/sqlite.html#tableExists,Db,typedesc[T]	proc tableExists[T](db: Db; t: typedesc[T]): bool		179
+nim	createIndexStatement	debby/sqlite.html#createIndexStatement,Db,typedesc[T],bool,varargs[string]	proc createIndexStatement[T: ref object](db: Db; t: typedesc[T]; ifNotExists: bool;\n                                    params: varargs[string]): string		187
+nim	createTableStatement	debby/sqlite.html#createTableStatement,Db,typedesc[T]	proc createTableStatement[T: ref object](db: Db; t: typedesc[T]): string		207
+nim	checkTable	debby/sqlite.html#checkTable,Db,typedesc[T]	proc checkTable[T: ref object](db: Db; t: typedesc[T])		227
+nim	insert	debby/sqlite.html#insert,Db,T	proc insert[T: ref object](db: Db; obj: T)		277
+nim	query	debby/sqlite.html#query,Db,typedesc[T],string,varargs[Argument,toArgument]	proc query[T](db: Db; t: typedesc[T]; query: string;\n         args: varargs[Argument, toArgument]): seq[T]		283
+nim	withTransaction	debby/sqlite.html#withTransaction.t,Db,	template withTransaction(db: Db; body)		332
+nim	sqlDumpHook	debby/sqlite.html#sqlDumpHook,bool	proc sqlDumpHook(v: bool): string		347
+nim	sqlParseHook	debby/sqlite.html#sqlParseHook,string,bool	proc sqlParseHook(data: string; v: var bool)		352
+nimgrp	query	debby/sqlite.html#query-procs-all	proc		147

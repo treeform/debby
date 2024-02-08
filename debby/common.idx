@@ -11,34 +11,34 @@ nim	validateObj	debby/common.html#validateObj,typedesc[T]	proc validateObj[T: re
 nim	sqlDumpHook	debby/common.html#sqlDumpHook,T	proc sqlDumpHook[T: SomeFloat | SomeInteger](v: T): string		65
 nim	sqlDumpHook	debby/common.html#sqlDumpHook,T_2	proc sqlDumpHook[T: string](v: T): string		69
 nim	sqlDumpHook	debby/common.html#sqlDumpHook,T_3	proc sqlDumpHook[T: distinct](v: T): string		73
-nim	sqlDump	debby/common.html#sqlDump,T	proc sqlDump[T](v: T): string		77
-nim	sqlParseHook	debby/common.html#sqlParseHook,string,T	proc sqlParseHook[T: string](data: string; v: var T)		84
-nim	sqlParseHook	debby/common.html#sqlParseHook,string,T_2	proc sqlParseHook[T: SomeFloat](data: string; v: var T)		88
-nim	sqlParseHook	debby/common.html#sqlParseHook,string,T_3	proc sqlParseHook[T: SomeUnsignedInt](data: string; v: var T)		95
-nim	sqlParseHook	debby/common.html#sqlParseHook,string,T_4	proc sqlParseHook[T: SomeSignedInt](data: string; v: var T)		102
-nim	sqlParseHook	debby/common.html#sqlParseHook,string,T_5	proc sqlParseHook[T: enum](data: string; v: var T)		109
-nim	sqlParseHook	debby/common.html#sqlParseHook,string,T_6	proc sqlParseHook[T: distinct](data: string; v: var T)		116
-nim	sqlParse	debby/common.html#sqlParse,string,T	proc sqlParse[T](data: string; v: var T)		120
-nim	Argument	debby/common.html#Argument	object Argument		127
-nim	toArgument	debby/common.html#toArgument,T	proc toArgument[T](v: T): Argument		131
-nim	get	debby/common.html#get,Db,typedesc[T],V	proc get[T, V](db: Db; t: typedesc[T]; id: V): T		135
-nim	update	debby/common.html#update,Db,T	proc update[T: ref object](db: Db; obj: T)		146
-nim	delete	debby/common.html#delete,Db,T	proc delete[T: ref object](db: Db; obj: T)		162
-nim	insertInner	debby/common.html#insertInner,Db,T,string	proc insertInner[T: ref object](db: Db; obj: T; extra = ""): seq[Row]		167
-nim	insert	debby/common.html#insert.t,Db,seq[T]	template insert[T: ref object](db: Db; objs: seq[T])		196
-nim	delete	debby/common.html#delete.t,Db,seq[T]	template delete[T: ref object](db: Db; objs: seq[T])		201
-nim	update	debby/common.html#update.t,Db,seq[T]	template update[T: ref object](db: Db; objs: seq[T])		206
-nim	upsert	debby/common.html#upsert.t,Db,T	template upsert[T: ref object](db: Db; obj: T)		211
-nim	upsert	debby/common.html#upsert.t,Db,seq[T]	template upsert[T: ref object](db: Db; objs: seq[T])		219
-nim	createIndex	debby/common.html#createIndex.t,Db,typedesc[T],varargs[string]	template createIndex[T: ref object](db: Db; t: typedesc[T]; params: varargs[string])		225
-nim	createIndexIfNotExists	debby/common.html#createIndexIfNotExists.t,Db,typedesc[T],varargs[string]	template createIndexIfNotExists[T: ref object](db: Db; t: typedesc[T];\n                                      params: varargs[string])		236
-nim	innerSelect	debby/common.html#innerSelect,Db,T,string,varargs[Argument,toArgument]	proc innerSelect[T: ref object](db: Db; it: T; where: string;\n                           args: varargs[Argument, toArgument]): seq[T]		314
-nim	filter	debby/common.html#filter.t,Db,typedesc[T],untyped	template filter[T: ref object](db: Db; t: typedesc[T]; expression: untyped): untyped		342
-nim	filter	debby/common.html#filter,Db,typedesc[T]	proc filter[T](db: Db; t: typedesc[T]): seq[T]		354
-nim	hexNibble	debby/common.html#hexNibble,char	proc hexNibble(ch: char): int		361
-nim	dropTable	debby/common.html#dropTable,Db,typedesc[T]	proc dropTable[T](db: Db; t: typedesc[T])		373
-nim	dropTableIfExists	debby/common.html#dropTableIfExists,Db,typedesc[T]	proc dropTableIfExists[T](db: Db; t: typedesc[T])		377
-nim	createTable	debby/common.html#createTable,Db,typedesc[T]	proc createTable[T: ref object](db: Db; t: typedesc[T])		381
+nim	sqlDumpHook	debby/common.html#sqlDumpHook,T_4	proc sqlDumpHook[T: enum](v: T): string		77
+nim	sqlParseHook	debby/common.html#sqlParseHook,string,T	proc sqlParseHook[T: string](data: string; v: var T)		82
+nim	sqlParseHook	debby/common.html#sqlParseHook,string,T_2	proc sqlParseHook[T: SomeFloat](data: string; v: var T)		86
+nim	sqlParseHook	debby/common.html#sqlParseHook,string,T_3	proc sqlParseHook[T: SomeUnsignedInt](data: string; v: var T)		93
+nim	sqlParseHook	debby/common.html#sqlParseHook,string,T_4	proc sqlParseHook[T: SomeSignedInt](data: string; v: var T)		100
+nim	sqlParseHook	debby/common.html#sqlParseHook,string,T_5	proc sqlParseHook[T: enum](data: string; v: var T)		107
+nim	sqlParseHook	debby/common.html#sqlParseHook,string,T_6	proc sqlParseHook[T: distinct](data: string; v: var T)		114
+nim	sqlParse	debby/common.html#sqlParse,string,T	proc sqlParse[T](data: string; v: var T)		118
+nim	Argument	debby/common.html#Argument	object Argument		125
+nim	toArgument	debby/common.html#toArgument,T	proc toArgument[T](v: T): Argument		129
+nim	get	debby/common.html#get,Db,typedesc[T],V	proc get[T, V](db: Db; t: typedesc[T]; id: V): T		136
+nim	update	debby/common.html#update,Db,T	proc update[T: ref object](db: Db; obj: T)		147
+nim	delete	debby/common.html#delete,Db,T	proc delete[T: ref object](db: Db; obj: T)		163
+nim	insertInner	debby/common.html#insertInner,Db,T,string	proc insertInner[T: ref object](db: Db; obj: T; extra = ""): seq[Row]		168
+nim	insert	debby/common.html#insert.t,Db,seq[T]	template insert[T: ref object](db: Db; objs: seq[T])		197
+nim	delete	debby/common.html#delete.t,Db,seq[T]	template delete[T: ref object](db: Db; objs: seq[T])		202
+nim	update	debby/common.html#update.t,Db,seq[T]	template update[T: ref object](db: Db; objs: seq[T])		207
+nim	upsert	debby/common.html#upsert.t,Db,T	template upsert[T: ref object](db: Db; obj: T)		212
+nim	upsert	debby/common.html#upsert.t,Db,seq[T]	template upsert[T: ref object](db: Db; objs: seq[T])		220
+nim	createIndex	debby/common.html#createIndex.t,Db,typedesc[T],varargs[string]	template createIndex[T: ref object](db: Db; t: typedesc[T]; params: varargs[string])		226
+nim	createIndexIfNotExists	debby/common.html#createIndexIfNotExists.t,Db,typedesc[T],varargs[string]	template createIndexIfNotExists[T: ref object](db: Db; t: typedesc[T];\n                                      params: varargs[string])		237
+nim	innerSelect	debby/common.html#innerSelect,Db,T,string,varargs[Argument,toArgument]	proc innerSelect[T: ref object](db: Db; it: T; where: string;\n                           args: varargs[Argument, toArgument]): seq[T]		315
+nim	filter	debby/common.html#filter.t,Db,typedesc[T],untyped	template filter[T: ref object](db: Db; t: typedesc[T]; expression: untyped): untyped		343
+nim	filter	debby/common.html#filter,Db,typedesc[T]	proc filter[T](db: Db; t: typedesc[T]): seq[T]		355
+nim	hexNibble	debby/common.html#hexNibble,char	proc hexNibble(ch: char): int		362
+nim	dropTable	debby/common.html#dropTable,Db,typedesc[T]	proc dropTable[T](db: Db; t: typedesc[T])		374
+nim	dropTableIfExists	debby/common.html#dropTableIfExists,Db,typedesc[T]	proc dropTableIfExists[T](db: Db; t: typedesc[T])		378
+nim	createTable	debby/common.html#createTable,Db,typedesc[T]	proc createTable[T: ref object](db: Db; t: typedesc[T])		382
 nimgrp	sqldumphook	debby/common.html#sqlDumpHook-procs-all	proc		65
-nimgrp	sqlparsehook	debby/common.html#sqlParseHook-procs-all	proc		84
-nimgrp	upsert	debby/common.html#upsert-templates-all	template		211
+nimgrp	sqlparsehook	debby/common.html#sqlParseHook-procs-all	proc		82
+nimgrp	upsert	debby/common.html#upsert-templates-all	template		212
