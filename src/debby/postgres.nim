@@ -94,8 +94,6 @@ proc PQfname*(
 
 proc dbError*(db: DB) {.noreturn.} =
   ## Raises an error from the database.
-  echo "Entering dbError"
-  echo "going to call PQerrorMessage"
   raise newException(DbError, "Postgres: " & $PQerrorMessage(db))
 
 proc sqlType(t: typedesc): string =
@@ -169,20 +167,14 @@ proc prepareQuery(
     result = PQexec(db, query)
 
 proc checkForErrors(db: Db, res: Result) =
-  echo "just ran the query got"
-  echo "result != nil: ", res != nil
-
+  ## Checks for errors in the result.
   if res == nil:
     dbError("Result is nil")
-
-  echo "PQresultStatus(result): ", PQresultStatus(res)
-
   if PQresultStatus(res) notin {
     PGRES_TUPLES_OK,
     PGRES_COMMAND_OK,
     PGRES_EMPTY_QUERY
   }:
-    echo "going to call dbError"
     dbError(db)
 
 proc readRow(res: Result, r: var Row, line, cols: int32) =
@@ -197,24 +189,15 @@ proc readRow(res: Result, r: var Row, line, cols: int32) =
 
 proc getAllRows(res: Result): seq[Row] =
   ## Try to get all rows from the result.
-  echo "Entering getAllRows"
-  echo "res != nil: ", res != nil
   if PQresultStatus(res) == PGRES_TUPLES_OK:
     let N = PQntuples(res)
     let L = PQnfields(res)
     if N > 0 and L > 0:
-      echo "here"
-      echo "N: ", N
-      echo "L: ", L
-      echo "github CI debugging!"
       result = newSeqOfCap[Row](N)
       var row = newSeq[string](L)
       for i in 0'i32..N-1:
         readRow(res, row, i, L)
         result.add(row)
-  echo "going to PQclear"
-
-  echo "Exiting getAllRows"
 
 proc query*(
   db: DB,
