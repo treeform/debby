@@ -74,12 +74,10 @@ proc sqlDumpHook*[T: distinct](v: T): string =
   ## SQL dump hook for strings.
   sqlDumpHook(v.distinctBase)
 
-proc sqlDump*[T](v: T): string =
-  ## SQL dump into string.
-  when compiles(sqlDumpHook(v)):
-    sqlDumpHook(v)
-  else:
-    v.toJson()
+proc sqlDumpHook*[T: enum](v: T): string =
+  ## SQL dump hook for enums
+  echo "sqlDumpHook: enum ", $v
+  $v
 
 proc sqlParseHook*[T: string](data: string, v: var T) =
   ## SQL parse hook to convert to a string.
@@ -125,12 +123,15 @@ proc sqlParse*[T](data: string, v: var T) =
     v = data.fromJson(type(v))
 
 type Argument* = object
-  kind*: string
+  sqlType*: string
   value*: string
 
 proc toArgument*[T](v: T): Argument =
-  result.kind = $T
-  result.value = v.sqlDump()
+  when compiles(sqlDumpHook(v)):
+    result.value = sqlDumpHook(v)
+  else:
+    result.sqlType = "JSON"
+    result.value = v.toJson()
 
 proc get*[T, V](
   db: Db,
