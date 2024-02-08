@@ -168,15 +168,16 @@ proc prepareQuery(
   else:
     result = PQexec(db, query)
 
+proc checkForErrors(db: Db, res: Result) =
   echo "just ran the query got"
-  echo "result != nil: ", result != nil
+  echo "result != nil: ", res != nil
 
-  if result == nil:
+  if res == nil:
     dbError("Result is nil")
 
-  echo "PQresultStatus(result): ", PQresultStatus(result)
+  echo "PQresultStatus(result): ", PQresultStatus(res)
 
-  if PQresultStatus(result) notin {
+  if PQresultStatus(res) notin {
     PGRES_TUPLES_OK,
     PGRES_COMMAND_OK,
     PGRES_EMPTY_QUERY
@@ -212,7 +213,7 @@ proc getAllRows(res: Result): seq[Row] =
         readRow(res, row, i, L)
         result.add(row)
   echo "going to PQclear"
-  PQclear(res)
+
   echo "Exiting getAllRows"
 
 proc query*(
@@ -222,7 +223,11 @@ proc query*(
 ): seq[Row] {.discardable.} =
   ## Runs a query and returns the results.
   let res = prepareQuery(db, query, args)
-  result = getAllRows(res)
+  try:
+    db.checkForErrors(res)
+    result = getAllRows(res)
+  finally:
+    PQclear(res)
 
 proc openDatabase*(host, user, password, database: string, port = ""): Db =
   ## Opens a database connection.
@@ -368,33 +373,34 @@ proc query*[T](
   ## This will also use JSONy for complex fields.
   let tmp = T()
 
-  var
-    statement = prepareQuery(db, query, args)
-    columnCount = PQnfields(statement)
-    rowCount = PQntuples(statement)
-    headerIndex: seq[int]
-
-  for i in 0 ..< columnCount:
-    let columnName = $PQfname(statement, i)
-    var
-      j = 0
-      found = false
-    for fieldName, field in tmp[].fieldPairs:
-      if columnName == fieldName.toSnakeCase:
-        found = true
-        headerIndex.add(j)
-        break
-      inc j
-    if not found:
-      raise newException(
-        DBError,
-        "Can't map query to object, missing " & $columnName
-      )
-
+  let res = prepareQuery(db, query, args)
   try:
+    db.checkForErrors(res)
+    var
+      columnCount = PQnfields(res)
+      rowCount = PQntuples(res)
+      headerIndex: seq[int]
+
+    for i in 0 ..< columnCount:
+      let columnName = $PQfname(res, i)
+      var
+        j = 0
+        found = false
+      for fieldName, field in tmp[].fieldPairs:
+        if columnName == fieldName.toSnakeCase:
+          found = true
+          headerIndex.add(j)
+          break
+        inc j
+      if not found:
+        raise newException(
+          DBError,
+          "Can't map query to object, missing " & $columnName
+        )
+
     for j in 0 ..< rowCount:
       var row = newSeq[string](columnCount)
-      readRow(statement, row, j, columnCount)
+      readRow(res, row, j, columnCount)
       let tmp = T()
       var i = 0
       for fieldName, field in tmp[].fieldPairs:
@@ -402,7 +408,7 @@ proc query*[T](
         inc i
       result.add(tmp)
   finally:
-    PQclear(statement)
+    PQclear(res)
 
 template withTransaction*(db: Db, body) =
   ## Transaction block.
