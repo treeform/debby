@@ -114,7 +114,6 @@ proc prepareQuery(
       inc argNum
     else:
       result.add c
-  echo result
 
 proc readRow(res: PRES, r: var seq[string], columnCount: int) =
   ## Reads a single row back.
