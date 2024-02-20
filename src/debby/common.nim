@@ -76,7 +76,6 @@ proc sqlDumpHook*[T: distinct](v: T): string =
 
 proc sqlDumpHook*[T: enum](v: T): string =
   ## SQL dump hook for enums
-  echo "sqlDumpHook: enum ", $v
   $v
 
 proc sqlParseHook*[T: string](data: string, v: var T) =
