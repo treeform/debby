@@ -119,7 +119,8 @@ proc sqlParse*[T](data: string, v: var T) =
   when compiles(sqlParseHook(data, v)):
     sqlParseHook(data, v)
   else:
-    v = data.fromJson(type(v))
+    if data != "":
+      v = data.fromJson(type(v))
 
 type Argument* = object
   sqlType*: string

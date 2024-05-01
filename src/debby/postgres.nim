@@ -375,11 +375,11 @@ proc query*[T](
           headerIndex.add(j)
           break
         inc j
-      if not found:
-        raise newException(
-          DBError,
-          "Can't map query to object, missing " & $columnName
-        )
+      # if not found:
+      #   raise newException(
+      #     DBError,
+      #     "Can't map query to object, missing " & $columnName
+      #   )
 
     for j in 0 ..< rowCount:
       var row = newSeq[string](columnCount)
