@@ -20,6 +20,7 @@ const ReservedNames* = [
 
 const ReservedSet = toHashSet(ReservedNames)
 
+
 proc toSnakeCase*(s: string): string =
   for c in s:
     if c.isUpperAscii():
@@ -28,6 +29,12 @@ proc toSnakeCase*(s: string): string =
       result.add(c.toLowerAscii())
     else:
       result.add(c)
+
+proc elemNames*[T](t: typedesc[T]): string =
+  var tmp: seq[string]
+  for name, field in t()[].fieldPairs:
+    tmp.add name.toSnakeCase
+  return tmp.join(", ")
 
 proc tableName*[T](t: typedesc[T]): string =
   ## Converts object type name to table name.
@@ -140,7 +147,7 @@ proc get*[T, V](
 ): T =
   ## Gets the object by id.
   doAssert type(V) is type(t.id), "Types for id don't match"
-  let res = db.query(t, "SELECT * FROM " & T.tableName & " WHERE id = ?", id)
+  let res = db.query(t, "SELECT " & T.elemNames & " FROM " & T.tableName & " WHERE id = ?", id)
   if res.len == 1:
     return res[0]
 
@@ -320,7 +327,7 @@ proc innerSelect*[T: ref object](
   args: varargs[Argument, toArgument]
 ): seq[T] =
   ## Used by innerFilter to make the db.select call.
-  let statement = "SELECT * FROM " & T.tableName & " WHERE " & where
+  let statement = "SELECT " & T.elemNames & " FROM " & T.tableName & " WHERE " & where
   db.query(
     T,
     statement,
@@ -358,7 +365,7 @@ proc filter*[T](
   t: typedesc[T],
 ): seq[T] =
   ## Filter without a filter clause just returns everything.
-  db.query(t, ("select * from " & T.tableName))
+  db.query(t, ("select " & T.elemNames  & " from " & T.tableName))
 
 proc hexNibble*(ch: char): int =
   ## Encodes a hex char.
