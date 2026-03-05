@@ -108,7 +108,7 @@ proc sqlType(t: typedesc): string =
   elif t is uint32: "integer"
   elif t is int or t is int64: "integer"
   elif t is uint or t is uint64: "numeric(20)"
-  elif t is float or t is float32: "REAL"
+  elif t is float or t is float32: "real"
   elif t is float64: "double precision"
   elif t is bool: "boolean"
   elif t is enum: "text"
