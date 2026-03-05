@@ -3,6 +3,7 @@ on:
   push:
     branches:
       - master
+  workflow_dispatch:
 env:
   nim-src: src/${{ github.event.repository.name }}.nim
   deploy-dir: .gh-pages
