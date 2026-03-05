@@ -37,7 +37,7 @@ jobs:
           - 3306:3306
 
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v5
 
     - name: Install PostgreSQL client
       run: sudo apt-get -yqq install libpq-dev
@@ -57,11 +57,10 @@ jobs:
       run: |
         mysql --host 127.0.0.1 --port 3306 -uroot -phunter2 -e "SHOW DATABASES;"
 
-    - uses: jiro4989/setup-nim-action@v1
-      with:
-        repo-token: ${{ secrets.GITHUB_TOKEN }}
+    - uses: treeform/setup-nim-action@v6
+
+    - name: Install Nim dependencies
+      run: nimby install -g jsony
 
     - name: Run nimble tests
-      run: |
-        nimble test -y
-        nimble test --gc:orc -y
+      run: nimble test -y

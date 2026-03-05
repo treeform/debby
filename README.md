@@ -1,8 +1,12 @@
 # Debby: An Opinionated ORM for Nim
 
-`nimble install debby`
+`nimby install debby`
 
 ![Github Actions](https://github.com/treeform/debby/workflows/Github%20Actions/badge.svg)
+![GitHub release (latest by date)](https://img.shields.io/github/v/release/treeform/debby)
+![GitHub Repo stars](https://img.shields.io/github/stars/treeform/debby)
+![GitHub](https://img.shields.io/github/license/treeform/debby)
+![GitHub issues](https://img.shields.io/github/issues/treeform/debby)
 
 [API reference](https://treeform.github.io/debby)
 
