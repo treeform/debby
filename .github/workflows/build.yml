@@ -1,5 +1,9 @@
 name: Github Actions
-on: [push, pull_request]
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
 jobs:
   build:
     strategy:
@@ -37,7 +41,7 @@ jobs:
           - 3306:3306
 
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v5
 
     - name: Install PostgreSQL client
       run: sudo apt-get -yqq install libpq-dev
@@ -57,11 +61,18 @@ jobs:
       run: |
         mysql --host 127.0.0.1 --port 3306 -uroot -phunter2 -e "SHOW DATABASES;"
 
-    - uses: jiro4989/setup-nim-action@v1
-      with:
-        repo-token: ${{ secrets.GITHUB_TOKEN }}
+    - uses: treeform/setup-nim-action@v6
 
-    - name: Run nimble tests
+    - name: Install Nim dependencies
+      run: nimby install -g jsony
+
+    - name: Run tests
       run: |
-        nimble test -y
-        nimble test --gc:orc -y
+        nim r tests/test_sqlite.nim
+        nim r tests/test_postgres.nim
+        nim r tests/test_mysql.nim
+        nim r tests/test_db_name.nim
+        nim r tests/varargs.nim
+        nim r --threads:on --mm:orc tests/test_sqlite_pools.nim
+        nim r --threads:on --mm:orc tests/test_postgres_pools.nim
+        nim r --threads:on --mm:orc tests/test_mysql_pools.nim
