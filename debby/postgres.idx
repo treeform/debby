@@ -53,6 +53,6 @@ nim	sqlDumpHook	debby/postgres.html#sqlDumpHook,bool	proc sqlDumpHook(v: bool): 
 nim	sqlParseHook	debby/postgres.html#sqlParseHook,string,bool	proc sqlParseHook(data: string; v: var bool)		416
 nim	sqlDumpHook	debby/postgres.html#sqlDumpHook,Bytes	proc sqlDumpHook(data: Bytes): string		420
 nim	sqlParseHook	debby/postgres.html#sqlParseHook,string,Bytes	proc sqlParseHook(data: string; v: var Bytes)		430
-nimgrp	query	debby/postgres.html#query-procs-all	proc		202
-nimgrp	sqldumphook	debby/postgres.html#sqlDumpHook-procs-all	proc		411
 nimgrp	sqlparsehook	debby/postgres.html#sqlParseHook-procs-all	proc		416
+nimgrp	sqldumphook	debby/postgres.html#sqlDumpHook-procs-all	proc		411
+nimgrp	query	debby/postgres.html#query-procs-all	proc		202

@@ -39,6 +39,6 @@ nim	hexNibble	debby/common.html#hexNibble,char	proc hexNibble(ch: char): int		36
 nim	dropTable	debby/common.html#dropTable,Db,typedesc[T]	proc dropTable[T](db: Db; t: typedesc[T])		375
 nim	dropTableIfExists	debby/common.html#dropTableIfExists,Db,typedesc[T]	proc dropTableIfExists[T](db: Db; t: typedesc[T])		379
 nim	createTable	debby/common.html#createTable,Db,typedesc[T]	proc createTable[T: ref object](db: Db; t: typedesc[T])		383
-nimgrp	sqldumphook	debby/common.html#sqlDumpHook-procs-all	proc		65
 nimgrp	sqlparsehook	debby/common.html#sqlParseHook-procs-all	proc		81
+nimgrp	sqldumphook	debby/common.html#sqlDumpHook-procs-all	proc		65
 nimgrp	upsert	debby/common.html#upsert-templates-all	template		212

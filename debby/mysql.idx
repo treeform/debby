@@ -29,6 +29,6 @@ nim	sqlDumpHook	debby/mysql.html#sqlDumpHook,bool	proc sqlDumpHook(v: bool): str
 nim	sqlParseHook	debby/mysql.html#sqlParseHook,string,bool	proc sqlParseHook(data: string; v: var bool)		365
 nim	sqlDumpHook	debby/mysql.html#sqlDumpHook,Bytes	proc sqlDumpHook(data: Bytes): string		369
 nim	sqlParseHook	debby/mysql.html#sqlParseHook,string,Bytes	proc sqlParseHook(data: string; v: var Bytes)		379
-nimgrp	query	debby/mysql.html#query-procs-all	proc		124
-nimgrp	sqldumphook	debby/mysql.html#sqlDumpHook-procs-all	proc		360
 nimgrp	sqlparsehook	debby/mysql.html#sqlParseHook-procs-all	proc		365
+nimgrp	sqldumphook	debby/mysql.html#sqlDumpHook-procs-all	proc		360
+nimgrp	query	debby/mysql.html#query-procs-all	proc		124
