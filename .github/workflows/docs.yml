@@ -4,7 +4,6 @@ on:
     branches:
       - master
 env:
-  nim-version: 'stable'
   nim-src: src/${{ github.event.repository.name }}.nim
   deploy-dir: .gh-pages
 jobs:
@@ -13,8 +12,6 @@ jobs:
     steps:
       - uses: actions/checkout@v5
       - uses: treeform/setup-nim-action@v6
-        with:
-          nim-version: ${{ env.nim-version }}
       - run: nimby install -g jsony
       - run: nim doc --index:on --project --git.url:https://github.com/${{ github.repository }} --git.commit:master  --out:${{ env.deploy-dir }} ${{ env.nim-src }}
       - name: "Copy to index.html"
