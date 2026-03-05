@@ -62,5 +62,13 @@ jobs:
     - name: Install Nim dependencies
       run: nimby install -g jsony
 
-    - name: Run nimble tests
-      run: nimble test -y
+    - name: Run tests
+      run: |
+        nim r tests/test_sqlite.nim
+        nim r tests/test_postgres.nim
+        nim r tests/test_mysql.nim
+        nim r tests/test_db_name.nim
+        nim r tests/varargs.nim
+        nim r --threads:on --mm:orc tests/test_sqlite_pools.nim
+        nim r --threads:on --mm:orc tests/test_postgres_pools.nim
+        nim r --threads:on --mm:orc tests/test_mysql_pools.nim
